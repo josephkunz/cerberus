@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_151418) do
+ActiveRecord::Schema.define(version: 2019_11_25_155601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cases", force: :cascade do |t|
+    t.string "name"
+    t.string "number"
+    t.text "description"
+    t.boolean "deleted", default: false
+    t.boolean "archived", default: false
+    t.bigint "user_id"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_cases_on_client_id"
+    t.index ["user_id"], name: "index_cases_on_user_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "city"
+    t.string "zipcode"
+    t.string "country"
+    t.string "company"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "infringements", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.text "description"
+    t.integer "interval"
+    t.boolean "deleted", default: false
+    t.bigint "case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_infringements_on_case_id"
+  end
+
+  create_table "snapshots", force: :cascade do |t|
+    t.datetime "time"
+    t.string "image_path"
+    t.string "web_path"
+    t.text "comment"
+    t.boolean "deleted", default: false
+    t.bigint "infringement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["infringement_id"], name: "index_snapshots_on_infringement_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +73,20 @@ ActiveRecord::Schema.define(version: 2019_11_25_151418) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "city"
+    t.string "zip_code"
+    t.string "country"
+    t.boolean "deleted", default: false
+    t.string "company"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cases", "clients"
+  add_foreign_key "cases", "users"
+  add_foreign_key "infringements", "cases"
+  add_foreign_key "snapshots", "infringements"
 end
