@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="welcome-title-box">
+      <h1>Welcome to <strong>Cerberus</strong></h1>
+      <h2>A platform to document and protect your copyrights online</h2>
+    <div class="login-signin-bar">
+      <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
+      &nbsp &nbsp &nbsp or &nbsp &nbsp &nbsp
+      <% form_for @model do |f| -%>
+
+      <% end -%>
+
+
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'login-signup-buttons'  %>
+    </div>
+  </div>
+</div>
