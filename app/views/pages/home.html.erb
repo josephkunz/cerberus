@@ -4,13 +4,14 @@
       <h2>A platform to document and protect your copyrights online</h2>
     <div class="login-signin-bar">
       <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
-      &nbsp &nbsp &nbsp or &nbsp &nbsp &nbsp
-      <% form_for @model do |f| -%>
+      <div class="or">
+        &nbsp &nbsp &nbsp or &nbsp &nbsp &nbsp
+      </div>
+      <form class="form-inline" action="/action_page.php">
+        <input type="email" id="email" placeholder="Enter your email here" name="email">
+        <button class="login-signup-buttons" type="submit"> Sign Up </button>
+      </form>
 
-      <% end -%>
-
-
-      <%= link_to 'Sign Up', new_user_registration_path, class: 'login-signup-buttons'  %>
     </div>
   </div>
 </div>

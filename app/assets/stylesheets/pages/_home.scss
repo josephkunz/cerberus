@@ -22,15 +22,27 @@
     line-height: 22px;
     letter-spacing: 0.2em;
   }
-  .login-signup-buttons {
-    /* Styling around the signup and login buttons */
+}
 
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-    border-radius: 3px;
-    padding: 10px 20px 10px 20px;
-    margin-top: 30px;
-    overflow: hidden;
+.login-signin-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.or {
+  margin-top: 11px;
+}
+
+.login-signup-buttons {
+  /* Styling around the signup and login buttons */
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 10px 20px 10px 20px;
+  margin-right: 10px;
+
+  button:hover {
+    background-color: blue;
   }
+
 }
