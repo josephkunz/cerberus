@@ -2,13 +2,14 @@ class InfringementsController < ApplicationController
   def create
     @infringement = Infringement.new(infringement_params)
 
-    @infringement = Infringement.find(:infringement_id)
-    #continue
+    @infringement.case = @infringement
+    @infringement.save
+    # TO-DO! redirect_to infringement page
   end
 
   private
 
   def infringement_params
-    params.require(:infringement).permit(:id, :name, :url, :description, :interval, :deleted)
+    params.require(:infringement).permit(:id, :name, :url, :description)
   end
 end

@@ -12,7 +12,7 @@ class CasesController < ApplicationController
   def create
     @case = Case.new(case_params)
     @case.save
-    redirect_to case_path(@case)
+    # redirect_to case_path(@case)
   end
 
   private
