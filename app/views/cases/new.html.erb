@@ -3,6 +3,7 @@
     <%= f.input :name, label: 'Name:' %>
     <%= f.input :number, label: 'Number:' %>
     <%= f.input :description, label: 'Description:' %>
+    <%= f.input :user_id, as: :hidden, input_html: { value: current_user[:id] } %>
     <%= f.submit "Add a new case", class: "btn btn-primary" %>
   <% end %>
 

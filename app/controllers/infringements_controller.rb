@@ -1,4 +1,7 @@
 class InfringementsController < ApplicationController
+  def index
+  end
+
   def create
     @infringement = Infringement.new(infringement_params)
 
