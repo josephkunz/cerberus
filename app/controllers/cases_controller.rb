@@ -10,11 +10,16 @@ class CasesController < ApplicationController
 
   def new
     @case = Case.new
+    @client = Client.new
   end
 
   def create
     @case = Case.new(case_params)
-    @case.save
+    @client = Client.new(client_params)
+    @client.save!
+    @case.user = current_user
+    @case.client = @client
+    @case.save!
     redirect_to case_path(@case)
   end
 
@@ -22,5 +27,9 @@ class CasesController < ApplicationController
 
   def case_params
     params.require(:case).permit(:id, :name, :number, :description)
+  end
+
+  def client_params
+    params.require(:case).require(:clients).permit(:first_name, :last_name)
   end
 end
