@@ -6,6 +6,8 @@ class CasesController < ApplicationController
   def show
     @case = Case.find(params[:id])
     @user = User.find(@case.user_id)
+    @infringement = Infringement.new
+    # @infringement = Infringement.find(@case.infringements)
   end
 
   def new

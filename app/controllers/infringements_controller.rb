@@ -5,11 +5,10 @@ class InfringementsController < ApplicationController
 
   def create
     @infringement = Infringement.new(infringement_params)
-
-    @infringement.case = @infringement
-
+    @case = Case.find(params[:case_id])
+    @infringement.case = @case
     @infringement.save
-    # TO-DO! redirect_to infringement page
+    redirect_to case_path(@case)
   end
 
   private

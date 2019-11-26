@@ -6,16 +6,24 @@
 
 
 <h1>Infringements</h1>
-<%= simple_form_for ([@case, @infringement]) do |f| %>
+<%= simple_form_for [@case, @infringement] do |f| %>
   <%= f.input :url, label: 'Url:' %>
   <%= f.input :name, label: 'Name:' %>
   <%= f.input :interval, label: 'Interval:' %>
   <%= f.input :description, label: 'Comment(description):' %>
 
-  <%= f.submit "Add a new case", class: "btn btn-primary" %>
+  <%= f.submit "Add new infringement", class: "btn btn-primary" %>
 <% end %>
 
 
+<% @case.infringements.each do |x| %>
+
+    <%= x.url %>
+    <%= x.name %>
+    <%= x.interval %>
+    <%= x.description %>
+
+<% end %>
 
 
 </div>
