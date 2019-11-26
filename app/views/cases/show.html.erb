@@ -1,6 +1,34 @@
 <div class="container">
-  <h1><%= @case.name %></h1>
-  <h2><%= @case.number %><h2>
 
-  <p><%= @case.description %></p>
+  <div class="case">
+    <h1><%= @case.name %></h1>
+    <h2><%= @case.number %></h2>
+
+    <p><%= @case.description %></p>
+
+
+  <h2>Infringements</h1>
+ </div>
+
+  <div class="infringement-form infringement-form-container">
+    <%= simple_form_for [@case, @infringement] do |f| %>
+      <%= f.input :url, label: 'Url:' %>
+      <%= f.input :name, label: 'Name:' %>
+      <%= f.input :interval, label: 'Interval:' %>
+      <%= f.input :description, label: 'Comment(description):' %>
+
+      <%= f.submit "Add new infringement", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+<% @case.infringements.each do |x| %>
+
+    <%= x.url %>
+    <%= x.name %>
+    <%= x.interval %>
+    <%= x.description %>
+
+<% end %>
+
 </div>
