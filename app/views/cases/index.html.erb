@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Cases Page</h1>
+  <button id="form_button" class="btn btn-primary float-right" onclick="showHide(event)">CREATE NEW CASE</button>
+
+  <h2>Open cases</h2>
+  <div class="cards">
+    <% @cases.each do |c| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= link_to c.name, case_path(c) %></h2>
+          <p class="truncate-overflow"><%= c.description[0..200] %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <h2>Archived cases</h2>
+
+  <div id="show-form">
+    <div class="form-content">
+      <span class="close">&times;</span>
+      <h2>Add a new case</h2>
+      <%= simple_form_for @case do |f| %>
+        <%= f.input :name, label: 'Name:' %>
+        <%= f.input :number, label: 'Number:' %>
+        <%= f.input :description, label: 'Description:' %>
+        <%= f.simple_fields_for :clients do |m| %>
+          <%= m.input :first_name, label: 'First name' %>
+          <%= m.input :last_name, label: 'Last name:' %>
+        <% end %>
+        <%= f.submit "Add a new case", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
