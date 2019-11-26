@@ -10,17 +10,22 @@
   <h2>Infringements</h1>
  </div>
 
-  <div class="infringement-form infringement-form-container">
-    <%= simple_form_for [@case, @infringement] do |f| %>
-      <%= f.input :url, label: 'Url:' %>
-      <%= f.input :name, label: 'Name:' %>
-      <%= f.input :interval, label: 'Interval:' %>
-      <%= f.input :description, label: 'Comment(description):' %>
+  <div id="show-form">
+    <div class="form-content">
+      <span class="close">&times;</span>
+        <div class="form-container">
+          <%= simple_form_for [@case, @infringement] do |f| %>
+            <%= f.input :url, label: 'Url:' %>
+            <%= f.input :name, label: 'Name:' %>
+            <%= f.input :interval, label: 'Interval:' %>
+            <%= f.input :description, label: 'Comment(description):' %>
 
-      <%= f.submit "Add new infringement", class: "btn btn-primary" %>
-    <% end %>
+            <%= f.submit "Add new infringement", class: "btn btn-primary" %>
+          <% end %>
+       </div>
+      </div>
+    </div>
   </div>
-
 
 <% @case.infringements.each do |x| %>
 
@@ -30,5 +35,5 @@
     <%= x.description %>
 
 <% end %>
-
+<button id="form_button" class="btn btn-primary float-right" onclick="showHide(event)">Add New Infringement</button>
 </div>
