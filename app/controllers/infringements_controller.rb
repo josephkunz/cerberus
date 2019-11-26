@@ -3,6 +3,7 @@ class InfringementsController < ApplicationController
     @infringement = Infringement.new(infringement_params)
 
     @infringement.case = @infringement
+
     @infringement.save
     # TO-DO! redirect_to infringement page
   end
