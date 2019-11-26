@@ -1,1 +1,48 @@
 // Specific CSS for your home-page
+
+.welcome-title-box {
+  /* The main welcome banner in the center of the home page */
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    /* Welcome to CERBER.US */
+    font-size: 36px;
+    line-height: 49px;
+    letter-spacing: 0.3em;
+  }
+  h2{
+    /* platform to document and protect your copyright online */
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.2em;
+  }
+}
+
+.login-signin-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.or {
+  margin-top: 11px;
+}
+
+.login-signup-buttons {
+  /* Styling around the signup and login buttons */
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 10px 20px 10px 20px;
+  margin-right: 10px;
+
+  button:hover {
+    background-color: blue;
+  }
+
+}

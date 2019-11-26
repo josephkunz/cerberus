@@ -1,6 +1,8 @@
 class CasesController < ApplicationController
   def index
     @cases = Case.all
+    @case = Case.new
+    @client = Client.new
   end
 
   def show
@@ -8,11 +10,6 @@ class CasesController < ApplicationController
     @user = User.find(@case.user_id)
     @infringement = Infringement.new
     # @infringement = Infringement.find(@case.infringements)
-  end
-
-  def new
-    @case = Case.new
-    @client = Client.new
   end
 
   def create
