@@ -1,5 +1,6 @@
 class InfringementsController < ApplicationController
   def index
+    @infringements = Infringement.all
   end
 
   def create
