@@ -18,6 +18,6 @@ class CasesController < ApplicationController
   private
 
   def case_params
-    params.require(:case).permit(:id, :name, :number, :description, :deleted, :archived)
+    params.require(:case).permit(:id, :name, :number, :description)
   end
 end

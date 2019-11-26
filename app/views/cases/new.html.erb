@@ -1,1 +1,9 @@
-<h1>hello world this is the new page</h1>
+<div class="container">
+  <%= simple_form_for [@case] do |f| %>
+    <%= f.input :name, label: 'Name:' %>
+    <%= f.input :number, label: 'Number:' %>
+    <%= f.input :description, label: 'Description:' %>
+    <%= f.submit "Add a new case", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
