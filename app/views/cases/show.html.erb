@@ -1,6 +1,7 @@
 <div class="container">
 
   <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
+
   <div class="case">
     <h1><%= @case.name %></h1>
     <h2><%= @case.number %></h2>
@@ -8,10 +9,10 @@
       <h3>Description:</h3>
       <p><%= @case.description %></p>
     </div>
+  </div>
 
 
   <h2>Infringements</h1>
- </div>
 
   <div id="show-form">
     <div class="form-content">
@@ -25,32 +26,21 @@
 
             <%= f.submit "Add new infringement", class: "btn btn-ghost" %>
           <% end %>
-       </div>
+        </div>
+    </div>
+  </div>
+
+<div class="cards">
+  <% @case.infringements.each do |x| %>
+    <div class="card-product">
+      <%= cl_image_tag(x.snapshots.first.image_path) %>
+      <div class="card-product-infos">
+        <h2> <%= link_to x.url, case_infringement_path(x) %> </h2>
+        <p> <%= x.interval %> </p>
+        <p> <%= x.description %></p>
       </div>
     </div>
-
-<div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
-
-    <% @case.infringements.each do |x| %>
-      <h2> <%= x.url %> </h2>
-      <p> <%= x.interval %> </p>
-      <p> <%= x.description %></p>
-    <% end %>
-  </div>
+  <% end %>
 </div>
-
-
-
-
-<% @case.infringements.each do |x| %>
-
-    <%= x.url %>
-    <%= x.name %>
-    <%= x.interval %>
-    <%= x.description %>
-<% end %>
-
 
 </div>
