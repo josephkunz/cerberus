@@ -35,7 +35,7 @@
     <div class="card-product">
       <%= cl_image_tag(x.snapshots.first.image_path) %>
       <div class="card-product-infos">
-        <h2> <%= link_to x.url, case_infringement_path(x) %> </h2>
+        <h2> <%= link_to x.url, case_infringement_path(@case, x) %> </h2>
         <p> <%= x.interval %> </p>
         <p> <%= x.description %></p>
       </div>

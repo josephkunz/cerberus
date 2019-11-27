@@ -7,7 +7,9 @@ class InfringementsController < ApplicationController
   end
 
   def show
-    @infringement = Infringement.find(params[:id])
+    @case = Case.find(params[:case_id])
+    @infringement = @case.infringements.where(id: params[:id]).first
+    # @infringement = Infringement.find(params[:id])
   end
 
   def create
@@ -22,7 +24,7 @@ class InfringementsController < ApplicationController
   private
 
   def infringement_params
-    params.require(:infringement).permit(:id, :name, :url, :description)
+    params.require(:infringement).permit(:name, :url, :description)
   end
 
   def create_screenshot(infringement)
