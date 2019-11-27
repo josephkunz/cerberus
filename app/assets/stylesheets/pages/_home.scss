@@ -72,8 +72,10 @@
   border-radius: 5px;
   border: none;
   padding-left: 10px;
-  &:focus {
-    outline: none;
+  transition-duration: 1s;
+  outline: none;
+  &:hover {
+    background-color: #DDD;
   }
 }
 
