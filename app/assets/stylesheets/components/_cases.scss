@@ -1,39 +1,35 @@
 .case {
+    font-style: normal;
+    font-weight: normal;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+    color: #000000;
 
   h1 {
     font-family: Avenir;
-    font-style: normal;
-    font-weight: normal;
     font-size: 28px;
     line-height: 38px;
     letter-spacing: 0.3em;
-    color: #000000;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
   }
 
   h2 {
     font-family: Avenir;
-    font-style: normal;
-    font-weight: normal;
     font-size: 18px;
     line-height: 25px;
     /* identical to box height */
     letter-spacing: 0.1em;
-
-    color: #000000;
-
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
   }
 
+  h3 {
+    font-family: Avenir Next;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.15em;
+    text-decoration: underline;
+  }
   p {
+    font-family: Avenir Next;
     font-size: 14px;
     text-align: justify;
-    font-family: Avenir Next;
-    font-style: normal;
-    font-weight: normal;
     line-height: 19px;
-
-color: #000000;
-
   }
 }
