@@ -16,6 +16,12 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+# Image processing gems (screenshot API and cloudinary uploader)
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
+gem 'url2png'
+gem "mini_magick"
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
