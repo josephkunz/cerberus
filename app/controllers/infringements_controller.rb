@@ -11,6 +11,7 @@ class InfringementsController < ApplicationController
     @case = Case.find(params[:case_id])
     @infringement.case = @case
     @infringement.save
+    create_screenshot(@infringement)
     redirect_to case_path(@case)
   end
 
