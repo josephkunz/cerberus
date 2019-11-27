@@ -17,13 +17,21 @@
   <button class="btn btn-ghost">Set Timer</button>
   <button class="btn btn-ghost">Export</button>
   <button class="btn btn-ghost">Delete</button>
-
-<div class="product-card">
-  <% @infringement.snapshots.each do |snapshot| %>
-    <%= cl_image_tag snapshot.image_path %>
-  <% end %>
 </div>
 
+
+
+<div class="card-trip">
+    <% @infringement.snapshots.each do |snapshot| %>
+      <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
+    <div class="card-trip-infos">
+      <div>
+        <h2></h2>
+        <p><strong> <%= snapshot.time %> <strong></p>
+      </div>
+  <% end %>
+    </div>
+</div>
 
 <!-- TO-DO:
   1.when pictures are available: add screenshot with timestamp card
