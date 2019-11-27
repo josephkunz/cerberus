@@ -9,7 +9,7 @@
       <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div>
       <div class="flex-item-2"> <p class="description"> <strong>Description: </strong> <%= @infringement.description %> </p></div>
     </div>
-    <h3>Snapshots</h3
+    <h3>Snapshots</h3>
   </div>
 
 <div class="infringement-page-buttons">
@@ -17,6 +17,12 @@
   <button class="btn btn-ghost">Set Timer</button>
   <button class="btn btn-ghost">Export</button>
   <button class="btn btn-ghost">Delete</button>
+
+<div class="product-card">
+  <% @infringement.snapshots.each do |snapshot| %>
+    <%= cl_image_tag snapshot.image_path %>
+  <% end %>
+</div>
 
 
 <!-- TO-DO:
