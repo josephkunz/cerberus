@@ -1,7 +1,5 @@
-#fancy_form .form-container {
-}
 /* The Modal (background) */
-#fancy_form #show-form {
+#show-form {
   margin: 0 auto;
   border: 1px solid #000000;
   box-sizing: border-box;
@@ -23,7 +21,7 @@
 }
 
 /* Modal Content/Box */
-#fancy_form .show-form-content {
+.show-form-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
@@ -32,14 +30,14 @@
 }
 
 /* The Close Button */
-#fancy_form .close {
+.close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-#fancy_form .close:hover,
+.close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
