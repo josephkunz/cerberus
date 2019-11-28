@@ -5,6 +5,9 @@
   width: 230px;
   margin-top: 20px;
   margin-right: 20px;
+  border: 1px solid #000000;
+  padding: 0.5px;
+  border-radius: 3px;
 }
 
 .card-trip .card-trip-cl-image {
@@ -12,6 +15,8 @@
   width: 100%;
   object-fit: cover;
   object-position: 50% 42%;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .card-trip h2 {
@@ -40,4 +45,27 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-trip-empty {
+  overflow: hidden;
+  background: white;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  width: 230px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 2px dashed #cccccc;
+  padding: 0.5px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  span {
+    text-align: center;
+    padding: 0px 20px;
+    font-size: 17px;
+    color: #aaaaaa;
+  }
+
 }

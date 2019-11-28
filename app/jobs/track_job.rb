@@ -2,10 +2,16 @@ class TrackJob < ApplicationJob
   queue_as :default
 
   def perform(params)
-    print "***********PARAMETERS: "
-    p params
-
     infringement = Infringement.find(params)
+
+    print_start_job(infringement)
+    create_screenshot(infringement)
+    print_end_job(infringement)
+  end
+
+  private
+
+  def print_start_job(infringement)
     puts ""
     puts "\e[32m I'm starting the donwload job on following infringement: \e[0m"
     puts "\e[32m -------------------------------------------------------- \e[0m"
@@ -13,14 +19,22 @@ class TrackJob < ApplicationJob
     puts " Url: \e[31m#{infringement.url}\e[0m"
     puts " Interval: \e[31m#{infringement.interval}\e[0m"
     puts ""
-    create_screenshot(infringement)
+  end
+
+  def print_end_job(infringement)
     puts ""
     puts "\e[32m ------------ \e[0m"
-    puts "\e[32m Completed OK \e[0m"
+    puts "\e[32m Job on infr. #{infringement.name}, url: #{infringement.url} completed OK \e[0m"
     puts ""
   end
 
-  private
+  def print_job_info(screenshot)
+    puts "\e[32m Snapshot created: \e[0m"
+    puts "\e[32m ----------------- \e[0m"
+    puts " Id: \e[31m#{screenshot.id}\e[0m"
+    puts " Time: \e[31m#{screenshot.time}\e[0m"
+    puts " Url: \e[31m#{screenshot.infringement.url}\e[0m"
+  end
 
   def create_screenshot(infringement)
     screenshot = Snapshot.new
@@ -35,19 +49,14 @@ class TrackJob < ApplicationJob
     end
 
     screenshot.save
-    puts "\e[32m Snapshot created: \e[0m"
-    puts "\e[32m ----------------- \e[0m"
-    puts " Id: \e[31m#{screenshot.id}\e[0m"
-    puts " Time: \e[31m#{screenshot.time}\e[0m"
-    puts " Url: \e[31m#{screenshot.image_path}\e[0m"
-
+    print_job_info(screenshot)
   end
 
   def prepare_url2png(url)
     options = {
       url: url,
-      #fullpage: true,
-      thumbnail_max_width: 400,
+      fullpage: false,
+      thumbnail_max_width: 800,
       viewport: "1480x1480",
       unique: Time.now.to_i / 60
     }
