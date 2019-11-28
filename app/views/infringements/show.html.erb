@@ -1,39 +1,34 @@
 <div class="container">
-  <div class="case box">
-    <h1><%= @infringement.case.name %> </h1>
-    <h2><%= @infringement.case.number %></h2>
+  <div class="box">
+    <div class="case">
+      <h1><%= @infringement.case.name %> </h1>
+      <h2><%= @infringement.case.number %></h2>
 
-
-    <h3>Basic Information</h3>
-    <div class="flex-container">
-      <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div>
-      <div class="flex-item-2"> <p class="description"> <strong>Description: </strong> <%= @infringement.description %> </p></div>
-    </div>
-    <h3>Snapshots</h3>
-  </div>
-
-<div class="infringement-page-buttons">
-  <button class="btn btn-ghost">Snapshot</button>
-  <button class="btn btn-ghost">Set Timer</button>
-  <button class="btn btn-ghost">Export</button>
-  <button class="btn btn-ghost">Delete</button>
-</div>
-
-
-
-<div class="card-trip">
-    <% @infringement.snapshots.each do |snapshot| %>
-      <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
-    <div class="card-trip-infos">
-      <div>
-        <h2></h2>
-        <p><strong> <%= snapshot.time %> <strong></p>
+      <h3>Basic Information</h3>
+      <div class="flex-container">
+        <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div>
+        <div class="flex-item-2"> <p class="description"> <strong>Description: </strong> <%= @infringement.description %> </p></div>
       </div>
-  <% end %>
+      <h3>Snapshots</h3>
     </div>
+    <div class="btn-infringement">
+      <div class="infringement-page-buttons">
+        <button class="btn btn-ghost">Snapshot</button>
+        <button class="btn btn-ghost">Set Timer</button>
+        <button class="btn btn-ghost">Export</button>
+        <button class="btn btn-ghost">Delete</button>
+      </div>
+
+      <div class="card-trip">
+          <% @infringement.snapshots.each do |snapshot| %>
+            <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
+          <div class="card-trip-infos">
+              <h2></h2>
+              <p><strong> <%= snapshot.time %> <strong></p>
+          <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 
-<!-- TO-DO:
-  1.when pictures are available: add screenshot with timestamp card
-  2. when available: add functionality to buttons -->
-</div>
