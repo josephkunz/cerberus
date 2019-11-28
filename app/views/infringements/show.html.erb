@@ -1,12 +1,25 @@
 <div class="container">
-  <div class="box">
+  <div class="box infringements">
     <div class="case">
-      <h1><%= @infringement.case.name %> </h1>
-      <h2><%= @infringement.case.number %></h2>
+      <div class="infringement-title">
+        <h1><%= @infringement.case.name.upcase %> </h1>
+        <h2><%= @infringement.case.number %></h2>
+      </div>
 
       <h3>Basic Information</h3>
       <div class="flex-container">
-        <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div>
+        <div class="basic-info-legend">
+          <span>Created:</span>
+          <span>Tracked:</span>
+          <span>Records:</span>
+        </div>
+        <div class="basic-info-values">
+          <span><%= @infringement.created_at.strftime("%F") %></span>
+          <span>0</span>
+          <span><%= @infringement.snapshots.count %></span>
+        </div>
+
+        <!-- <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div> -->
         <div class="flex-item-2"> <p class="description"> <strong>Description: </strong> <%= @infringement.description %> </p></div>
       </div>
       <h3>Snapshots</h3>
@@ -19,14 +32,20 @@
         <button class="btn btn-ghost">Delete</button>
       </div>
       <div class="snapshots-infringement flex-item-snapshots">
-      <% @infringement.snapshots.each do |snapshot| %>
-        <div class="card-trip">
-            <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
-          <div class="card-trip-infos">
-              <h2></h2>
-              <p><strong> <%= snapshot.time %> </strong></p>
+        <% if @infringement.snapshots.empty? %>
+          <div class="card-trip-empty">
+            <span>First screenshot will be available soon</span>
           </div>
-        </div>
+        <% else %>
+          <% @infringement.snapshots.each do |snapshot| %>
+            <div class="card-trip">
+                <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
+              <div class="card-trip-infos">
+                  <h2></h2>
+                  <p><strong> <%= snapshot.time %> </strong></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
