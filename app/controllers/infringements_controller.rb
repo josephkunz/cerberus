@@ -6,6 +6,12 @@ class InfringementsController < ApplicationController
     @infringements = Infringement.all
   end
 
+  def show
+    @case = Case.find(params[:case_id])
+    @infringement = @case.infringements.where(id: params[:id]).first
+    # @infringement = Infringement.find(params[:id])
+  end
+
   def create
     @infringement = Infringement.new(infringement_params)
     @case = Case.find(params[:case_id])
@@ -18,7 +24,7 @@ class InfringementsController < ApplicationController
   private
 
   def infringement_params
-    params.require(:infringement).permit(:id, :name, :url, :description, :interval)
+    params.require(:infringement).permit(:name, :url, :description, :interval)
   end
 
   def create_event(infringement)

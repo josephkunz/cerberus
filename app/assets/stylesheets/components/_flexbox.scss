@@ -1,0 +1,23 @@
+.flex-container {
+  display: flex;
+  width: 100%;
+
+}
+
+.flex-item-1 {
+  width: 30%;
+  padding: 12px;
+  margin: 12px;
+}
+
+.flex-item-2 {
+  width: 70%;
+  overflow-wrap: break-word;
+  padding: 12px;
+  margin: 12px;
+
+}
+
+p {
+ text-align: none !important;
+}

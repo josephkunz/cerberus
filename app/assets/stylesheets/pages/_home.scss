@@ -1,5 +1,11 @@
 // Specific CSS for your home-page
 
+.home-logo-button {
+  /* Styling for the upper left logo and CERBERUS title HOME button */
+
+
+}
+
 .welcome-title-box {
   /* The main welcome banner in the center of the home page */
   font-family: Avenir;
@@ -28,10 +34,8 @@
 .login-signin-bar {
   display: flex;
   align-items: center;
-}
-
-.or {
-  padding: 30px;
+  position: relative;
+  margin-top: 30px;
 }
 
 .new_user {
@@ -39,9 +43,15 @@
   align-content: center;
 }
 
+.or {
+  position: static;
+  margin-left: 30px;
+}
+
 .login-signup-buttons {
   /* Styling around the signup and login buttons */
   color: black;
+  background-color: white;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 3px;
@@ -50,6 +60,26 @@
   &:hover {
     color: black;
     text-decoration: none;
+    background-color: #eaeaea;
+  }
+}
+
+#home-input {
+  position: relative;
+  margin-right: 30px;
+  margin-left: 30px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  transition-duration: 1s;
+  outline: none;
+  &:hover {
     background-color: #DDD;
   }
 }
+
+#home-input:hover {
+  background-color: #eaeaea;
+}
+
