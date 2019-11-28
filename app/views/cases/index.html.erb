@@ -1,21 +1,82 @@
 <div class="container">
   <h1>Cases Page</h1>
-  <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">CREATE NEW CASE</button>
+  <hr>
 
-  <h2>Open cases</h2>
-  <div class="cards">
+  <div class="open-cases-top-bar">
+    <h2>Open cases</h2>
+    <button id="form_button" class="btn btn-ghost" onclick="showHide(event)">CREATE NEW CASE</button>
+  </div>
+
+  <br>
+
+  <div>
     <% @cases.each do |c| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <h2><%= link_to c.name, case_path(c) %></h2>
+
+      <!-- store the client for listing in 1st box -->
+      <% client = Client.find(c.client_id) %>
+      <!-- store the infringement count for listing in 4th box -->
+      <% infringement_count = c.infringements.count %>
+      <!-- store the TOTOAL screenshot count for listing in 4th box -->
+      <% screenshot_count = 0 %>
+      <% c.infringements.each do |inf| %>
+      <% screenshot_count += inf.snapshots.count %>
+      <% end %>
+
+      <div class="case-container-card">
+
+        <!-- 1st box in Case card:  -->
+        <div class="case-info-box first">
+          <div>
+            <h5>
+              <%= link_to c.name, case_path(c) %>
+            </h5>
+            <p>
+              #<%= c.number %>
+            </p>
+          </div>
+        </div>
+        <div class="horizontal-line"></div>
+
+
+        <!-- 2nd box in Case card:  -->
+        <div class="case-info-box second">
           <p class="truncate-overflow"><%= c.description[0..200] %></p>
         </div>
+        <div class="horizontal-line"></div>
+
+
+        <!-- 3rd box in Case card:  -->
+        <div class="case-info-box third">
+          <i class="fas fa-user"></i>
+          &nbsp
+          <%= client.first_name %> &nbsp <%= client.last_name %>
+          <br>
+          <i class="fas fa-clock"></i>
+          &nbsp
+          <%= c.created_at %>
+        </div>
+        <div class="horizontal-line"></div>
+
+
+        <!-- 4th box in Case card:  -->
+        <div class="case-info-box fourth">
+          <i class="fas fa-file-alt"></i>
+          &nbsp
+          <%= infringement_count %> Infringements
+          <br>
+          <i class="fas fa-info-circle"></i>
+          &nbsp
+          <%= screenshot_count %> Total Screenshots
+        </div>
+
       </div>
     <% end %>
   </div>
 
+  <br>
+  <hr>
   <h2>Archived cases</h2>
+  <br>
 
   <div id="show-form">
     <div class="form-content">
