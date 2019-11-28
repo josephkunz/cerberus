@@ -8,7 +8,7 @@ module Clockwork
   # required to enable database syncing support
   Clockwork.manager = DatabaseEvents::Manager.new
 
-  sync_database_events model: ::Event, every: 1.minute do |event|
+  sync_database_events model: ::Event, every: 5.second do |event|
     event.job_name.constantize.perform_later(event.job_arguments)
   end
 

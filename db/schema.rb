@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_154157) do
+ActiveRecord::Schema.define(version: 2019_11_28_134254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,15 @@ ActiveRecord::Schema.define(version: 2019_11_27_154157) do
     t.jsonb "job_arguments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "infringement_id"
+    t.index ["infringement_id"], name: "index_events_on_infringement_id"
   end
 
   create_table "infringements", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.text "description"
-    t.integer "interval"
+    t.string "interval"
     t.boolean "deleted", default: false
     t.bigint "case_id"
     t.datetime "created_at", null: false
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_154157) do
 
   add_foreign_key "cases", "clients"
   add_foreign_key "cases", "users"
+  add_foreign_key "events", "infringements"
   add_foreign_key "infringements", "cases"
   add_foreign_key "snapshots", "infringements"
 end
