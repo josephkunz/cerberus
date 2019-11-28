@@ -28,10 +28,32 @@ class InfringementsController < ApplicationController
   end
 
   def create_event(infringement)
+    frequency = compute_frequency(infringement.interval)
     event = Event.new(name: infringement.url,
-                      frequency: (infringement.interval * 60),
+                      frequency: frequency,
                       job_name: "TrackJob",
-                      job_arguments: infringement.id)
+                      job_arguments: infringement.id,
+                      infringement_id: infringement.id)
     event.save
+  end
+
+  def compute_frequency(interval_string)
+    if interval_string == "1 snapshot"
+      return 0
+    end
+
+    interval_array = interval_string.split(" ")
+    case interval_array[1]
+    when "minute", "minutes"
+      return interval_array[0].to_i * 60
+    when "hour", "hours"
+      return interval_array[0].to_i * 60 * 60
+    when "day", "days"
+      return interval_array[0].to_i * 60 * 60 * 24
+    when "month", "months"
+      return interval_array[0].to_i * 60 * 60 * 24 * 30
+    when "year", "years"
+      return interval_array[0].to_i * 60 * 60 * 24 * 365
+    end
   end
 end
