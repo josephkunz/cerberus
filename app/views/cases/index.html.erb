@@ -1,4 +1,5 @@
 <div class="container">
+
   <h1>Cases Page</h1>
   <hr>
 
@@ -78,21 +79,22 @@
   <h2>Archived cases</h2>
   <br>
 
-  <div id="show-form">
-    <div class="form-content">
-      <span class="close">&times;</span>
-        <div class="form-container">
-          <h2>Add a new case</h2>
-          <%= simple_form_for @case do |f| %>
-            <%= f.input :name, label: 'Name:' %>
-            <%= f.input :number, label: 'Number:' %>
-            <%= f.input :description, label: 'Description:' %>
-            <%= f.simple_fields_for :clients do |m| %>
-              <%= m.input :first_name, label: 'First name:' %>
-              <%= m.input :last_name, label: 'Last name:' %>
+    <div id="show-form">
+      <div class="form-content">
+        <span class="close">&times;</span>
+          <div class="form-container">
+            <h2>Add a new case</h2>
+            <%= simple_form_for @case do |f| %>
+              <%= f.input :name, label: 'Name:' %>
+              <%= f.input :number, label: 'Number:' %>
+              <%= f.input :description, label: 'Description:' %>
+              <%= f.simple_fields_for :clients do |m| %>
+                <%= m.input :first_name, label: 'First name:' %>
+                <%= m.input :last_name, label: 'Last name:' %>
+              <% end %>
+              <%= f.submit "Add a new case", class: "btn btn-ghost" %>
             <% end %>
-            <%= f.submit "Add a new case", class: "btn btn-ghost" %>
-          <% end %>
+        </div>
       </div>
     </div>
   </div>
