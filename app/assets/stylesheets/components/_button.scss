@@ -8,9 +8,12 @@
   opacity: 0.6;
   transition: opacity 0.3s ease;
   margin-bottom: 15px;
-  width: 120px;
 }
 
 .btn-ghost:hover {
   opacity: 1;
+}
+
+.btn-ghost-w120px {
+  width: 120px
 }
