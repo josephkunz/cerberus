@@ -33,7 +33,10 @@
 <div class="cards">
   <% @case.infringements.each do |x| %>
     <div class="card-product">
+      <% if x.snapshots.first.present? %>
       <%= cl_image_tag(x.snapshots.first.image_path) %>
+      <% else %>
+      <% end %>
       <div class="card-product-infos">
         <h2> <%= link_to x.url, case_infringement_path(@case, x) %> </h2>
         <p> <%= x.interval %> </p>
