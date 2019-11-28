@@ -19,16 +19,15 @@
         <button class="btn btn-ghost">Delete</button>
       </div>
 
-      <div class="card-trip">
-          <% @infringement.snapshots.each do |snapshot| %>
+      <% @infringement.snapshots.each do |snapshot| %>
+        <div class="card-trip">
             <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
           <div class="card-trip-infos">
               <h2></h2>
               <p><strong> <%= snapshot.time %> <strong></p>
-          <% end %>
           </div>
         </div>
+        <% end %>
     </div>
   </div>
 </div>
-
