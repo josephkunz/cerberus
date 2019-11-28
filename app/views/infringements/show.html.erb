@@ -11,14 +11,14 @@
       </div>
       <h3>Snapshots</h3>
     </div>
-    <div class="btn-infringement">
-      <div class="infringement-page-buttons">
+    <div class="btn-and-infringement">
+      <div class="infringement-page-buttons flex-item-buttons">
         <button class="btn btn-ghost">Snapshot</button>
         <button class="btn btn-ghost">Set Timer</button>
         <button class="btn btn-ghost">Export</button>
         <button class="btn btn-ghost">Delete</button>
       </div>
-      <div class="snapshots-infringement-flex-item">
+      <div class="snapshots-infringement flex-item-snapshots">
       <% @infringement.snapshots.each do |snapshot| %>
         <div class="card-trip">
             <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
