@@ -3,7 +3,8 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :cases, only: [ :index, :create, :show, :edit, :update ] do
+  
+  resources :cases, only: [ :index, :create, :show, :edit, :update, :destroy ] do
     resources :infringements, only: [ :create, :show, :destroy ]
   end
 

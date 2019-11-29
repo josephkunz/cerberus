@@ -21,8 +21,11 @@
 
   h3 {
     font-family: Avenir Next;
-    font-size: 16px;
-    line-height: 19px;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 30px;
+    /* identical to box height */
     letter-spacing: 0.15em;
 
   }
@@ -31,5 +34,91 @@
     font-size: 14px;
     text-align: justify;
     line-height: 19px;
+    margin: 0;
   }
+
+  .case-description {
+    margin-top: 40px;
+  }
+
+  .case-infringements {
+    margin-top: 40px;
+  }
+
+  .box-description {
+    display:flex;
+    justify-content: flex-start;
+  }
+
+  .info-group {
+    display: flex;
+    justify-content: flex-start;
+    // width: 1700px;
+    height: 70px;
+
+    .basic-info-legend {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 40px;
+      white-space: nowrap;
+    }
+
+    .basic-info-values {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 40px;
+      white-space: nowrap;
+
+      // border-right: 1px solid #000000;
+
+    }
+  }
+
+  .description-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0px 40px;
+    border-left: 1px solid #000000;
+
+
+    .basic-info-legend-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      // height: 70px;
+    }
+
+    .basic-info-description {
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 19px;
+      color: #000000;
+    }
+  }
+
+  .case-infr-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .case-infr-btn {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+
+
+  }
+
+
 }

@@ -1,23 +1,49 @@
 <div class="container">
   <div class="box">
 
+    <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
+    <%= link_to "Delete", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-ghost btn-ghost-w120px"%>
 
-
+    
     <div class="case">
-      <h1><%= @case.name %></h1>
+      <h1><%= @case.name.upcase %></h1>
       <h2><%= @case.number %></h2>
       <div class="case-description">
-        <h3>Description:</h3>
-        <p><%= @case.description %></p>
+        <h3>Description</h3>
+            <div class="box-description">
+
+                      <div class="info-group">
+                        <div class="basic-info-legend">
+                          <span>Created:</span>
+                          <span>Infringements:</span>
+                          <span>Monitoring:</span>
+                        </div>
+                        <div class="basic-info-values">
+                          <span><%= @case.created_at.strftime("%F") %></span>
+                          <span><%= @case.infringements.count %> page(s), <%= @number_of_records %> record(s)</span>
+                          <% if @active_pages.zero? %>
+                            <span>Stopped</span>
+                          <% else %>
+                            <span>Active, <%= @active_pages %> page(s)</span>
+                          <% end %>
+                        </div>
+                      </div>
+
+                      <div class="description-group">
+                        <div class="basic-info-legend-description">
+                          <span>Description:</span>
+                        </div>
+                        <div class="basic-info-description">
+                          <p><%= @case.description %></p>
+                        </div>
+                      </div>
+            </div>
       </div>
-    </div>
 
     <div style="display: flex">
       <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
       <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
     </div>
-
-
 
     <h2>Infringements</h1>
 
@@ -40,9 +66,15 @@
 
               <%= f.submit "Add New Infringement", class: "btn btn-ghost" %>
             <% end %>
+            
+      <div class="case-infringements">
+        <div class="case-infr-title">
+          <h3>Infringements</h3>
+          <div class="case-infr-btn">
+            <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
           </div>
-      </div>
-    </div>
+        </div>
+
 
     <!-- This is the hidden EDIT FORM that gets displayed by Javascript on button press -->
 
@@ -73,8 +105,43 @@
           <p> <%= x.interval %> </p>
           <p> <%= x.description %></p>
         </div>
+
+        <% @case.infringements.each do |infr| %>
+          <div class="infr-card">
+            <div class="infr-card-image">
+              <%= cl_image_tag(infr.snapshots.first.image_path,
+                        transformation: [
+                          {width: 236, crop: "scale"},
+                          {gravity: "north", height: 229, width: 236, y: 12, crop: "crop"}
+                        ])
+                  %>
+            </div>
+            <div class="infr-card-url">
+            </div>
+            <div class="infr-card-infobox">
+
+              <h4><i class="fas fa-sync" style="color:mediumseagreen"></i></h4>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="cards">
+          <% @case.infringements.each do |x| %>
+            <div class="card-product">
+              <% if x.snapshots.first.present? %>
+              <%= cl_image_tag(x.snapshots.first.image_path) %>
+              <% else %>
+              <% end %>
+              <div class="card-product-infos">
+                <h2> <%= link_to x.url, case_infringement_path(@case, x) %> </h2>
+                <p> <%= x.interval %> </p>
+                <p> <%= x.description %></p>
+              </div>
+            </div>
+          <% end %>
+          </div>
+
       </div>
-    <% end %>
     </div>
   </div>
 
