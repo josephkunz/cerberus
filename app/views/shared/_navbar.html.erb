@@ -17,7 +17,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "my cases", cases_path, class: "nav-link" %>
+          <%= link_to "My cases", cases_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to current_user.email, "#", class: "nav-link" %>
