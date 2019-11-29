@@ -22,6 +22,11 @@ class CasesController < ApplicationController
     redirect_to case_path(@case)
   end
 
+  def destroy
+    @case = Case.find(params[:id])
+    @case.destroy
+  end
+
   private
 
   def case_params
