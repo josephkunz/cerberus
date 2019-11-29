@@ -24,7 +24,7 @@
             <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
           <div class="card-trip-infos">
               <h2></h2>
-              <p><strong> <%= snapshot.time %> </strong></p>
+              <p><strong> <%= link_to snapshot.time, snapshot_path(snapshot) %> </strong></p>
           </div>
         </div>
         <% end %>

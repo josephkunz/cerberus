@@ -9,6 +9,7 @@ class InfringementsController < ApplicationController
   def show
     @case = Case.find(params[:case_id])
     @infringement = @case.infringements.where(id: params[:id]).first
+    @snapshot = @infringement.snapshots.where(id: params[:snapshot_id]).first
     # @infringement = Infringement.find(params[:id])
   end
 
