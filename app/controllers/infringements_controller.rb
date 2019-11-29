@@ -26,6 +26,12 @@ class InfringementsController < ApplicationController
     redirect_to case_path(@case)
   end
 
+  def destroy
+    infringement = Infringement.find(params[:id])
+    infringement.destroy
+    redirect_to case_path(params[:case_id])
+  end
+
   private
 
   def infringement_params
