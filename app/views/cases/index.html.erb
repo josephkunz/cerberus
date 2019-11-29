@@ -19,9 +19,14 @@
         <% client = Client.find(c.client_id) %>
         <!-- store the infringement count for listing in 4th box -->
         <% infringement_count = c.infringements.count %>
-        <!-- store the TOTOAL screenshot count for listing in 4th box -->
+        <!-- store the TOTAL screenshot count for listing in 4th box -->
+        <% flag = false %>
         <% screenshot_count = 0 %>
         <% c.infringements.each do |inf| %>
+          <% event_check = Event.where(infringement_id: inf.id).first %>
+          <% if !event_check.nil? && event_check.frequency.positive? %>
+            <% flag = true %>
+          <% end %>
         <% screenshot_count += inf.snapshots.count %>
         <% end %>
 
@@ -36,6 +41,9 @@
               <p>
                 #<%= c.number %>
               </p>
+              <% if flag === true %>
+                <h4><i class="fas fa-sync" style="color:mediumseagreen"></i></h4>
+              <% end %>
             </div>
           </div>
           <div class="horizontal-line"></div>
