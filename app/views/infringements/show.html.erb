@@ -33,7 +33,8 @@
         <button class="btn btn-ghost btn-ghost-w120px">Set Timer</button>
         <%= link_to "Export", @url, class: "btn btn-ghost btn-ghost-w120px" %>
         <!-- <button class="btn btn-ghost btn-ghost-w120px">Export</button> -->
-        <button class="btn btn-ghost btn-ghost-w120px">Delete</button>
+        <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost btn-ghost-w120px" %>
+        <!-- <button class="btn btn-ghost btn-ghost-w120px">Delete</button> -->
       </div>
       <div class="snapshots-infringement flex-item-snapshots">
         <% if @infringement.snapshots.empty? %>
