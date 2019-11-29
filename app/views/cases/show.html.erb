@@ -1,10 +1,16 @@
 <div class="container">
   <div class="box">
-    <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
-    <%= link_to "Delete", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-ghost btn-ghost-w120px"%>
     <div class="case">
-      <h1><%= @case.name.upcase %></h1>
-      <h2><%= @case.number %></h2>
+      <div class="case-title">
+        <div class="case-title-box">
+          <h1><%= @case.name.upcase %></h1>
+          <h2><%= @case.number %></h2>
+        </div>
+        <div class="case-title-buttons">
+          <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
+          <%= link_to "Delete Case", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, id: "delete-btn", class: "btn btn-ghost btn-ghost-w120px"%>
+        </div>
+      </div>
       <div class="case-description">
         <h3>Description</h3>
             <div class="box-description">
@@ -68,41 +74,45 @@
               </div>
           </div>
         </div>
-
+        <div class="case-infringements-cards">
         <% @case.infringements.each do |infr| %>
+
           <div class="infr-card">
+            <a href="/cases/<%= @case.id %>/infringements/<%= infr.id %>">
             <div class="infr-card-image">
-              <%= cl_image_tag(infr.snapshots.first.image_path,
-                        transformation: [
-                          {width: 236, crop: "scale"},
-                          {gravity: "north", height: 229, width: 236, y: 12, crop: "crop"}
-                        ])
-                  %>
+              <% if infr.snapshots.first.present? %>
+                <%= cl_image_tag(infr.snapshots.first.image_path,
+                          transformation: [
+                            {width: 253, crop: "scale"},
+                            {gravity: "north", height: 253, width: 253, y: 15, crop: "crop"}
+                          ])
+                    %>
+              <% else %>
+                <%= cl_image_tag("https://res.cloudinary.com/os00/image/upload/v1575039087/placeholder_jtvph3.png")%>
+              <% end %>
             </div>
             <div class="infr-card-url">
+              <span><%= infr.name %></span>
             </div>
             <div class="infr-card-infobox">
-
-              <h4><i class="fas fa-sync" style="color:mediumseagreen"></i></h4>
-            </div>
-          </div>
-        <% end %>
-
-        <div class="cards">
-          <% @case.infringements.each do |x| %>
-            <div class="card-product">
-              <% if x.snapshots.first.present? %>
-              <%= cl_image_tag(x.snapshots.first.image_path) %>
-              <% else %>
-              <% end %>
-              <div class="card-product-infos">
-                <h2> <%= link_to x.url, case_infringement_path(@case, x) %> </h2>
-                <p> <%= x.interval %> </p>
-                <p> <%= x.description %></p>
+              <div class="infr-card-infobox-a">
+                <i class="far fa-image"><span><%= infr.snapshots.count %>x</span></i>
+                <i class="far fa-clock"><span><%= infr.interval %></span></i>
+              </div>
+              <div class="infr-card-infobox-b">
+                <% if infr.event.frequency.positive? %>
+                  <i class="fas fa-sync" style="color:mediumseagreen"><span>Running</span></i>
+                <% else %>
+                  <i class="fas fa-sync" style="color:mediumseagreen"><span>Stopped</span></i>
+                <% end %>
               </div>
             </div>
-          <% end %>
+            </a>
           </div>
+
+        <% end %>
+        </div>
+
 
       </div>
     </div>

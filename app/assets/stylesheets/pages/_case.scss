@@ -37,12 +37,24 @@
     margin: 0;
   }
 
+  .case-title {
+    display:flex;
+    justify-content: space-between;
+
+    .btn {
+      margin-left: 10px;
+    }
+    #delete-btn {
+      width: 140px;
+    }
+  }
+
   .case-description {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 
   .case-infringements {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 
   .box-description {
@@ -112,13 +124,15 @@
       justify-content: flex-end;
     }
 
-    .btn {
-      margin-right: 10px;
-      margin-bottom: 0;
-    }
-
-
+    // .btn {
+    //   margin-right: 0px;
+    //   margin-bottom: 0;
+    // }
   }
 
+  .case-infringements-cards {
+    display: flex;
+    justify-content: flex-start;
+  }
 
 }
