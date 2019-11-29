@@ -1,6 +1,7 @@
 <div class="container">
   <div class="box">
-    <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
+
+
 
     <div class="case">
       <h1><%= @case.name %></h1>
@@ -10,6 +11,12 @@
         <p><%= @case.description %></p>
       </div>
     </div>
+
+    <div style="display: flex">
+      <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
+      <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
+    </div>
+
 
 
     <h2>Infringements</h1>
@@ -31,9 +38,26 @@
               %>
               <%= f.input :description, label: 'Comment(description):' %>
 
-              <%= f.submit "Add new infringement", class: "btn btn-ghost" %>
+              <%= f.submit "Add New Infringement", class: "btn btn-ghost" %>
             <% end %>
           </div>
+      </div>
+    </div>
+
+    <!-- This is the hidden EDIT FORM that gets displayed by Javascript on button press -->
+
+    <div id="show-form-edit">
+      <div class="form-content-edit">
+        <span class="close-edit">&times;</span>
+          <div class="form-container">
+            <h2> Edit Name, Number, or Description</h2>
+            <%= simple_form_for @case do |f| %>
+              <%= f.input :name, label: 'Name:' %>
+              <%= f.input :number, label: 'Number:' %>
+              <%= f.input :description, label: 'Description:' %>
+              <%= f.submit "Edit Case", class: "btn btn-ghost" %>
+            <% end %>
+        </div>
       </div>
     </div>
 
@@ -53,4 +77,7 @@
     <% end %>
     </div>
   </div>
+
+
+
 </div>
