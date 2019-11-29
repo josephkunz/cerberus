@@ -5,6 +5,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
 
+  process :assign_tags
+
+  def assign_tags
+    return { tags: ['INFR', model.infringement.name, model.infringement_id] }
+  end
+
   # Choose what kind of storage to use for this uploader:
   #storage :file
   # storage :fog
