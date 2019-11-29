@@ -34,6 +34,17 @@ class CasesController < ApplicationController
     redirect_to case_path(@case)
   end
 
+  def edit
+    @case = Case.new(case_params)
+  end
+
+  def update
+    @case = Case.find(params[:id])
+    @case.update(case_params)
+    @case.save
+    redirect_to case_path(@case)
+  end
+  
   def destroy
     @case = Case.find(params[:id])
     @case.destroy
