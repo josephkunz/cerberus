@@ -1,3 +1,3 @@
 web: bundle exec puma -C config/puma.rb
-cerberus_sidekiq: bundle exec sidekiq -c 2
+worker: bundle exec sidekiq -C config/sidekiq.yml
 cerberus_clockwork: bundle exec clockwork clock.rb
