@@ -9,6 +9,18 @@ class CasesController < ApplicationController
     @case = Case.find(params[:id])
     @user = User.find(@case.user_id)
     @infringement = Infringement.new
+
+    @number_of_records = 0
+    @case.infringements.each { |infringement| @number_of_records += infringement.snapshots.count }
+
+    @active_pages = 0
+    @case.infringements.each do |infringement|
+      if !infringement.event.nil? && infringement.event.frequency.positive?
+        @active_pages += 1
+      end
+    end
+
+
     # @infringement = Infringement.find(@case.infringements)
   end
 
