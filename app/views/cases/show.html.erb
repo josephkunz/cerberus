@@ -43,7 +43,6 @@
             </div>
       </div>
 
-
       <div class="case-infringements">
         <div class="case-infr-title">
           <h3>Infringements</h3>
@@ -51,6 +50,8 @@
             <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
           </div>
         </div>
+
+        <!-- Form for creating a NEW INFRINGEMENT -->
 
         <div id="show-form">
           <div class="form-content">
@@ -74,6 +75,27 @@
               </div>
           </div>
         </div>
+
+        <!-- Form for EDITING CASE -->
+
+        <div id="show-form-edit">
+          <div class="form-content-edit">
+            <span class="close-edit">&times;</span>
+              <div class="form-container">
+                <h2> Edit Name, Number, or Description</h2>
+                <%= simple_form_for @case do |f| %>
+                  <%= f.input :name, label: 'Name:' %>
+                  <%= f.input :number, label: 'Number:' %>
+                  <%= f.input :description, label: 'Description:' %>
+                  <%= f.submit "Edit Case", class: "btn btn-ghost" %>
+                <% end %>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Listing the INFRINGEMENTS for the Case -->
+
         <div class="case-infringements-cards">
         <% @case.infringements.each do |infr| %>
 
