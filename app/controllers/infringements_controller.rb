@@ -11,7 +11,7 @@ class InfringementsController < ApplicationController
     @infringement = @case.infringements.where(id: params[:id]).first
     @snapshot = @infringement.snapshots.where(id: params[:snapshot_id]).first
     filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
-    @url = Cloudinary::Utils.download_zip_url(tags: ['INFR', @infringement.name, @infringement.id],
+    @url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
                                               use_original_filename: true,
                                               target_public_id: filename)
     # @infringement = Infringement.find(params[:id])
