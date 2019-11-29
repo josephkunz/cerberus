@@ -40,7 +40,11 @@
         <% else %>
           <% @infringement.snapshots.each do |snapshot| %>
             <div class="card-trip">
-                <%= cl_image_tag snapshot.image_path, class: "card-trip-cl-image" %>
+                <%= cl_image_tag(snapshot.image_path,
+                      transformation: [
+                        {width: 230, crop: "scale"},
+                        {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
+                      ]) %>
               <div class="card-trip-infos">
                   <h2></h2>
                   <p><strong> <%= link_to snapshot.time, snapshot_path(snapshot) %> </strong></p>
