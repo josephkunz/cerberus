@@ -1,10 +1,7 @@
 <div class="container">
   <div class="box">
-
     <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
     <%= link_to "Delete", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-ghost btn-ghost-w120px"%>
-
-    
     <div class="case">
       <h1><%= @case.name.upcase %></h1>
       <h2><%= @case.number %></h2>
@@ -40,33 +37,7 @@
             </div>
       </div>
 
-    <div style="display: flex">
-      <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
-      <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
-    </div>
 
-    <h2>Infringements</h1>
-
-    <div id="show-form">
-      <div class="form-content">
-        <span class="close">&times;</span>
-          <div class="form-container">
-            <%= simple_form_for [@case, @infringement] do |f| %>
-              <%= f.input :url, label: 'Url:' %>
-              <%= f.input :name, label: 'Name:' %>
-              <%= f.input :interval, label: 'Interval:', collection: ["1 snapshot", "1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
-                    "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
-                    "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
-                    "2 days", "3 days", "4 days", "5 days", "6 days", "7 days", "8 days",
-                    "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
-                    "15 days", "1 month", "2 months", "3 months", "4 months",
-                    "5 months", "6 months", "1 year"]
-              %>
-              <%= f.input :description, label: 'Comment(description):' %>
-
-              <%= f.submit "Add New Infringement", class: "btn btn-ghost" %>
-            <% end %>
-            
       <div class="case-infringements">
         <div class="case-infr-title">
           <h3>Infringements</h3>
@@ -75,35 +46,27 @@
           </div>
         </div>
 
+        <div id="show-form">
+          <div class="form-content">
+            <span class="close">&times;</span>
+              <div class="form-container">
+                <%= simple_form_for [@case, @infringement] do |f| %>
+                  <%= f.input :url, label: 'Url:' %>
+                  <%= f.input :name, label: 'Name:' %>
+                  <%= f.input :interval, label: 'Interval:', collection: ["1 snapshot", "1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
+                        "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
+                        "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
+                        "2 days", "3 days", "4 days", "5 days", "6 days", "7 days", "8 days",
+                        "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
+                        "15 days", "1 month", "2 months", "3 months", "4 months",
+                        "5 months", "6 months", "1 year"]
+                  %>
+                  <%= f.input :description, label: 'Comment(description):' %>
 
-    <!-- This is the hidden EDIT FORM that gets displayed by Javascript on button press -->
-
-    <div id="show-form-edit">
-      <div class="form-content-edit">
-        <span class="close-edit">&times;</span>
-          <div class="form-container">
-            <h2> Edit Name, Number, or Description</h2>
-            <%= simple_form_for @case do |f| %>
-              <%= f.input :name, label: 'Name:' %>
-              <%= f.input :number, label: 'Number:' %>
-              <%= f.input :description, label: 'Description:' %>
-              <%= f.submit "Edit Case", class: "btn btn-ghost" %>
-            <% end %>
-        </div>
-      </div>
-    </div>
-
-  <div class="cards">
-    <% @case.infringements.each do |x| %>
-      <div class="card-product">
-        <% if x.snapshots.first.present? %>
-        <%= cl_image_tag(x.snapshots.first.image_path) %>
-        <% else %>
-        <% end %>
-        <div class="card-product-infos">
-          <h2> <%= link_to x.url, case_infringement_path(@case, x) %> </h2>
-          <p> <%= x.interval %> </p>
-          <p> <%= x.description %></p>
+                  <%= f.submit "Add new infringement", class: "btn btn-ghost" %>
+                <% end %>
+              </div>
+          </div>
         </div>
 
         <% @case.infringements.each do |infr| %>
@@ -144,7 +107,4 @@
       </div>
     </div>
   </div>
-
-
-
 </div>
