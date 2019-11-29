@@ -72,9 +72,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-right: 40px;
+    padding-right: 20px;
     height: 70px;
-    border-right: 1px solid #000000;
   }
 
   .flex-container {
@@ -92,13 +91,22 @@
   .flex-item-2 {
     width: 70%;
     overflow-wrap: break-word;
-    padding: 12px;
-    margin: 12px;
+    // padding: 12px;
+    padding-left: 14px;
+    // margin: 12px;
 
   }
 
   p {
     text-align: none !important;
+    font-family: Avenir Next;
   }
 
+  .description {
+    border-left: 1px solid #000000;
+    padding-left: 40px;
+
+
+
+  }
 }

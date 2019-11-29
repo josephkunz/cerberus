@@ -20,7 +20,10 @@
         </div>
 
         <!-- <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div> -->
-        <div class="flex-item-2"> <p class="description"> <strong>Description: </strong> <%= @infringement.description %> </p></div>
+        <div class="flex-item-2 description">
+          <span>Description:</span>
+          <p><%= @infringement.description %></p>
+        </div>
       </div>
       <h3>Snapshots</h3>
     </div>
