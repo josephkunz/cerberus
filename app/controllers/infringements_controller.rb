@@ -14,6 +14,18 @@ class InfringementsController < ApplicationController
     @url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
                                               use_original_filename: true,
                                               target_public_id: filename)
+    @timer_values = ["1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
+                     "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
+                     "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
+                     "2 days", "3 days", "4 days", "5 days", "6 days", "7 days", "8 days",
+                     "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
+                     "15 days", "1 month", "2 months", "3 months", "4 months",
+                     "5 months", "6 months", "1 year"]
+    if @infringement.event.frequency.positive?
+      @state = true
+    else
+      @state = false
+    end
     # @infringement = Infringement.find(params[:id])
   end
 
@@ -30,6 +42,29 @@ class InfringementsController < ApplicationController
     infringement = Infringement.find(params[:id])
     infringement.destroy
     redirect_to case_path(params[:case_id])
+  end
+
+  def update
+    @infringement = Infringement.find(params[:id])
+    if !params[:interval].nil?
+      @infringement.interval = params[:interval]
+      @infringement.save
+      if @infringement.event.frequency.positive?
+        @infringement.event.frequency = compute_frequency(@infringement.interval)
+        @infringement.event.save
+      end
+    end
+
+    @state = ""
+    if !params[:state].nil?
+      @state = params[:state]
+      if @state == "Start"
+        @infringement.event.frequency = compute_frequency(@infringement.interval)
+      else
+        @infringement.event.frequency = -1
+      end
+      @infringement.event.save
+    end
   end
 
   private
