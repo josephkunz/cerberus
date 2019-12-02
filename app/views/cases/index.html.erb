@@ -12,69 +12,66 @@
 
     <br>
 
-    <div>
-      <% @cases.each do |c| %>
+    <!-- Iterate through and display each case in a CARD -->
+    <% @cases.each do |c| %>
 
-        <!-- store the client for listing in 1st box -->
-        <% client = Client.find(c.client_id) %>
-        <!-- store the infringement count for listing in 4th box -->
-        <% infringement_count = c.infringements.count %>
-        <!-- store the TOTAL screenshot count for listing in 4th box -->
-        <% flag = false %>
-        <% screenshot_count = 0 %>
-        <% c.infringements.each do |inf| %>
-          <% event_check = Event.where(infringement_id: inf.id).first %>
-          <% if !event_check.nil? && event_check.frequency.positive? %>
-            <% flag = true %>
-          <% end %>
-        <% screenshot_count += inf.snapshots.count %>
+      <!-- store the client for listing in 1st box -->
+      <% client = Client.find(c.client_id) %>
+      <!-- store the infringement count for listing in 4th box -->
+      <% infringement_count = c.infringements.count %>
+      <!-- store the TOTAL screenshot count for listing in 4th box -->
+      <% flag = false %>
+      <% screenshot_count = 0 %>
+      <% c.infringements.each do |inf| %>
+        <% event_check = Event.where(infringement_id: inf.id).first %>
+        <% if !event_check.nil? && event_check.frequency.positive? %>
+          <% flag = true %>
         <% end %>
-
-        <div class="case-container-card">
-
-          <!-- 1st box in Case card:  -->
-          <div class="case-info-box first">
-            <div>
-              <h5>
-                <%= link_to c.name, case_path(c) %>
-              </h5>
-              <p>
-                #<%= c.number %>
-              </p>
-              <% if flag === true %>
-                <h4><i class="fas fa-sync" style="color:mediumseagreen"></i></h4>
-              <% end %>
-            </div>
-          </div>
-          <div class="horizontal-line"></div>
-
-
-          <!-- 2nd box in Case card:  -->
-          <div class="case-info-box second">
-            <p class="truncate-overflow"><%= c.description[0..200] %></p>
-          </div>
-          <div class="horizontal-line"></div>
-
-
-          <!-- 3rd box in Case card:  -->
-          <div class="case-info-box third">
-            <i class="fas fa-user"></i>&nbsp;<%= client.first_name %>&nbsp;<%= client.last_name %>
-            <br>
-            <i class="fas fa-clock"></i>&nbsp;<%= c.created_at.strftime("%d.%m.%Y") %>
-          </div>
-          <div class="horizontal-line"></div>
-
-
-          <!-- 4th box in Case card:  -->
-          <div class="case-info-box fourth">
-            <i class="fas fa-file-alt"></i>&nbsp;<%= pluralize(infringement_count, 'infringement') %>
-            <br>
-            <i class="fas fa-info-circle"></i>&nbsp;<%= pluralize(screenshot_count, 'screenshot') %> total
-          </div>
-
-        </div>
+      <% screenshot_count += inf.snapshots.count %>
       <% end %>
-    </div>
+
+      <div class="case-container-card">
+        <!-- 1st box in Case card:  -->
+        <div class="case-info-box first">
+          <div>
+            <h5>
+              <%= link_to c.name, case_path(c) %>
+            </h5>
+            <p style="margin-top: 20px;">
+              <% if flag === true %>
+                <i class="fas fa-sync" style="color:mediumseagreen"></i>
+              <% else %>
+                <i class="far fa-circle" style="color:gray"></i>
+              <% end %> &nbsp &nbsp &nbsp
+              # <%= c.number %>
+            </p>
+          </div>
+        </div>
+        <div class="horizontal-line"></div>
+
+        <!-- 2nd box in Case card:  -->
+        <div class="case-info-box second">
+          <%= c.description[0..200] %>
+        </div>
+        <div class="horizontal-line"></div>
+
+        <!-- 3rd box in Case card:  -->
+        <div class="case-info-box third">
+          <i class="fas fa-user"></i>&nbsp;<%= client.first_name %>&nbsp;<%= client.last_name %>
+          <br>
+          <i class="fas fa-clock"></i>&nbsp;<%= c.created_at.strftime("%d.%m.%Y") %>
+        </div>
+        <div class="horizontal-line"></div>
+
+        <!-- 4th box in Case card:  -->
+        <div class="case-info-box fourth">
+          <i class="fas fa-file-alt"></i>&nbsp;<%= pluralize(infringement_count, 'infringement') %>
+          <br>
+          <i class="fas fa-info-circle"></i>&nbsp;<%= pluralize(screenshot_count, 'screenshot') %> total
+        </div>
+
+      </div>
+    <% end %>
 
     <br>
     <hr>
