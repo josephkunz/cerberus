@@ -13,7 +13,7 @@
   font-weight: normal;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   overflow: auto;
@@ -88,17 +88,20 @@
   background-color: #1f1f1f;
   height: 500px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 800px;
 }
 
 #catchphrase {
-  color: black;
+  color: white;
   font-size: 64px;
   font-weight: bold;
   align-item: center
 }
 
 #catchphrase-black {
-  color: white;
+  color: black;
 }
 .catchphrase-text-container {
   padding-left: 100px;
@@ -107,6 +110,7 @@
   padding-bottom: 10px;
   margin: 0 auto;
   width: 70%;
+  text-align: center
 }
 
 .how-it-works-flexcontainer {
@@ -121,10 +125,26 @@
   box-shadow: 0 10px 30px rgba(0,0,0,.1);    /* Light shadow */
   display: flex;
   justify-content: space-between;
-  height: 400px;
 
 }
 
+.text-color {
+
+}
+
+#img-style {
+  border-radius: 4px;
+  width: 250px;
+}
+
+.icon-size {
+  font-size: 80px;
+}
+
+#h1-style {
+  font-size: 48px;
+  font-weight: bold;
+}
 
 #hiw-1 {
   background-color: #EAEAEA;
@@ -145,3 +165,4 @@
 #h2-style {
   font-size: 36px;
 }
+
