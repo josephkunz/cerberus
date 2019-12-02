@@ -83,3 +83,45 @@
   background-color: #eaeaea;
 }
 
+
+.catchphrase-box {
+  background-color: #EAEAEA;
+  height: 500px;
+  margin: 0 auto;
+}
+
+#catchphrase {
+  color: black;
+  font-size: 64px;
+  font-weight: bold;
+  align-item: center
+}
+
+#catchphrase-black {
+  color: white;
+}
+.catchphrase-text-container {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.how-it-works-flexcontainer {
+ display: flex;
+ flex-direction: column;
+}
+
+.how-it-works-card {
+  background: white;                         /* White background */
+  padding: 30px;                             /* Internal space */
+  border-radius: 4px;                        /* Small radius */
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);    /* Light shadow */
+  display: flex;
+  justify-content: space-between;
+  height: 400px;
+
+}
+
