@@ -85,7 +85,7 @@
 
 
 .catchphrase-box {
-  background-color: #EAEAEA;
+  background-color: #1f1f1f;
   height: 500px;
   margin: 0 auto;
 }
@@ -116,7 +116,7 @@
 
 .how-it-works-card {
   background: white;                         /* White background */
-  padding: 30px;                             /* Internal space */
+  padding: 40px 120px;                             /* Internal space */
   border-radius: 4px;                        /* Small radius */
   box-shadow: 0 10px 30px rgba(0,0,0,.1);    /* Light shadow */
   display: flex;
@@ -125,3 +125,23 @@
 
 }
 
+
+#hiw-1 {
+  background-color: #EAEAEA;
+}
+
+#hiw-3 {
+  background-color: #EAEAEA;
+}
+
+#hiw-2 {
+  flex-direction: row-reverse;
+}
+
+#p-style {
+  font-size: 24px;
+}
+
+#h2-style {
+  font-size: 36px;
+}
