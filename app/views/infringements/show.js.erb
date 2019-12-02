@@ -1,0 +1,5 @@
+<% if @number_of_snapshots.zero? && @infringement.snapshots.count.positive? %>
+  document.querySelector(".snapshots-infringement").innerHTML = '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>';
+<% elsif @infringement.snapshots.count > @number_of_snapshots %>
+  document.querySelector(".snapshots-infringement").insertAdjacentHTML('beforeend', '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>');
+<% end %>
