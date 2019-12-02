@@ -1,5 +1,7 @@
 <% if @state == "Start" %>
   document.getElementById("play-button").innerText = "Stop";
+  document.getElementById("select-timer").disabled =  true;
 <% elsif @state == "Stop" %>
   document.getElementById("play-button").innerText =  "Start";
+  document.getElementById("select-timer").disabled =  false;
 <% end %>

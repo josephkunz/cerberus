@@ -29,18 +29,18 @@
     </div>
     <div class="btn-and-infringement">
       <div class="infringement-page-buttons flex-item-buttons">
-        <button class="btn btn-ghost btn-ghost-w120px">Snapshot</button>
+        <button id="snapshot-button" class="btn btn-ghost btn-ghost-w120px">Snapshot</button>
         <% if @infringement.interval == "1 snapshot" %>
           <%= select_tag "select-timer", options_for_select(@timer_values, "1 year")%>
-        <% else %>
-          <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval)%>
-        <% end %>
-
-        <% if @state %>
+          <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
+        <% elsif @state %>
+          <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: true%>
           <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Stop</button>
         <% else %>
+          <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: false%>
           <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
         <% end %>
+
         <%= link_to "Export", @url, class: "btn btn-ghost btn-ghost-w120px" %>
         <!-- <button class="btn btn-ghost btn-ghost-w120px">Export</button> -->
         <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost btn-ghost-w120px" %>

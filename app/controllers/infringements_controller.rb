@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'mini_magick'
+require_relative '../jobs/track_job'
 
 class InfringementsController < ApplicationController
   def index
@@ -47,23 +48,11 @@ class InfringementsController < ApplicationController
   def update
     @infringement = Infringement.find(params[:id])
     if !params[:interval].nil?
-      @infringement.interval = params[:interval]
-      @infringement.save
-      if @infringement.event.frequency.positive?
-        @infringement.event.frequency = compute_frequency(@infringement.interval)
-        @infringement.event.save
-      end
-    end
-
-    @state = ""
-    if !params[:state].nil?
-      @state = params[:state]
-      if @state == "Start"
-        @infringement.event.frequency = compute_frequency(@infringement.interval)
-      else
-        @infringement.event.frequency = -1
-      end
-      @infringement.event.save
+      process_select_interval(@infringement, params[:interval])
+    elsif !params[:state].nil?
+      @state = process_start_stop_button(@infringement, params[:state])
+    elsif !params[:snapshot].nil?
+      process_snapshot_button(@infringement)
     end
   end
 
@@ -81,6 +70,62 @@ class InfringementsController < ApplicationController
                       job_arguments: infringement.id,
                       infringement_id: infringement.id)
     event.save
+  end
+
+  # def process_update_buttons(infringement)
+
+  #   if !params[:interval].nil?
+
+  #     @infringement.interval = params[:interval]
+  #     @infringement.save
+  #     if @infringement.event.frequency.positive?
+  #       @infringement.event.frequency = compute_frequency(@infringement.interval)
+  #       @infringement.event.save
+  #     end
+  #   end
+
+
+  #   if !params[:state].nil?
+  #     @state = params[:state]
+  #     if @state == "Start"
+  #       @infringement.event.frequency = compute_frequency(@infringement.interval)
+  #     else
+  #       @infringement.event.frequency = -1
+  #     end
+  #     @infringement.event.save
+  #   end
+
+  #   if !params[:snapshot].nil?
+  #     puts "SNAPSHOT"
+  #     TrackJob.perform_later(@infringement.id)
+  #   end
+  # end
+
+  # Process select interval action - if different interval is selected in combo,
+  # change is saved
+  def process_select_interval(infringement, interval)
+    infringement.interval = interval
+    infringement.save
+    if infringement.event.frequency.positive?
+      infringement.event.frequency = compute_frequency(infringement.interval)
+      infringement.event.save
+    end
+  end
+
+  # Process start stop functionality
+  def process_start_stop_button(infringement, state)
+    if state == "Start"
+      infringement.event.frequency = compute_frequency(infringement.interval)
+    else
+      infringement.event.frequency = -1
+    end
+    infringement.event.save
+    return state
+  end
+
+  # Process snapshot button
+  def process_snapshot_button(infringement)
+    TrackJob.perform_later(infringement.id)
   end
 
   def compute_frequency(interval_string)
