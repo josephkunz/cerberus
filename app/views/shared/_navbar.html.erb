@@ -19,8 +19,16 @@
         <li class="nav-item">
           <%= link_to "My Cases", cases_path, class: "nav-link mr-3" %>
         </li>
+
+        <!-- Navbar Dropdown for showing PROFILE link, and active sites, and credits -->
         <li class="nav-item dropdown">
-          <%= link_to current_user.first_name + ' ' + current_user.last_name, cases_path, class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <!-- Show either user NAME or EMAIL depending if they added name to account -->
+          <% if current_user.first_name %>
+            <%= link_to current_user.first_name + ' ' + current_user.last_name, cases_path, class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= link_to current_user.email, cases_path, class: "nav-link dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Profile", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
