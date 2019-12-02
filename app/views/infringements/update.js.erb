@@ -1,0 +1,5 @@
+<% if @state == "Start" %>
+  document.getElementById("play-button").innerText = "Stop";
+<% elsif @state == "Stop" %>
+  document.getElementById("play-button").innerText =  "Start";
+<% end %>
