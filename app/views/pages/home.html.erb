@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-1">
   <div class="welcome-title-box">
     <h1>Welcome to <strong>Cerberus</strong></h1>
-    <h2>A platform to document and protect your copyrights online</h2>
+    <h2>The platform to document and protect your copyrights online</h2>
     <div class="login-signin-bar">
       <div>
         <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
@@ -18,4 +18,46 @@
 
     </div>
   </div>
+
+  <div class="how-it-works-flexcontainer">
+    <div class="how-it-works-card" id="hiw-0">
+      <div class="h2-p-hiw-card text-color">
+        <h1 id="h1-style">HOW IT WORKS</h1>
+      </div>
+    </div>
+    <div class="how-it-works-card" id="hiw-1">
+      <div class="h2-p-hiw-card text-color">
+        <h2 id="h2-style">EXISTENCE OF A VIOLATION</h2>
+        <p id="p-style">For you as the copyright holder, showing a violation may prove difficult as the burden of proof lies with the victim.</p>
+      </div>
+      <div class="img-hiw-card">
+        <img id="img-style" src="https://cdn0.iconfinder.com/data/icons/park-pedestrian/48/Ryan-17-512.png" alt="" width="250px">
+      </div>
+    </div>
+    <div class="how-it-works-card" id="hiw-2">
+      <div class="h2-p-hiw-card text-color">
+        <h2 id="h2-style" >SOLUTION</h2>
+        <p id="p-style">An easy solution is to take a screenshot of any website that violates your rights</p>
+      </div>
+      <div class="img-hiw-card">
+        <img id="img-style" src="https://maxcdn.icons8.com/windows10/PNG/512/Editing/screenshot-512.png" alt="" width="250px">
+      </div>
+    </div>
+    <div class="how-it-works-card" id="hiw-3">
+      <div class="h2-p-hiw-card text-color">
+        <h2 id="h2-style">CERBERUS</h2>
+        <p id="p-style">Cerberus is a service taking screenshot webpage fully automatic and periodically & export collected screenshot(s), thereby allowing you to confront the infringing party with ease... </p>
+      </div>
+      <div class="img-hiw-card">
+        <%= image_tag "logo.png", :id => "img-style" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="catchphrase-box">
+    <div class="catchphrase-text-container">
+      <span id="catchphrase">Cerberus will help<span id="catchphrase-black"> you </span>in proving a violation of<span id="catchphrase-black"> your</span> rights.</span>
+    </div>
+  </div>
+
 </div>

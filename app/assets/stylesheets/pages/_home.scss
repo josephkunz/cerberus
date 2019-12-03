@@ -13,7 +13,7 @@
   font-weight: normal;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   overflow: auto;
@@ -81,5 +81,88 @@
 
 #home-input:hover {
   background-color: #eaeaea;
+}
+
+
+.catchphrase-box {
+  background-color: #1f1f1f;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 800px;
+}
+
+#catchphrase {
+  color: white;
+  font-size: 64px;
+  font-weight: bold;
+  align-item: center
+}
+
+#catchphrase-black {
+  color: black;
+}
+.catchphrase-text-container {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center
+}
+
+.how-it-works-flexcontainer {
+ display: flex;
+ flex-direction: column;
+}
+
+.how-it-works-card {
+  background: white;                         /* White background */
+  padding: 40px 120px;                             /* Internal space */
+  border-radius: 4px;                        /* Small radius */
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);    /* Light shadow */
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.text-color {
+
+}
+
+#img-style {
+  border-radius: 4px;
+  width: 250px;
+}
+
+.icon-size {
+  font-size: 80px;
+}
+
+#h1-style {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+#hiw-1 {
+  background-color: #EAEAEA;
+}
+
+#hiw-3 {
+  background-color: #EAEAEA;
+}
+
+#hiw-2 {
+  flex-direction: row-reverse;
+}
+
+#p-style {
+  font-size: 24px;
+}
+
+#h2-style {
+  font-size: 36px;
 }
 
