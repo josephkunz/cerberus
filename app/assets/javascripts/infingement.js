@@ -25,7 +25,7 @@ if (selectTimer != null) {
     Rails.ajax({
       url: "",
       type: "put",
-      data: `state=${state}`,
+      data: `state=${state}&interval=${selectTimer.value}`,
       success: (data) => { console.log(data); },
       error: (data) => {}
     })
@@ -41,16 +41,15 @@ if (selectTimer != null) {
     })
   });
 
-  setInterval(function() {
-    const snapshotCards = document.querySelectorAll("#snapshot-card");
-
-    Rails.ajax({
-      url: "",
-      type: "get",
-      dataType: "script",
-      data: `snapshots=${snapshotCards.length}`,
-      success: (data) => { console.log(data); },
-      error: (data) => {}
-    })
-  }, 5000);
+  // setInterval(function() {
+  //   const snapshotCards = document.querySelectorAll("#snapshot-card");
+  //   Rails.ajax({
+  //     url: window.location.pathname + "/refresh",
+  //     type: "get",
+  //     dataType: "script",
+  //     data: `snapshots=${snapshotCards.length}`,
+  //     success: (data) => { console.log(data); },
+  //     error: (data) => {}
+  //   })
+  // }, 5000);
 }
