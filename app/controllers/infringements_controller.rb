@@ -11,11 +11,6 @@ class InfringementsController < ApplicationController
     @case = Case.find(params[:case_id])
     @infringement = @case.infringements.where(id: params[:id]).first
     @snapshot = @infringement.snapshots.where(id: params[:snapshot_id]).first
-    filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
-
-    @url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
-                                              use_original_filename: true,
-                                              target_public_id: filename)
 
     @timer_values = get_timer_values
 
@@ -55,6 +50,31 @@ class InfringementsController < ApplicationController
   def refresh
     @infringement = Infringement.find(params[:id])
     @number_of_snapshots = params[:snapshots].to_i
+  end
+
+  def create_zip
+    @case = Case.find(params[:case_id])
+    @infringement = Infringement.find(params[:id])
+    filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
+
+    p prepare_array_of_public_ids(@infringement, params[:files])
+
+    if params[:files].empty?
+      url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
+                                               use_original_filename: true)
+    else
+      url = Cloudinary::Utils.download_zip_url(public_ids: prepare_array_of_public_ids(@infringement, params[:files]),
+                                               use_original_filename: true)
+    end
+    @path_to_file = "/cases/#{params[:case_id]}/infringements/#{params[:id]}/sendzip"
+    process_export(url)
+  end
+
+  def send_zip
+    @infringement = Infringement.find(params[:id])
+    filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
+    File.rename('test.zip', filename)
+    send_file filename
   end
 
   private
@@ -130,5 +150,23 @@ class InfringementsController < ApplicationController
              "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
              "15 days", "1 month", "2 months", "3 months", "4 months",
              "5 months", "6 months", "1 year"]
+  end
+
+  def process_export(url)
+    open('test.zip', 'wb') do |file|
+      file << open(url).read
+    end
+  end
+
+  def prepare_array_of_public_ids(infringement, params_string)
+    snapshots_ids = params_string.split("_")
+    public_ids = []
+
+    snapshots_ids.each do |id|
+      path = infringement.snapshots[id.to_i].image_path.to_s
+      public_ids << path.split("/").last.split(".").first
+    end
+
+    return public_ids
   end
 end
