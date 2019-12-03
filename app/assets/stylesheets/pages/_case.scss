@@ -94,6 +94,7 @@
     justify-content: flex-start;
     padding: 0px 40px;
     border-left: 1px solid #000000;
+    position: relative;
 
 
     .basic-info-legend-description {
@@ -102,6 +103,8 @@
       justify-content: space-between;
       margin-bottom: 6px;
       // height: 70px;
+
+
     }
 
     .basic-info-description {
@@ -111,7 +114,72 @@
       font-size: 14px;
       line-height: 19px;
       color: #000000;
+      //height: 60px;
+
+
+      overflow: hidden;
+      /* for set '...' in absolute position */
+      position: relative;
+      /* use this value to count block height */
+      line-height: 1.2em;
+      /* max-height = line-height (1.2) * lines max number (3) */
+      max-height: 2.9em;
+      /* fix problem when last visible word doesn't adjoin right side  */
+      text-align: justify;
+      /* place for '...' */
+      margin-right: -1em;
+      padding-right: 1em;
+
+      &:hover {
+        overflow: visible;
+        //border: 1px solid black;
+        background-color: white;
+        max-height: 100%;
+        //width: 100%;
+
+        //z-index:100;
+        //position: absolute;
+        //top: 30px;
+
+        &::before {
+          content: '';
+        }
+
+      }
+
     }
+
+    .basic-info-description:before {
+      /* points in the end */
+      content: '...';
+      /* absolute position */
+      position: absolute;
+      /* set position to right bottom corner of block */
+      right: 0;
+      bottom: 4px;
+
+    }
+    /* hide ... if we have text, which is less than or equal to max lines */
+    .basic-info-description:after {
+      /* points in the end */
+      content: '';
+      /* absolute position */
+      position: absolute;
+      /* set position to right bottom corner of text */
+      right: 0;
+      /* set width and height */
+      width: 1em;
+      height: 1em;
+      margin-top: 0.2em;
+      /* bg color = bg color under block */
+      background: white;
+    }
+
+
+
+
+
+
   }
 
   .case-infr-title {
