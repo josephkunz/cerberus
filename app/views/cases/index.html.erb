@@ -7,10 +7,27 @@
 
     <div class="open-cases-top-bar">
       <h2>Open cases</h2>
-      <button id="form_button" class="btn btn-ghost" onclick="showHide(event)">CREATE NEW CASE</button>
+      <button id="form_button" class="btn btn-ghost" onclick="showHide(event)">Create New Case</button>
+    </div>
+    <br>
+
+
+    <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
+    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
+    <div class="dashboard-grid">
+
+      <!-- iterate through 5 snaps and put them in a CSS grid with 5 spaces -->
+      <% @snapshots.each do |snapshot| %>
+        <%= link_to case_path(snapshot.infringement.case) do %>
+          <div class="dash-item">
+            <%= cl_image_tag snapshot.image_path %>
+            <p> <%= snapshot.time %> </p>
+          </div>
+        <% end %>
+      <% end %>
+
     </div>
 
-    <br>
 
     <!-- Iterate through and display each case in a CARD -->
     <% @cases.each do |c| %>

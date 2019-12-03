@@ -8,6 +8,9 @@ class CasesController < ApplicationController
       @cases = Case.where(user_id: current_user.id)
     end
 
+    # make this the most recent snapshots
+    @snapshots = Snapshot.all[0..3]
+
     @case = Case.new
     @client = Client.new
   end
