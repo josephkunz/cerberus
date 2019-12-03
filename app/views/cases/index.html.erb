@@ -20,7 +20,11 @@
       <% @snapshots.each do |snapshot| %>
         <%= link_to case_path(snapshot.infringement.case) do %>
           <div class="dash-item">
-            <%= cl_image_tag snapshot.image_path %>
+            <%= cl_image_tag(snapshot.image_path,
+          transformation: [
+            {width: 230, crop: "scale"},
+            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
+          ]) %>
             <p> <%= snapshot.time %> </p>
           </div>
         <% end %>

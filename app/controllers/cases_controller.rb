@@ -9,7 +9,8 @@ class CasesController < ApplicationController
     end
 
     # make this the most recent snapshots
-    @snapshots = Snapshot.all[0..3]
+    @snapshots = Snapshot.all.last(4).reverse
+    # [-4..-1]
 
     @case = Case.new
     @client = Client.new
