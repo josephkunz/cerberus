@@ -1,46 +1,46 @@
 .case {
 
-  h1 {
-    font-family: $headers-font;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 38px;
-    letter-spacing: 0.1em;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-  }
+  // h1 {
+  //   font-family: $headers-font;
+  //   font-weight: normal;
+  //   font-size: 28px;
+  //   line-height: 38px;
+  //   letter-spacing: 0.1em;
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  // }
 
-  h2 {
-    font-family: $headers-font;
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: normal;
-    /* identical to box height */
-    letter-spacing: 0.1em;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-  }
+  // h2 {
+  //   font-family: $headers-font;
+  //   font-size: 18px;
+  //   line-height: 25px;
+  //   font-weight: normal;
+  //   /* identical to box height */
+  //   letter-spacing: 0.1em;
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  // }
 
-  h3 {
-    font-family: $headers-font;
-    //font-style: italic;
-    font-weight: lighter;
-    font-size: 22px;
-    line-height: 30px;
-    /* identical to box height */
-    letter-spacing: 0.04em;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  // h3 {
+  //   font-family: $headers-font;
+  //   //font-style: italic;
+  //   font-weight: lighter;
+  //   font-size: 22px;
+  //   line-height: 30px;
+  //   /* identical to box height */
+  //   letter-spacing: 0.04em;
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
 
-  }
-  p, span {
-    font-family: $body-font;
-    font-weight: normal;
-    font-size: 14px;
-    text-align: justify;
-    line-height: 24px;
-    margin: 0;
-    //color: #111111;
-    letter-spacing: 0.02em;
-    text-shadow: none;
-  }
+  // }
+  // p, span {
+  //   font-family: $body-font;
+  //   font-weight: normal;
+  //   font-size: 14px;
+  //   text-align: justify;
+  //   line-height: 24px;
+  //   margin: 0;
+  //   //color: #111111;
+  //   letter-spacing: 0.02em;
+  //   text-shadow: none;
+  // }
 
   .case-title {
     display:flex;
