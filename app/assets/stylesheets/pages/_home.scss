@@ -13,7 +13,7 @@
   font-weight: normal;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+
   align-items: center;
   justify-content: center;
   overflow: auto;
@@ -85,7 +85,7 @@
 
 
 .catchphrase-box {
-  background-color: #1f1f1f;
+  background-color: #151965;
   height: 500px;
   margin: 0 auto;
   display: flex;
@@ -101,7 +101,7 @@
 }
 
 #catchphrase-black {
-  color: black;
+
 }
 .catchphrase-text-container {
   padding-left: 100px;
@@ -126,6 +126,10 @@
   flex-direction: column;
   justify-content: space-between;
 
+}
+
+.catchphrase-box {
+  height: 100vh;
 }
 
 
