@@ -105,12 +105,12 @@
               <% if infr.snapshots.first.present? %>
                 <%= cl_image_tag(infr.snapshots.first.image_path,
                           transformation: [
-                            {width: 253, crop: "scale"},
-                            {gravity: "north", height: 253, width: 253, y: 15, crop: "crop"}
+                            {width: 238, crop: "scale"},
+                            {gravity: "north", height: 233, width: 238, y: 15, crop: "crop"}
                           ])
                     %>
               <% else %>
-                <%= cl_image_tag("https://res.cloudinary.com/os00/image/upload/v1575039087/placeholder_jtvph3.png")%>
+                <%= cl_image_tag("https://res.cloudinary.com/os00/image/upload/v1575377543/placeholder2_beaatn.png")%>
               <% end %>
             </div>
             <div class="infr-card-url">
@@ -133,6 +133,9 @@
           </div>
 
         <% end %>
+        <div class="infr-card-add">
+          <i class="fas fa-plus-circle"></i>
+        </div>
         </div>
 
 

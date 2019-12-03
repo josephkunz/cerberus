@@ -1,46 +1,6 @@
 .case {
 
-  // h1 {
-  //   font-family: $headers-font;
-  //   font-weight: normal;
-  //   font-size: 28px;
-  //   line-height: 38px;
-  //   letter-spacing: 0.1em;
-  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-  // }
-
-  // h2 {
-  //   font-family: $headers-font;
-  //   font-size: 18px;
-  //   line-height: 25px;
-  //   font-weight: normal;
-  //   /* identical to box height */
-  //   letter-spacing: 0.1em;
-  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-  // }
-
-  // h3 {
-  //   font-family: $headers-font;
-  //   //font-style: italic;
-  //   font-weight: lighter;
-  //   font-size: 22px;
-  //   line-height: 30px;
-  //   /* identical to box height */
-  //   letter-spacing: 0.04em;
-  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-
-  // }
-  // p, span {
-  //   font-family: $body-font;
-  //   font-weight: normal;
-  //   font-size: 14px;
-  //   text-align: justify;
-  //   line-height: 24px;
-  //   margin: 0;
-  //   //color: #111111;
-  //   letter-spacing: 0.02em;
-  //   text-shadow: none;
-  // }
+  padding: 29px;
 
   .case-title {
     display:flex;
@@ -55,11 +15,11 @@
   }
 
   .case-description {
-    margin-top: 60px;
+    margin-top: 70px;
   }
 
   .case-infringements {
-    margin-top: 60px;
+    margin-top: 80px;
   }
 
   .box-description {
@@ -71,7 +31,11 @@
     display: flex;
     justify-content: flex-start;
     // width: 1700px;
-    height: 70px;
+    height: 80px;
+
+    // span {
+    //     padding-bottom: 4px;
+    //   }
 
     .basic-info-legend {
       display: flex;
@@ -87,9 +51,7 @@
       justify-content: space-between;
       padding-right: 40px;
       white-space: nowrap;
-
-      // border-right: 1px solid #000000;
-
+      //border-right: 1px solid #000000
     }
   }
 
@@ -97,38 +59,25 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 0px 40px;
+    padding-left: 40px;
+    padding-right: 16px;
     border-left: 1px solid #000000;
-    position: relative;
-
 
     .basic-info-legend-description {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin-bottom: 6px;
-      // height: 70px;
-
-
     }
 
     .basic-info-description {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 19px;
-      color: #000000;
-      //height: 60px;
-
-
       overflow: hidden;
       /* for set '...' in absolute position */
       position: relative;
       /* use this value to count block height */
       line-height: 1.2em;
       /* max-height = line-height (1.2) * lines max number (3) */
-      max-height: 2.9em;
+      max-height: 3.1em;
       /* fix problem when last visible word doesn't adjoin right side  */
       text-align: justify;
       /* place for '...' */
@@ -137,21 +86,13 @@
 
       &:hover {
         overflow: visible;
-        //border: 1px solid black;
         background-color: white;
         max-height: 100%;
-        //width: 100%;
-
-        //z-index:100;
-        //position: absolute;
-        //top: 30px;
 
         &::before {
           content: '';
         }
-
       }
-
     }
 
     .basic-info-description:before {
@@ -160,8 +101,8 @@
       /* absolute position */
       position: absolute;
       /* set position to right bottom corner of block */
-      right: 0;
-      bottom: 4px;
+      right: -1px;
+      bottom: 5px;
 
     }
     /* hide ... if we have text, which is less than or equal to max lines */
@@ -180,11 +121,6 @@
       background: white;
     }
 
-
-
-
-
-
   }
 
   .case-infr-title {
@@ -197,15 +133,20 @@
       justify-content: flex-end;
     }
 
-    // .btn {
-    //   margin-right: 0px;
-    //   margin-bottom: 0;
-    // }
+    h3 {
+      margin: 0;
+    }
+
+    #form_button {
+      margin: 0;
+    }
   }
 
   .case-infringements-cards {
+    margin-top: 5px;
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
 }
