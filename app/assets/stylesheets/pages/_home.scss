@@ -14,7 +14,7 @@
   font-weight: normal;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   align-items: center;
   justify-content: center;
   overflow: auto;
@@ -126,7 +126,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
+
 
 .h2-p-hiw-card {
   padding-bottom: 30px;
@@ -135,6 +137,12 @@
 .text-color {
 
 }
+
+.img-hiw-card {
+  display: flex;
+  justify-content: center;
+}
+
 
 #img-style {
   border-radius: 4px;
@@ -168,9 +176,15 @@
 
 #h2-style {
   font-size: 36px;
+  text-align: center;
 }
 
 #text-dec {
   list-style:none;
   line-height: 2.5;
+  padding-left: none;
+}
+
+#li-dec {
+
 }
