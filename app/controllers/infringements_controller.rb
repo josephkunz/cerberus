@@ -12,9 +12,11 @@ class InfringementsController < ApplicationController
     @infringement = @case.infringements.where(id: params[:id]).first
     @snapshot = @infringement.snapshots.where(id: params[:snapshot_id]).first
     filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
+
     @url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
                                               use_original_filename: true,
                                               target_public_id: filename)
+
     @timer_values = ["1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
                      "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
                      "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
@@ -27,7 +29,10 @@ class InfringementsController < ApplicationController
     else
       @state = false
     end
-    # @infringement = Infringement.find(params[:id])
+
+    if !params[:snapshots].nil?
+      @number_of_snapshots = params[:snapshots].to_i
+    end
   end
 
   def create
@@ -71,35 +76,6 @@ class InfringementsController < ApplicationController
                       infringement_id: infringement.id)
     event.save
   end
-
-  # def process_update_buttons(infringement)
-
-  #   if !params[:interval].nil?
-
-  #     @infringement.interval = params[:interval]
-  #     @infringement.save
-  #     if @infringement.event.frequency.positive?
-  #       @infringement.event.frequency = compute_frequency(@infringement.interval)
-  #       @infringement.event.save
-  #     end
-  #   end
-
-
-  #   if !params[:state].nil?
-  #     @state = params[:state]
-  #     if @state == "Start"
-  #       @infringement.event.frequency = compute_frequency(@infringement.interval)
-  #     else
-  #       @infringement.event.frequency = -1
-  #     end
-  #     @infringement.event.save
-  #   end
-
-  #   if !params[:snapshot].nil?
-  #     puts "SNAPSHOT"
-  #     TrackJob.perform_later(@infringement.id)
-  #   end
-  # end
 
   # Process select interval action - if different interval is selected in combo,
   # change is saved

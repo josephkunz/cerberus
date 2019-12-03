@@ -1,29 +1,33 @@
+<!-- <%= image_tag 'rect.png', {id: 'grey_triangle'} %> -->
+<!-- TODO - Reid: play with homepage animations -->
 
-  <div class="welcome-title-box">
-    <h1>Welcome to <strong>Cerberus</strong></h1>
-    <h2>The platform to document and protect your copyrights online</h2>
-    <div class="login-signin-bar">
-      <div>
-        <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
-      </div>
-
-      <div class="or">
-        or
-      </div>
-
-      <form class="form-inline" action="<%= new_user_registration_path %>">
-        <input id="home-input" type="email" placeholder="Enter your email here" name="email">
-        <button class="login-signup-buttons" type="submit"> Sign Up </button>
-      </form>
-
+<div class="welcome-title-box">
+  <h1>Welcome to <strong>Cerberus</strong></h1>
+  <h2>The platform to document and protect your copyrights online</h2>
+  <div class="login-signin-bar">
+    <div>
+      <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
     </div>
+
+    <div class="or">
+      or
+    </div>
+
+    <form class="form-inline" action="<%= new_user_registration_path %>">
+      <input id="home-input" type="email" placeholder="Enter your email here" name="email">
+      <button class="login-signup-buttons" type="submit"> Sign Up </button>
+    </form>
+
   </div>
+</div>
+
 <!-- catchphrase  -->
-  <div class="catchphrase-box">
-    <div class="catchphrase-text-container">
-      <span id="catchphrase">Cerberus will help<span id="catchphrase-black"> you </span>in proving a violation of<span id="catchphrase-black"> your client's</span> rights.</span>
-    </div>
+<div class="catchphrase-box">
+  <div class="catchphrase-text-container">
+    <span id="catchphrase">Cerberus will help<span id="catchphrase-black"> you </span>in proving a violation of<span id="catchphrase-black"> your client's</span> rights.</span>
   </div>
+</div>
+
 <!-- what your bring card -->
   <div class="how-it-works-flexcontainer">
     <div class="how-it-works-card">
@@ -53,3 +57,4 @@
       </div>
     </div>
   </div>
+</div>

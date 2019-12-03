@@ -40,4 +40,17 @@ if (selectTimer != null) {
       error: (data) => {}
     })
   });
+
+  setInterval(function() {
+    const snapshotCards = document.querySelectorAll("#snapshot-card");
+
+    Rails.ajax({
+      url: "",
+      type: "get",
+      dataType: "script",
+      data: `snapshots=${snapshotCards.length}`,
+      success: (data) => { console.log(data); },
+      error: (data) => {}
+    })
+  }, 5000);
 }
