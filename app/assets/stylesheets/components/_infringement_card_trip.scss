@@ -8,6 +8,12 @@
   border: 1px solid #000000;
   padding: 0.5px;
   border-radius: 3px;
+  position: relative;
+
+
+  &:hover  .card-trip-checkcard {
+    visibility: visible;
+  }
 }
 
 .card-trip .card-trip-cl-image {
@@ -45,6 +51,28 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-trip-checkcard {
+  visibility: hidden;
+  font-size: 20px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 230px;
+  height: 60px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  background-image: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.95) 100%);
+
+  .card-trip-checkbox {
+    cursor: pointer;
+    margin-left:12px;
+    margin-top: 4px;
+    height: 10px;
+    width: 10px;
+    padding: 0;
+  }
 }
 
 .card-trip-empty {
