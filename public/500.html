@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>There's an issue with our server (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
+  .rails-cerberus-error-page {
+    background-color: pink;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
   }
 
-  .rails-default-error-page div.dialog {
+  .rails-cerberus-error-page div.dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
+  .rails-cerberus-error-page div.dialog > div {
+    border: 2px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
@@ -31,16 +33,17 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
-  .rails-default-error-page h1 {
+  .rails-cerberus-error-page h1 {
+    font-family: Arial;
     font-size: 100%;
     color: #730E15;
     line-height: 1.5em;
   }
 
-  .rails-default-error-page div.dialog > p {
+  .rails-cerberus-error-page div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
-    background-color: #F7F7F7;
+    background-color: white;
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -52,20 +55,16 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
   </style>
-</head>
 
-<body class="rails-default-error-page">
+<body class="rails-cerberus-error-page">
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
       <h1>Looks like our server is a bit off today!</h1>
     </div>
-    <p>If you are the application owner check the logs for more information.
-
-      <img src="/images/500.jpeg" width="400px"></p>
-
-
-
+    <p>
+      <img src="/images/500.jpeg" width="400px">
+    </p>
   </div>
 </body>
 </html>
