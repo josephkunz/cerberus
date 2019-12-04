@@ -1,3 +1,11 @@
+const infrCardAdd = document.querySelector(".infr-card-add");
+
+if (infrCardAdd !== null) {
+  infrCardAdd.addEventListener("click", showHide);
+}
+
+
+
 function showHide(event) {
     var span = document.getElementsByClassName("close")[0];
     var form = document.getElementById("show-form");

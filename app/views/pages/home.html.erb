@@ -1,4 +1,7 @@
+<!-- <%= image_tag 'rect.png', {id: 'grey_triangle'} %> -->
+<!-- TODO - Reid: play with homepage animations -->
 
+<<<<<<< HEAD
 <!-- catchphrase  -->
   <div class="catchphrase-box">
     <div class="catchphrase-text-container">
@@ -43,21 +46,22 @@
   </div>
 
 
-  <div class="welcome-title-box">
 
-    <div class="login-signin-bar">
-      <div>
-        <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
-      </div>
-
-      <div class="or">
-        or
-      </div>
-
-      <form class="form-inline" action="<%= new_user_registration_path %>">
-        <input id="home-input" type="email" placeholder="Enter your email here" name="email">
-        <button class="login-signup-buttons" type="submit"> Sign Up </button>
-      </form>
-
+<div class="welcome-title-box">
+  <div class="login-signin-bar">
+    <div>
+      <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
     </div>
+
+
+    <div class="or">
+      or
+    </div>
+
+    <form class="form-inline" action="<%= new_user_registration_path %>">
+      <input id="home-input" type="email" placeholder="Enter your email here" name="email">
+      <button class="login-signup-buttons" type="submit"> Sign Up </button>
+    </form>
+
   </div>
+</div>

@@ -1,6 +1,17 @@
 class CasesController < ApplicationController
+
   def index
-    @cases = Case.all
+    # If admin -> can see all cases, if normal user -> can see their own cases
+    if current_user.admin
+      @cases = Case.all
+    else
+      @cases = Case.where(user_id: current_user.id)
+    end
+
+    # make this the most recent snapshots
+    @snapshots = Snapshot.all.last(4).reverse
+    # [-4..-1]
+
     @case = Case.new
     @client = Client.new
   end
@@ -19,7 +30,6 @@ class CasesController < ApplicationController
         @active_pages += 1
       end
     end
-
 
     # @infringement = Infringement.find(@case.infringements)
   end
