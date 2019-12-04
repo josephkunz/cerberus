@@ -1,5 +1,10 @@
+document.querySelector(".infringement-info").innerHTML = '<%= j render partial: "infringement_info", locals: { infringement: @infringement, tracked_for: @tracked_for } %>';
 <% if @number_of_snapshots.zero? && @infringement.snapshots.count.positive? %>
-  document.querySelector(".snapshots-infringement").innerHTML = '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>';
+  document.querySelector(".infringement-snapshots").innerHTML = '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>';
+  snapshotButton.innerText = "Take Snapshot";
+  snapshotButton.disabled = false;
 <% elsif @infringement.snapshots.count > @number_of_snapshots %>
-  document.querySelector(".snapshots-infringement").insertAdjacentHTML('beforeend', '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>');
+  document.querySelector(".infringement-snapshots").insertAdjacentHTML('beforeend', '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>');
+  snapshotButton.innerText = "Take Snapshot";
+  snapshotButton.disabled = false;
 <% end %>
