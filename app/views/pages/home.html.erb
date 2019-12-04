@@ -1,4 +1,5 @@
 <!-- <%= image_tag 'rect.png', {id: 'grey_triangle'} %> -->
+
 <!-- TODO - Reid: play with homepage animations -->
 <div style="display: flex; flex-direction: column;">
   <div class="frontpage">
@@ -16,20 +17,42 @@
     <div class="frontpage-doggy">
       <%= image_tag 'logo.png', class: 'doggy-image' %>
 
-
     </div>
   </div>
 
-
-
-
-  <!-- catchphrase  -->
-  <div class="catchphrase-box">
-    <div class="catchphrase-text-container">
-      <span id="catchphrase">Cerberus will help<span id="catchphrase-black"> you </span>in proving a violation of<span id="catchphrase-black"> your client's</span> rights.</span>
+  <div class="how-it-works-card" id="hiw-0">
+      <div class="h2-p-hiw-card text-color">
+        <h1 id="h1-style">HOW IT WORKS</h1>
+      </div>
+    </div>
+    <div class="how-it-works-card" id="hiw-1">
+      <div class="h2-p-hiw-card text-color">
+        <h2 id="h2-style">...issue</h2>
+        <p id="p-style">Your client's protected work is wrongfully displayed on a website. You are looking for an easy way to track such such infringement. </p>
+      </div>
+      <div class="img-hiw-card">
+        <img id="img-style" src="https://cdn0.iconfinder.com/data/icons/park-pedestrian/48/Ryan-17-512.png" alt="" width="250px">
+      </div>
+    </div>
+    <div class="how-it-works-card" id="hiw-2">
+      <div class="h2-p-hiw-card text-color">
+        <h2 id="h2-style" >...what you need</h2>
+        <p id="p-style">An easy solution is to take a screenshot of any website that violates your rights</p>
+      </div>
+      <div class="img-hiw-card">
+        <img id="img-style" src="https://maxcdn.icons8.com/windows10/PNG/512/Editing/screenshot-512.png" alt="" width="250px">
+      </div>
+    </div>
+    <div class="how-it-works-card" id="hiw-3">
+      <div class="h2-p-hiw-card text-color">
+        <h2 id="h2-style">...what Cerberus offers you</h2>
+        <p id="p-style">Cerberus is a service that provides an <strong>efficient</strong> and <strong>easy-to-use</strong> way of documenting and <strong>keeping track</strong> of copyright violations that allows you to confront the infringing party and prepares you for potentially taking legal action. All embedded in a <strong> simple case-management system.</strong></p>
+      </div>
+      <div class="img-hiw-card">
+        <%= image_tag "logo.png", :id => "img-style" %>
+      </div>
     </div>
   </div>
-
 
 <!-- what your bring card -->
   <div class="how-it-works-flexcontainer">

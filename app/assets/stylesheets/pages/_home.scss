@@ -6,29 +6,8 @@
   position: absolute;
   top: 53vh;
   left: 4vh;
-}
-
-.home-logo-button {
-  /* Styling for the upper left logo and CERBERUS title HOME button */
-  
-}
-
-.welcome-title-box {
-  /* The main welcome banner in the center of the home page */
-  font-family: Avenir;
-  font-style: normal;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
-
   h1 {
-    /* Welcome to CERBER.US */
-    font-size: 66px;
-    letter-spacing: 0.05em;
+    font-size: 80px;
   }
 }
 
@@ -52,13 +31,13 @@
 }
 
 .doggy-image {
-  height: 200px;
+  height: 550px;
 }
 
 .frontpage-doggy {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 50px;
+  right: 22vw;
 }
 
 
@@ -114,35 +93,6 @@
   background-color: #eaeaea;
 }
 
-
-.catchphrase-box {
-  background-color: #1f1f1f;
-  height: 500px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  height: 800px;
-}
-
-#catchphrase {
-  color: white;
-  font-size: 64px;
-  font-weight: bold;
-  align-item: center
-}
-
-#catchphrase-black {
-  color: black;
-}
-.catchphrase-text-container {
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0 auto;
-  width: 70%;
-  text-align: center;
-}
 
 .how-it-works-flexcontainer {
   display: flex;
