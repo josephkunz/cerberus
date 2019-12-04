@@ -2,74 +2,61 @@
 
 <!-- TODO - Reid: play with homepage animations -->
 <div style="display: flex; flex-direction: column;">
+
   <div class="frontpage">
-    <div class="frontpage-textbox">
-
-      <div id="title">
-        <h1><strong>Cerberus</strong></h1>
-      </div>
-      <div id="logo">
-        <h2>The platform to <span>document</span> and </h2>
-        <h2><span>protect</span> your copyrights online</h2>
-      </div>
-
-    </div>
     <div class="frontpage-doggy">
       <%= image_tag 'logo.png', class: 'doggy-image' %>
-
     </div>
   </div>
 
-  <div class="how-it-works-card" id="hiw-0">
-      <div class="h2-p-hiw-card text-color">
-        <h1 id="h1-style">HOW IT WORKS</h1>
-      </div>
+  <div class="how-it-works-card">
+    <div class="h2-p-hiw-card text-color">
+      <h2 id="h2-style">What is the issue?</h2>
+      <p id="p-style">Your client's protected work is wrongfully displayed on a website. You have no way to know if the infringement is ongoing, or how you can track the copyright violation. </p>
     </div>
-    <div class="how-it-works-card" id="hiw-1">
-      <div class="h2-p-hiw-card text-color">
-        <h2 id="h2-style">...issue</h2>
-        <p id="p-style">Your client's protected work is wrongfully displayed on a website. You are looking for an easy way to track such such infringement. </p>
-      </div>
-      <div class="img-hiw-card">
-        <img id="img-style" src="https://cdn0.iconfinder.com/data/icons/park-pedestrian/48/Ryan-17-512.png" alt="" width="250px">
-      </div>
-    </div>
-    <div class="how-it-works-card" id="hiw-2">
-      <div class="h2-p-hiw-card text-color">
-        <h2 id="h2-style" >...what you need</h2>
-        <p id="p-style">An easy solution is to take a screenshot of any website that violates your rights</p>
-      </div>
-      <div class="img-hiw-card">
-        <img id="img-style" src="https://maxcdn.icons8.com/windows10/PNG/512/Editing/screenshot-512.png" alt="" width="250px">
-      </div>
-    </div>
-    <div class="how-it-works-card" id="hiw-3">
-      <div class="h2-p-hiw-card text-color">
-        <h2 id="h2-style">...what Cerberus offers you</h2>
-        <p id="p-style">Cerberus is a service that provides an <strong>efficient</strong> and <strong>easy-to-use</strong> way of documenting and <strong>keeping track</strong> of copyright violations that allows you to confront the infringing party and prepares you for potentially taking legal action. All embedded in a <strong> simple case-management system.</strong></p>
-      </div>
-      <div class="img-hiw-card">
-        <%= image_tag "logo.png", :id => "img-style" %>
-      </div>
+    <div class="img-hiw-card">
+      <img id="img-style" src="https://cdn0.iconfinder.com/data/icons/park-pedestrian/48/Ryan-17-512.png" alt="" width="250px">
     </div>
   </div>
-
-
-  <br>
-  <br>
+  <div class="how-it-works-card">
+    <div class="h2-p-hiw-card text-color">
+      <h2 id="h2-style">What can you do?</h2>
+      <p id="p-style"> You are looking for an easy way to document such an infringement. A simple solution is to take a screenshot of any website that violates your rights. </p>
+    </div>
+    <div class="img-hiw-card">
+      <img id="img-style" src="https://maxcdn.icons8.com/windows10/PNG/512/Editing/screenshot-512.png" alt="" width="250px">
+    </div>
+  </div>
+  <div class="how-it-works-card">
+    <div class="h2-p-hiw-card text-color">
+      <h2 id="h2-style">How does Cerberus help?</h2>
+      <p id="p-style">Cerberus is a service that provides an <strong>efficient</strong> and <strong>easy-to-use</strong> way of documenting and <strong>keeping track</strong> of copyright violations that allows you to confront the infringing party and prepares you for potentially taking legal action. All embedded in a <strong> simple case-management system.</strong></p>
+    </div>
+    <div class="img-hiw-card">
+      <%= image_tag "logo.png", :id => "img-style" %>
+    </div>
+  </div>
 
   <!-- Login Sign-In Bar -->
-  <div class="login-signin-bar">
-    <div>
-      <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
+  <div style="display: flex; justify-content: center; height: 30vh;">
+
+    <div class="login-signin-bar">
+      <div>
+        <%= link_to 'Login', user_session_path, class: 'btn btn-ghost' %>
+      </div>
+      <div class="or">
+        or
+      </div>
+      <form class="form-inline" action="<%= new_user_registration_path %>">
+        <input id="home-input" type="email" placeholder="Enter your email here" name="email">
+        <button class="btn btn-ghost" type="submit"> Sign Up </button>
+      </form>
     </div>
-    <div class="or">
-      or
-    </div>
-    <form class="form-inline" action="<%= new_user_registration_path %>">
-      <input id="home-input" type="email" placeholder="Enter your email here" name="email">
-      <button class="login-signup-buttons" type="submit"> Sign Up </button>
-    </form>
+
   </div>
+
+
+
+
 
 </div>
