@@ -25,18 +25,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3413955"
-     inkscape:cx="242.29641"
-     inkscape:cy="638.05263"
+     inkscape:zoom="0.94850985"
+     inkscape:cx="405.79197"
+     inkscape:cy="220.04243"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      borderlayer="false"
      inkscape:showpageshadow="false"
-     inkscape:window-width="1508"
-     inkscape:window-height="958"
-     inkscape:window-x="20"
+     inkscape:window-width="1636"
+     inkscape:window-height="975"
+     inkscape:window-x="40"
      inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <metadata
@@ -63,7 +63,7 @@
          sodipodi:nodetypes="ccscccccccc"
          inkscape:connector-curvature="0"
          id="rect843"
-         d="M -0.22375087,185.6059 103.40246,184.82023 c 10.57545,0.0618 41.45227,0.52527 66.97348,-8.31569 6.94443,-2.40566 13.16737,-10.21753 18.40928,-15.61007 4.48148,-4.66771 12.77399,-11.31157 19.72421,-14.0788 12.71056,-3.92879 16.54855,-3.54607 90.01833,-3.04406 0,0 -0.0503,102.34685 -0.0503,140.27292 l -75.32041,0.27895 c -44.75037,0.16351 -43.04486,-25.90965 -133.882614,-24.69667 -34.125317,0.32817 -55.629038,0.14939 -89.49818687,0.14939 z"
+         d="m -0.22375087,185.6059 103.62621087,0.003 c 10.57545,0.0618 46.44958,1.34178 66.97348,-9.10467 10.70456,-5.4485 13.16737,-10.21753 18.40928,-15.61007 4.48148,-4.66771 12.77399,-11.31157 19.72421,-14.0788 12.71056,-3.92879 16.54855,-3.54607 90.01833,-3.04406 0,0 -0.0503,102.34685 -0.0503,140.27292 l -75.32041,0.27895 c -44.75037,0.16351 -43.04486,-25.90965 -133.882614,-24.69667 -34.125317,0.32817 -55.629038,0.14939 -89.49818687,0.14939 z"
          style="fill:#011638;fill-opacity:1;stroke:none;stroke-width:0.31110525;stroke-opacity:1" />
     </g>
     <ellipse
@@ -85,5 +85,58 @@
          d="M 99.36189,225.69118 C 82.23696,224.62001 66.6566,218.84809 53.09496,208.55108 47.83982,204.56099 42.2577,199.04392 38.084843,193.71587 14.822725,164.01399 14.30431,122.30953 36.821928,92.118733 c 4.674792,-6.2678 10.793092,-12.39909 17.134312,-17.1707 11.32881,-8.52466 25.30325,-14.13894 39.61281,-15.9146 28.40174,-3.52433 56.29846,7.46002 74.69528,29.4113 10.84501,12.940377 17.42348,28.790467 19.09964,46.018497 0.34011,3.4957 0.38239,11.20642 0.0793,14.46443 -1.07183,11.52193 -3.92583,21.4896 -8.97289,31.33803 -8.23514,16.06937 -21.23554,28.86083 -37.48103,36.87862 -9.56771,4.72205 -19.04231,7.36242 -30.0475,8.37363 -2.56071,0.2353 -9.03864,0.33221 -11.57998,0.17324 z m 8.67159,-17.0963 c 20.31968,-1.34742 38.45288,-11.40795 50.21856,-27.86191 14.99734,-20.97336 16.4613,-49.04035 3.7294,-71.5003 -1.16105,-2.04816 -3.97284,-6.22529 -5.53216,-8.21842 -14.54574,-18.592507 -37.76361,-28.060777 -61.23654,-24.972327 -18.52833,2.43787 -35.05582,12.50972 -45.90582,27.974997 -11.256307,16.04442 -14.789545,36.64658 -9.56259,55.75906 5.462,19.97194 20.29352,36.55314 39.52466,44.18741 6.93152,2.75163 13.3153,4.14144 21.53228,4.68779 1.74314,0.1159 5.01998,0.0904 7.23221,-0.0563 z m -8.13624,-19.66382 c -8.30735,-0.85288 -15.69449,-3.48934 -22.18975,-7.91949 -11.0701,-7.55045 -18.25515,-18.97866 -20.2232,-32.16609 -0.56045,-3.75543 -0.55975,-9.8585 10e-4,-13.5604 2.0375,-13.43788 9.52226,-25.11931 20.87913,-32.58599 2.47309,-1.62596 7.27315,-4.008587 9.86211,-4.895297 2.62731,-0.89985 5.94886,-1.74605 8.46498,-2.15655 2.59825,-0.4239 9.05556,-0.59696 11.90228,-0.319 10.73002,1.04773 21.11699,5.601527 28.17024,13.789297 2.33518,2.71079 4.42129,5.57429 5.7775,7.96417 0.84252,3.52983 2.48104,9.03445 -2.07991,12.32338 -7.73462,2.60671 -9.78153,0.61139 -19.67405,-8.23449 -5.49591,-3.72624 -11.23939,-5.14936 -18.72511,-4.59824 -6.24978,0.46013 -11.66265,2.95749 -16.13899,7.44614 -5.40508,5.41996 -7.91649,12.12632 -7.45064,19.89592 0.19752,3.29421 0.9949,6.26251 2.51685,9.36901 3.52172,7.18832 9.77308,12.08006 17.75643,13.89458 1.91114,0.43437 6.29798,0.61084 8.3828,0.3372 8.40242,-1.10283 14.08186,-3.61034 17.30903,-7.35638 5.78199,-8.40111 9.12197,-13.2567 15.53155,-11.36741 8.41739,2.47409 6.45702,9.30123 2.63608,18.34325 -6.1967,11.12833 -17.15079,17.72155 -27.7488,20.67269 -3.67412,1.0231 -5.63434,1.08811 -10.1112,1.14156 -2.30527,0.0275 -4.48726,0.0196 -4.84887,-0.0175 z"
          style="fill:#2000d5;stroke-width:0.1643685;fill-opacity:0.7912088" />
     </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="7.1008129"
+       y="179.04758"
+       id="text1845"><tspan
+         sodipodi:role="line"
+         id="tspan1843"
+         x="7.1008129"
+         y="179.04758"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19.75555611px;font-family:Poppins;-inkscape-font-specification:'Poppins, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0.73289585px;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Cerberus</tspan><tspan
+         sodipodi:role="line"
+         x="7.1008129"
+         y="195.81969"
+         style="stroke-width:0.26458332"
+         id="tspan1847" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="8.8760176"
+       y="199.75829"
+       id="text824"><tspan
+         sodipodi:role="line"
+         id="tspan822"
+         x="8.8760176"
+         y="199.75829"
+         style="font-size:7.76111126px;fill:#ffffff;stroke-width:0.26458332"
+         dy="-0.11000005">The platform to <tspan
+   style="font-size:7.76111126px;fill:#4f44df;fill-opacity:0.94117647"
+   id="tspan830">document</tspan> and</tspan><tspan
+         sodipodi:role="line"
+         x="8.8760176"
+         y="209.45967"
+         style="font-size:7.76111126px;fill:#ffffff;stroke-width:0.26458332"
+         id="tspan826"><tspan
+   style="font-size:7.76111126px;fill:#4f44df;fill-opacity:0.94117647"
+   id="tspan832">protect</tspan> your copyrights online</tspan><tspan
+         sodipodi:role="line"
+         x="8.8760176"
+         y="219.16106"
+         style="font-size:7.76111126px;fill:#ffffff;stroke-width:0.26458332"
+         id="tspan828" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="43.794571"
+       y="276.63687"
+       id="text1592"><tspan
+         sodipodi:role="line"
+         id="tspan1590"
+         x="43.794571"
+         y="276.63687"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Poppins;-inkscape-font-specification:Poppins;stroke-width:0.26458332">How It Works</tspan></text>
   </g>
 </svg>
