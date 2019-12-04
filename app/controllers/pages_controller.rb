@@ -2,11 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    # merge
-    if user_signed_in?
-      redirect_to cases_path
-    else
-      @user = User.new
-    end
+    # Removed redirect to cases so that we can show homepage while logged in
   end
 end

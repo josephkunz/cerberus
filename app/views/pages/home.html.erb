@@ -1,32 +1,35 @@
 <!-- <%= image_tag 'rect.png', {id: 'grey_triangle'} %> -->
 <!-- TODO - Reid: play with homepage animations -->
+<div style="display: flex; flex-direction: column;">
+  <div class="frontpage">
+    <div class="frontpage-textbox">
 
-<div class="welcome-title-box">
-  <h1>Welcome to <strong>Cerberus</strong></h1>
-  <h2>The platform to document and protect your copyrights online</h2>
-  <div class="login-signin-bar">
-    <div>
-      <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
+      <div id="title">
+        <h1><strong>Cerberus</strong></h1>
+      </div>
+      <div id="logo">
+        <h2>The platform to <span>document</span> and </h2>
+        <h2><span>protect</span> your copyrights online</h2>
+      </div>
+
     </div>
+    <div class="frontpage-doggy">
+      <%= image_tag 'logo.png', class: 'doggy-image' %>
 
-    <div class="or">
-      or
+
     </div>
-
-    <form class="form-inline" action="<%= new_user_registration_path %>">
-      <input id="home-input" type="email" placeholder="Enter your email here" name="email">
-      <button class="login-signup-buttons" type="submit"> Sign Up </button>
-    </form>
-
   </div>
-</div>
 
-<!-- catchphrase  -->
-<div class="catchphrase-box">
-  <div class="catchphrase-text-container">
-    <span id="catchphrase">Cerberus will help<span id="catchphrase-black"> you </span>in proving a violation of<span id="catchphrase-black"> your client's</span> rights.</span>
+
+
+
+  <!-- catchphrase  -->
+  <div class="catchphrase-box">
+    <div class="catchphrase-text-container">
+      <span id="catchphrase">Cerberus will help<span id="catchphrase-black"> you </span>in proving a violation of<span id="catchphrase-black"> your client's</span> rights.</span>
+    </div>
   </div>
-</div>
+
 
 <!-- what your bring card -->
   <div class="how-it-works-flexcontainer">
@@ -34,22 +37,31 @@
       <div class="h2-p-hiw-card">
         <h2 id="h2-style">Who you are</h1>
         <ul id="text-dec">
+
           <li id="li-dec">You are a copyright lawyer</li>
           <li id="li-dec">You are looking for a case-management system that also allows you to track infringements</li>
-         </ul>
+
+        </ul>
       </div>
       <div class="img-hiw-card">
         <img id="img-style" src="https://image.flaticon.com/icons/png/512/373/373387.png" alt="" width="250px">
       </div>
     </div>
+
 <!-- what we offer card -->
     <div class="how-it-works-card">
       <div class="h2-p-hiw-card">
         <h2 id="h2-style">What we offer</h1>
         <ul id="text-dec">
+
+          <li>An efficient and easy-to-use way of <strong>documenting</strong> and <strong>keeping track</strong> of infringements</li>
+          <li>which that can be used in a cease and desist</li>
+          <li>All embedded in a <strong>simple case-management system</strong></li>
+
           <li id="li-dec">An efficient and easy-to-use way of <strong>documenting</strong> and <strong>keeping track</strong> of infringements</li>
           <li id="li-dec">which that can be used in a cease and desist</li>
           <li id="li-dec">All embedded in a <strong>simple case-management system</strong></li>
+
         </ul>
       </div>
       <div class="img-hiw-card">
@@ -57,4 +69,22 @@
       </div>
     </div>
   </div>
+
+  <br>
+  <br>
+
+  <!--  -->
+  <div class="login-signin-bar">
+    <div>
+      <%= link_to 'Login', user_session_path, class: 'login-signup-buttons' %>
+    </div>
+    <div class="or">
+      or
+    </div>
+    <form class="form-inline" action="<%= new_user_registration_path %>">
+      <input id="home-input" type="email" placeholder="Enter your email here" name="email">
+      <button class="login-signup-buttons" type="submit"> Sign Up </button>
+    </form>
+  </div>
+
 </div>

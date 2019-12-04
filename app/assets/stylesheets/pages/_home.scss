@@ -2,9 +2,15 @@
 // TODO - Reid: Add homepage animation after new homepage created
 // #grey_triangle {  }
 
+#title {
+  position: absolute;
+  top: 53vh;
+  left: 4vh;
+}
+
 .home-logo-button {
   /* Styling for the upper left logo and CERBERUS title HOME button */
-
+  
 }
 
 .welcome-title-box {
@@ -18,19 +24,43 @@
   align-items: center;
   justify-content: center;
   overflow: auto;
+
   h1 {
     /* Welcome to CERBER.US */
-    font-size: 36px;
-    line-height: 49px;
-    letter-spacing: 0.3em;
-  }
-  h2{
-    /* platform to document and protect your copyright online */
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.2em;
+    font-size: 66px;
+    letter-spacing: 0.05em;
   }
 }
+
+#logo {
+  position: absolute;
+  top: 66vh;
+  left: 4vh;
+  h2{
+    /* platform to document and protect your copyright online */
+    color: white;
+  }
+  span {
+    color: #4E43DE;
+  }
+}
+
+.frontpage {
+  background-image: url('background.svg');
+  background-size: cover;
+  height: 95vh;
+}
+
+.doggy-image {
+  height: 200px;
+}
+
+.frontpage-doggy {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 
 .login-signin-bar {
   display: flex;

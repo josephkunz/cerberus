@@ -10,20 +10,20 @@ a {
 h1 {
   font-family: $headers-font;
   font-weight: normal;
-  font-size: 28px;
+  font-size: 34px;
   line-height: 38px;
-  letter-spacing: 0.1em;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.05em;
+  // text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
 }
 
 h2 {
   font-family: $headers-font;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 25px;
   font-weight: normal;
   /* identical to box height */
-  letter-spacing: 0.1em;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.05em;
+  // text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
 }
 
 h3 {
@@ -34,10 +34,10 @@ h3 {
   line-height: 30px;
   /* identical to box height */
   letter-spacing: 0.04em;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  // text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
 
 }
-p, span {
+p {
   font-family: $body-font;
   font-weight: normal;
   font-size: 14px;
