@@ -1,118 +1,117 @@
 <div class="container">
 
-  <div class="box">
+  <br>
+  <h1>Cases Page</h1>
+  <hr>
 
-    <h1>Cases Page</h1>
-    <hr>
-
-    <div class="open-cases-top-bar">
-      <h2>Open cases</h2>
-      <button id="form_button" class="btn btn-ghost" onclick="showHide(event)">Create New Case</button>
-    </div>
-    <br>
+  <div class="open-cases-top-bar">
+    <h2>Open cases</h2>
+    <button id="form_button" class="btn btn-ghost" onclick="showHide(event)">Create New Case</button>
+  </div>
+  <br>
 
 
-    <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
-    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
-    <div class="dashboard-grid">
+  <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
+  <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
+  <div class="dashboard-grid">
 
-      <!-- iterate through 5 snaps and put them in a CSS grid with 5 spaces -->
-      <% @snapshots.each do |snapshot| %>
-        <%= link_to case_path(snapshot.infringement.case) do %>
-          <div class="dash-item">
-            <%= cl_image_tag snapshot.image_path %>
-            <p> <%= snapshot.time %> </p>
-          </div>
-        <% end %>
+    <!-- iterate through 5 snaps and put them in a CSS grid with 5 spaces -->
+    <% @snapshots.each do |snapshot| %>
+      <%= link_to case_path(snapshot.infringement.case) do %>
+        <div class="dash-item">
+          <%= cl_image_tag snapshot.image_path %>
+          <p> <%= snapshot.time %> </p>
+        </div>
       <% end %>
-
-    </div>
-
-
-    <!-- Iterate through and display each case in a CARD -->
-    <% @cases.each do |c| %>
-
-      <!-- store the client for listing in 1st box -->
-      <% client = Client.find(c.client_id) %>
-      <!-- store the infringement count for listing in 4th box -->
-      <% infringement_count = c.infringements.count %>
-      <!-- store the TOTAL screenshot count for listing in 4th box -->
-      <% flag = false %>
-      <% screenshot_count = 0 %>
-      <% c.infringements.each do |inf| %>
-        <% event_check = Event.where(infringement_id: inf.id).first %>
-        <% if !event_check.nil? && event_check.frequency.positive? %>
-          <% flag = true %>
-        <% end %>
-      <% screenshot_count += inf.snapshots.count %>
-      <% end %>
-
-      <div class="case-container-card">
-        <!-- 1st box in Case card:  -->
-        <div class="case-info-box first">
-          <div>
-            <h5>
-              <%= link_to c.name, case_path(c) %>
-            </h5>
-            <p style="margin-top: 20px;">
-              <% if flag === true %>
-                <i class="fas fa-sync" style="color:mediumseagreen"></i>
-              <% else %>
-                <i class="far fa-circle" style="color:gray"></i>
-              <% end %> &nbsp &nbsp &nbsp
-              # <%= c.number %>
-            </p>
-          </div>
-        </div>
-        <div class="horizontal-line"></div>
-
-        <!-- 2nd box in Case card:  -->
-        <div class="case-info-box second">
-          <%= c.description[0..200] %>
-        </div>
-        <div class="horizontal-line"></div>
-
-        <!-- 3rd box in Case card:  -->
-        <div class="case-info-box third">
-          <i class="fas fa-user"></i>&nbsp;<%= client.first_name %>&nbsp;<%= client.last_name %>
-          <br>
-          <i class="fas fa-clock"></i>&nbsp;<%= c.created_at.strftime("%d.%m.%Y") %>
-        </div>
-        <div class="horizontal-line"></div>
-
-        <!-- 4th box in Case card:  -->
-        <div class="case-info-box fourth">
-          <i class="fas fa-file-alt"></i>&nbsp;<%= pluralize(infringement_count, 'infringement') %>
-          <br>
-          <i class="fas fa-info-circle"></i>&nbsp;<%= pluralize(screenshot_count, 'screenshot') %> total
-        </div>
-
-      </div>
     <% end %>
 
-    <br>
-    <hr>
-    <h2>Archived cases</h2>
-    <br>
+  </div>
 
-      <div id="show-form">
-        <div class="form-content">
-          <span class="close">&times;</span>
-            <div class="form-container">
-              <h2>Add a new case</h2>
-              <%= simple_form_for @case do |f| %>
-                <%= f.input :name, label: 'Name:' %>
-                <%= f.input :number, label: 'Number:' %>
-                <%= f.input :description, label: 'Description:' %>
-                <%= f.simple_fields_for :clients do |m| %>
-                  <%= m.input :first_name, label: 'First name:' %>
-                  <%= m.input :last_name, label: 'Last name:' %>
-                <% end %>
-                <%= f.submit "Add a new case", class: "btn btn-ghost" %>
+
+  <!-- Iterate through and display each case in a CARD -->
+  <% @cases.each do |c| %>
+
+    <!-- store the client for listing in 1st box -->
+    <% client = Client.find(c.client_id) %>
+    <!-- store the infringement count for listing in 4th box -->
+    <% infringement_count = c.infringements.count %>
+    <!-- store the TOTAL screenshot count for listing in 4th box -->
+    <% flag = false %>
+    <% screenshot_count = 0 %>
+    <% c.infringements.each do |inf| %>
+      <% event_check = Event.where(infringement_id: inf.id).first %>
+      <% if !event_check.nil? && event_check.frequency.positive? %>
+        <% flag = true %>
+      <% end %>
+    <% screenshot_count += inf.snapshots.count %>
+    <% end %>
+
+    <div class="case-container-card">
+      <!-- 1st box in Case card:  -->
+      <div class="case-info-box first">
+        <div>
+          <h5>
+            <%= link_to c.name, case_path(c) %>
+          </h5>
+          <p style="margin-top: 20px;">
+            <% if flag === true %>
+              <i class="fas fa-sync" style="color:mediumseagreen"></i>
+            <% else %>
+              <i class="far fa-circle" style="color:gray"></i>
+            <% end %> &nbsp &nbsp &nbsp
+            # <%= c.number %>
+          </p>
+        </div>
+      </div>
+      <div class="horizontal-line"></div>
+
+      <!-- 2nd box in Case card:  -->
+      <div class="case-info-box second">
+        <%= c.description[0..200] %>
+      </div>
+      <div class="horizontal-line"></div>
+
+      <!-- 3rd box in Case card:  -->
+      <div class="case-info-box third">
+        <i class="fas fa-user"></i>&nbsp;<%= client.first_name %>&nbsp;<%= client.last_name %>
+        <br>
+        <i class="fas fa-clock"></i>&nbsp;<%= c.created_at.strftime("%d.%m.%Y") %>
+      </div>
+      <div class="horizontal-line"></div>
+
+      <!-- 4th box in Case card:  -->
+      <div class="case-info-box fourth">
+        <i class="fas fa-file-alt"></i>&nbsp;<%= pluralize(infringement_count, 'infringement') %>
+        <br>
+        <i class="fas fa-info-circle"></i>&nbsp;<%= pluralize(screenshot_count, 'screenshot') %> total
+      </div>
+
+    </div>
+  <% end %>
+
+  <br>
+  <hr>
+  <h2>Archived cases</h2>
+  <br>
+
+    <div id="show-form">
+      <div class="form-content">
+        <span class="close">&times;</span>
+          <div class="form-container">
+            <h2>Add a new case</h2>
+            <%= simple_form_for @case do |f| %>
+              <%= f.input :name, label: 'Name:' %>
+              <%= f.input :number, label: 'Number:' %>
+              <%= f.input :description, label: 'Description:' %>
+              <%= f.simple_fields_for :clients do |m| %>
+                <%= m.input :first_name, label: 'First name:' %>
+                <%= m.input :last_name, label: 'Last name:' %>
               <% end %>
-          </div>
+              <%= f.submit "Add a new case", class: "btn btn-ghost" %>
+            <% end %>
         </div>
       </div>
     </div>
   </div>
+
 </div>
