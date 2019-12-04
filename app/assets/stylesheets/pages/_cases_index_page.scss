@@ -98,3 +98,11 @@
   border-color: gray;
 
 }
+
+
+.link-to-text-decoration {
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
