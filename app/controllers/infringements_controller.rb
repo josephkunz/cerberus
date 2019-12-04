@@ -82,7 +82,7 @@ class InfringementsController < ApplicationController
   def delete_snapshots
     @infringement = Infringement.find(params[:id])
     @tracked_for = tracked_for(@infringement.created_at)
-    @js_string = process_delete(@infringement, params[:files])
+    process_delete(@infringement, params[:files])
   end
 
   private
@@ -189,14 +189,6 @@ class InfringementsController < ApplicationController
         infringement.snapshots[id.to_i].destroy
       end
     end
-
-    js_string = ""
-    index = 0
-    infringement.snapshots.each do |snapshot|
-      js_string += "<%= j render partial: \"snapshot_card\", locals: { snapshot: @infringement.snapshots[#{index}] } %>\n"
-      index += 1;
-    end
-    return js_string
   end
 
   def tracked_for(start_time)

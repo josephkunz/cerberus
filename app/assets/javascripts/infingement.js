@@ -23,7 +23,7 @@ if (selectTimer != null) {
       url: "",
       type: "put",
       data: `interval=${selectTimer.value}`,
-      success: (data) => { console.log(data); },
+      success: (data) => { },
       error: (data) => {}
     })
   });
@@ -40,7 +40,7 @@ if (selectTimer != null) {
       url: "",
       type: "put",
       data: `state=${state}&interval=${selectTimer.value}`,
-      success: (data) => { console.log(data); },
+      success: (data) => { },
       error: (data) => {}
     })
   });
@@ -52,7 +52,7 @@ if (selectTimer != null) {
       url: "",
       type: "put",
       data: `snapshot=true`,
-      success: (data) => { console.log(data); },
+      success: (data) => { },
       error: (data) => {}
     })
   });
@@ -60,12 +60,13 @@ if (selectTimer != null) {
   exportButton.addEventListener("click", (event) => {
     exportButton.innerText = "Downloading..."
     exportButton.disabled = true;
+    deleteButton.disabled = true;
 
     Rails.ajax({
       url: window.location.pathname + "/createzip",
       type: "get",
       data: `files=${selectedParametersString()}`,
-      success: (data) => { console.log(data); },
+      success: (data) => { },
       error: (data) => {}
     })
   });
@@ -73,14 +74,32 @@ if (selectTimer != null) {
   deleteButton.addEventListener("click", (event) => {
     deleteButton.innerText = "Deleting..."
     deleteButton.disabled = true;
+    exportButton.disabled = true;
 
     Rails.ajax({
       url: window.location.pathname + "/deletesnapshots",
       type: "get",
       data: `files=${selectedParametersString()}`,
-      success: (data) => { console.log(data); },
+      success: (data) => { },
       error: (data) => {}
     })
+
+    for (let i = 0; i < checkBoxes.length; i += 1) {
+      if (checkBoxes[i].dataset.checked === "true") {
+        cards[i].parentNode.removeChild(cards[i]);
+      }
+    }
+
+    for (let i = 0; i < checkBoxes.length; i += 1) {
+      checkBoxes[i].dataset.checked = "false";
+      checkBoxes[i].innerHTML = '<i class="far fa-square"></i>';
+      checkCards[i].style.visibility = null;
+    }
+
+    numberOfSelected = 0;
+    cardClickOff(null);
+    updateSelectedCount();
+    hideSelectMenu();
   });
 
   setInterval(function() {
@@ -90,7 +109,7 @@ if (selectTimer != null) {
       type: "get",
       dataType: "script",
       data: `snapshots=${snapshotCards.length}`,
-      success: (data) => { console.log(data); },
+      success: (data) => { },
       error: (data) => {}
     })
   }, 5000);

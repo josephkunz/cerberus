@@ -1,8 +1,6 @@
 document.querySelector(".infringement-info").innerHTML = '<%= j render partial: "infringement_info", locals: { infringement: @infringement, tracked_for: @tracked_for } %>';
-document.querySelector(".infringement-snapshots").innerHTML =  '<%= @js_string =>';
-deselectAll(null);
 deleteButton.innerText = "Delete All";
 deleteButton.disabled = false;
 exportButton.innerText  = "Export All";
-exportButton.innerText = "Delete All";
+exportButton.disabled = false;
 
