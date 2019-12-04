@@ -50,7 +50,7 @@
             <button id="export-button" class="btn btn-ghost btn-margin">Export All</button>
             <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost select-margin" %>
             <% if @infringement.interval == "1 snapshot" %>
-              <%= select_tag "select-timer", options_for_select(@timer_values, "1 year", class: "select-box btn-margin")%>
+              <%= select_tag "select-timer", options_for_select(@timer_values, "1 year"), class: "select-box btn-margin" %>
               <button id="play-button" class="btn btn-ghost">Start</button>
             <% elsif @state %>
               <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval), class: "select-box btn-margin", disabled: true%>
