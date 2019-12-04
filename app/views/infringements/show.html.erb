@@ -15,7 +15,7 @@
         </div>
         <div class="basic-info-values">
           <span><%= @infringement.created_at.strftime("%F") %></span>
-          <span>0</span>
+          <span><%= @tracked_for %></span>
           <span><%= @infringement.snapshots.count %></span>
         </div>
 
