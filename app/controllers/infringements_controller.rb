@@ -11,6 +11,7 @@ class InfringementsController < ApplicationController
     @case = Case.find(params[:case_id])
     @infringement = @case.infringements.where(id: params[:id]).first
     @snapshot = @infringement.snapshots.where(id: params[:snapshot_id]).first
+    @tracked_for = tracked_for(@infringement.created_at)
 
     @timer_values = get_timer_values
 
@@ -168,5 +169,30 @@ class InfringementsController < ApplicationController
     end
 
     return public_ids
+  end
+
+  def tracked_for(start_time)
+    tracked = TimeDifference.between(start_time, Time.now).in_general
+    tracked_str = ""
+    tracked_str += "#{tracked[:years]}y " if tracked[:years].positive?
+    tracked_str += "#{tracked[:months]}m " if tracked[:months].positive?
+    tracked_str += "#{tracked[:weeks]}w " if tracked[:weeks].positive?
+    tracked_str += "#{tracked[:days]}d " if tracked[:days].positive?
+
+    if tracked[:hours].positive?
+      #hours = tracked[:hours].to_s.rjust(2, '0')
+      tracked_str += "#{tracked[:hours].to_s.rjust(2, '0')}:"
+    else
+      tracked_str += "00:"
+    end
+
+    if tracked[:minutes].positive?
+      #minutes = tracked[:minutes].to_s.rjust(2, '0')
+      tracked_str += "#{tracked[:minutes].to_s.rjust(2, '0')}"
+    else
+      tracked_str += "00"
+    end
+
+    return tracked_str
   end
 end

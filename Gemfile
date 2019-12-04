@@ -27,6 +27,9 @@ gem 'clockwork'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
+# Time difference gem used on infringement page
+gem 'time_difference'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

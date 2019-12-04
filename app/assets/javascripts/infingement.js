@@ -5,7 +5,8 @@ const exportButton = document.getElementById("export-button");
 const csfrToken = document.head.querySelector("[name~=csrf-token][content]").content;
 
 // Select items
-const selectMenu = document.querySelector(".select-menu-infringement")
+const selectMenu = document.querySelector(".select-menu-infringement");
+const cardLinks = document.querySelectorAll(".card-trip-link");
 const checkBoxes = document.querySelectorAll(".card-trip-checkbox");
 const checkCards = document.querySelectorAll(".card-trip-checkcard");
 const selectedText = document.querySelectorAll(".selected-text span");
@@ -131,6 +132,7 @@ if (selectTimer != null) {
   }
 
   const checkBoxClick = (event) => {
+    event.preventDefault();
     if (event.target.parentElement.dataset.checked === "false")  {// innerHTML.includes("fa-square")) {
       event.target.parentElement.dataset.checked = "true";
       numberOfSelected += 1;
@@ -149,8 +151,15 @@ if (selectTimer != null) {
     }
   }
 
+  const cardLinkClick = (event) => {
+    if (numberOfSelected > 0) {
+      event.preventDefault();
+    }
+  }
+
   for (let i = 0; i < checkBoxes.length; i += 1) {
     checkBoxes[i].addEventListener("click", checkBoxClick);
+    cardLinks[i].addEventListener("click", cardLinkClick);
   }
 
   selectAllButton.addEventListener("click", (event) => {
