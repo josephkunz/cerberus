@@ -1,11 +1,16 @@
 <div class="container">
   <div class="infringement">
     <div class="infringement-case">
-      <div class="infringement-title">
-        <h1><%= @infringement.case.name.upcase %> </h1>
-        <h2><%= @infringement.case.number %></h2>
+      <div class="infringement-title-box">
+        <div class="infringement-title">
+          <h1><%= @infringement.case.name.upcase %> </h1>
+          <h2><%= @infringement.case.number %></h2>
+        </div>
+        <div class="case-title-buttons">
+          <%= link_to "Delete Infringement", case_infringement_path, method: :delete, id: "btn-delete-infringement", class: "btn btn-ghost btn-margin-right" %>
+          <%= link_to "Go Back to Case", case_path(@case), class: "btn btn-ghost btn-ghost-w120px" %>
+        </div>
       </div>
-
     <div class="infringement-snapshot-titlebox">
       <div class="infringement-snapshot-titlebox-title">
         <h3>Snapshots</h3>
@@ -29,28 +34,15 @@
       <div class="infringement-side-and-snapshots">
         <div class="infringement-sidebar flex-item-buttons">
           <div class="infringement-info">
-            <div>
-              <span><strong>Infringement Info</strong></span>
-            </div>
-            <div class="infringement-info-details">
-              <div class="basic-info-legend">
-                <span>Created:</span>
-                <span>Tracked:</span>
-                <span>Records:</span>
-              </div>
-              <div class="basic-info-values">
-                <span><%= @infringement.created_at.strftime("%F") %></span>
-                <span><%= @tracked_for %></span>
-                <span><%= @infringement.snapshots.count %></span>
-              </div>
-            </div>
+            <%= render partial: "infringement_info", locals: { infringement: @infringement, tracked_for: @tracked_for } %>
           </div>
           <div class="infringement-buttons-general">
             <button id="snapshot-button" class="btn btn-ghost btn-margin">Take Snapshot</button>
             <button id="export-button" class="btn btn-ghost btn-margin">Export All</button>
-            <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost select-margin" %>
+            <button id="delete-button" class="btn btn-ghost btn-margin">Delete All</button>
+
             <% if @infringement.interval == "1 snapshot" %>
-              <%= select_tag "select-timer", options_for_select(@timer_values, "1 year"), class: "select-box btn-margin" %>
+              <%= select_tag "select-timer", options_for_select(@timer_values, "1 year"), class: "select-box btn-margin"%>
               <button id="play-button" class="btn btn-ghost">Start</button>
             <% elsif @state %>
               <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval), class: "select-box btn-margin", disabled: true%>

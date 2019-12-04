@@ -2,6 +2,7 @@ const selectTimer =  document.getElementById("select-timer");
 const playButton = document.getElementById("play-button");
 const snapshotButton = document.getElementById("snapshot-button");
 const exportButton = document.getElementById("export-button");
+const deleteButton = document.getElementById("delete-button");
 const csfrToken = document.head.querySelector("[name~=csrf-token][content]").content;
 
 // Select items
@@ -45,6 +46,8 @@ if (selectTimer != null) {
   });
 
   snapshotButton.addEventListener("click", (event) => {
+    snapshotButton.innerText = "Taking Snapshot..."
+    snapshotButton.disabled = true;
     Rails.ajax({
       url: "",
       type: "put",
@@ -55,8 +58,24 @@ if (selectTimer != null) {
   });
 
   exportButton.addEventListener("click", (event) => {
+    exportButton.innerText = "Downloading..."
+    exportButton.disabled = true;
+
     Rails.ajax({
       url: window.location.pathname + "/createzip",
+      type: "get",
+      data: `files=${selectedParametersString()}`,
+      success: (data) => { console.log(data); },
+      error: (data) => {}
+    })
+  });
+
+  deleteButton.addEventListener("click", (event) => {
+    deleteButton.innerText = "Deleting..."
+    deleteButton.disabled = true;
+
+    Rails.ajax({
+      url: window.location.pathname + "/deletesnapshots",
       type: "get",
       data: `files=${selectedParametersString()}`,
       success: (data) => { console.log(data); },
@@ -94,11 +113,13 @@ if (selectTimer != null) {
     selectedText[0].innerText = `${numberOfSelected} Selected`;
   }
 
-  const updateExportButton = () => {
+  const updateExportAndDeleteButton = () => {
     if (numberOfSelected === 0 || numberOfSelected === checkBoxes.length) {
       exportButton.innerText = `Export All`;
+      deleteButton.innerText = `Delete All`;
     } else {
       exportButton.innerText = `Export (${numberOfSelected})`
+      deleteButton.innerText = `Delete (${numberOfSelected})`
     }
   }
 
@@ -165,7 +186,7 @@ if (selectTimer != null) {
       event.target.parentElement.dataset.checked = "true";
       numberOfSelected += 1;
       updateSelectedCount();
-      updateExportButton();
+      updateExportAndDeleteButton();
       showCheckCards();
       showSelectMenu();
       event.target.parentElement.innerHTML = '<i class="far fa-check-square"></i>';
@@ -173,7 +194,7 @@ if (selectTimer != null) {
       event.target.parentElement.dataset.checked = "false";
       numberOfSelected -= 1;
       updateSelectedCount();
-      updateExportButton();
+      updateExportAndDeleteButton();
       hideCheckCards();
       event.target.parentElement.innerHTML = '<i class="far fa-square"></i>';
     }
@@ -185,24 +206,17 @@ if (selectTimer != null) {
     }
   }
 
-  for (let i = 0; i < checkBoxes.length; i += 1) {
-    checkBoxes[i].addEventListener("click", checkBoxClick);
-    checkBoxes[i].addEventListener("mousedown", cardClickOn);
-    checkBoxes[i].addEventListener("mouseup", cardClickOff);
-    cardLinks[i].addEventListener("click", cardLinkClick);
-  }
-
-  selectAllButton.addEventListener("click", (event) => {
+  const selectAll = (event) => {
     for (let i = 0; i < checkBoxes.length; i += 1) {
       checkBoxes[i].dataset.checked = "true";
       checkBoxes[i].innerHTML = '<i class="far fa-check-square"></i>';
     }
     numberOfSelected = checkBoxes.length;
     updateSelectedCount();
-    updateExportButton();
-  });
+    updateExportAndDeleteButton();
+  }
 
-  deselectAllButton.addEventListener("click", (event) => {
+  const deselectAll = (event) => {
     for (let i = 0; i < checkBoxes.length; i += 1) {
       checkBoxes[i].dataset.checked = "false";
       checkBoxes[i].innerHTML = '<i class="far fa-square"></i>';
@@ -211,11 +225,11 @@ if (selectTimer != null) {
     numberOfSelected = 0;
     cardClickOff(null);
     updateSelectedCount();
-    updateExportButton();
+    updateExportAndDeleteButton();
     hideSelectMenu();
-  });
+  }
 
-  invertSelectionButton.addEventListener("click", (event) => {
+  const invertSelection = (event) => {
     for (let i = 0; i < checkBoxes.length; i += 1) {
       if (checkBoxes[i].dataset.checked === "true") {
         checkBoxes[i].dataset.checked = "false"
@@ -232,7 +246,20 @@ if (selectTimer != null) {
     }
     hideCheckCards();
     updateSelectedCount();
-    updateExportButton();
-  });
+    updateExportAndDeleteButton();
+  }
+
+  for (let i = 0; i < checkBoxes.length; i += 1) {
+    checkBoxes[i].addEventListener("click", checkBoxClick);
+    checkBoxes[i].addEventListener("mousedown", cardClickOn);
+    checkBoxes[i].addEventListener("mouseup", cardClickOff);
+    cardLinks[i].addEventListener("click", cardLinkClick);
+  }
+
+  selectAllButton.addEventListener("click", selectAll);
+
+  deselectAllButton.addEventListener("click", deselectAll);
+
+  invertSelectionButton.addEventListener("click", invertSelection);
 }
 

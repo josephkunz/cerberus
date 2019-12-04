@@ -50,6 +50,7 @@ class InfringementsController < ApplicationController
 
   def refresh
     @infringement = Infringement.find(params[:id])
+    @tracked_for = tracked_for(@infringement.created_at)
     @number_of_snapshots = params[:snapshots].to_i
   end
 
@@ -58,7 +59,7 @@ class InfringementsController < ApplicationController
     @infringement = Infringement.find(params[:id])
     filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
 
-    p prepare_array_of_public_ids(@infringement, params[:files])
+    prepare_array_of_public_ids(@infringement, params[:files])
 
     if params[:files].empty?
       url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
@@ -76,6 +77,12 @@ class InfringementsController < ApplicationController
     filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
     File.rename('test.zip', filename)
     send_file filename
+  end
+
+  def delete_snapshots
+    @infringement = Infringement.find(params[:id])
+    @tracked_for = tracked_for(@infringement.created_at)
+    @js_string = process_delete(@infringement, params[:files])
   end
 
   private
@@ -169,6 +176,27 @@ class InfringementsController < ApplicationController
     end
 
     return public_ids
+  end
+
+  def process_delete(infringement, params_string)
+    if params_string.nil?
+      infringement.snapshots.each do |snapshot|
+        snapshot.destroy
+      end
+    else
+      snapshots_ids = params_string.split("_")
+      snapshots_ids.each do |id|
+        infringement.snapshots[id.to_i].destroy
+      end
+    end
+
+    js_string = ""
+    index = 0
+    infringement.snapshots.each do |snapshot|
+      js_string += "<%= j render partial: \"snapshot_card\", locals: { snapshot: @infringement.snapshots[#{index}] } %>\n"
+      index += 1;
+    end
+    return js_string
   end
 
   def tracked_for(start_time)
