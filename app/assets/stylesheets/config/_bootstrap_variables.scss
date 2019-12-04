@@ -3,10 +3,23 @@
 // 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
 // 3. You can override them below!
 
+
+// COLORS
+
+// $smoke: #F2F7F5;
+// $smoke: #F9F9FF;
+$smoke: #FFF;
+$blue: #083D77;
+$royalblue: #1B065E;
+$darkblue: #011638;
+$darkgray: #BBB;
+$lightgray: #DDD;
+
+
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $white;
+$body-bg:                 $smoke;
 $font-size-base: 1rem;
 
 // Colors
@@ -22,4 +35,6 @@ $border-radius:    2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
-// Override other variables below!
+
+
+

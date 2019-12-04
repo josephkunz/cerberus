@@ -3,12 +3,13 @@
 }
 
 .dashboard-title {
-  background-color: #eee;
+  background-color: $blue;
+  color: white;
   text-align: center;
   margin: 0;
   padding-top: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
 
 }
 .dashboard-grid {
@@ -16,23 +17,34 @@
   grid-template-columns: repeat(4, 1fr);
   margin-bottom: 40px;
   grid-gap: 20px;
-  background-color: #eee;
+  background-color: $blue;
   padding: 20px;
   margin-top: 0px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
 }
 .dash-item {
   width: 100%;
   text-align: center;
   border-style: solid;
   border-width: 2px;
-  padding: 1px;
   background-color: white;
 }
 .dash-item img {
   max-width:100%;
   max-height:auto;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  filter: grayscale(50%);
+  &:hover{
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.18);
+    filter: grayscale(0%);
+  }
+    &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.18);
+  }
 }
 .dash-item p {
   text-align: center;
@@ -46,6 +58,7 @@
 }
 
 .case-container-card {
+  background-color: white;
   display: flex;
   height: 120px;
   justify-content: space-between;
@@ -53,7 +66,8 @@
   margin-bottom: 40px;
   border-style: solid;
   border-width: 1px;
-  border-color: gray;
+  border-color: #EEE;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
 }
@@ -66,11 +80,11 @@
 }
 
 .first {
-  width: 21%;
+  width: 40%;
   a {
     color: black;
-    font-family: Avenir Next;
-    font-weight: 600;
+
+    font-weight: 400;
     font-size: 18px;
     line-height: 20px;
     text-decoration: none;
@@ -80,14 +94,12 @@
 
   }
 }
-.second {
-  width: 40%;
-}
 .third {
-  width: 18%;
+  width: 30%;
 }
+
 .fourth {
-  width: 18%;
+  width: 28%;
 }
 
 .horizontal-line {
@@ -95,6 +107,18 @@
   height: 80px;
   border-right-style: solid;
   border-width: 1px;
-  border-color: gray;
+  border-color: $lightgray;
 
+}
+
+
+.link-to-text-decoration {
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+#h5-style {
+  font-size: 24px;
 }
