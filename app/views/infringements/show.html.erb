@@ -15,7 +15,7 @@
         </div>
         <div class="basic-info-values">
           <span><%= @infringement.created_at.strftime("%F") %></span>
-          <span>0</span>
+          <span><%= @tracked_for %></span>
           <span><%= @infringement.snapshots.count %></span>
         </div>
 
@@ -27,38 +27,55 @@
       </div>
       <h3>Snapshots</h3>
     </div>
-    <div class="btn-and-infringement">
-      <div class="infringement-page-buttons flex-item-buttons">
-        <button id="snapshot-button" class="btn btn-ghost btn-ghost-w120px">Snapshot</button>
-        <% if @infringement.interval == "1 snapshot" %>
-          <%= select_tag "select-timer", options_for_select(@timer_values, "1 year")%>
-          <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
-        <% elsif @state %>
-          <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: true%>
-          <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Stop</button>
-        <% else %>
-          <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: false%>
-          <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
-        <% end %>
-
-        <%= link_to "Export", @url, class: "btn btn-ghost btn-ghost-w120px" %>
-        <!-- <button class="btn btn-ghost btn-ghost-w120px">Export</button> -->
-        <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost btn-ghost-w120px" %>
-        <!-- <button class="btn btn-ghost btn-ghost-w120px">Delete</button> -->
+    <div>
+      <div class="select-container">
+        <div class="select-menu-infringement">
+          <div class="selected-icon"><i class="far fa-check-square"></i></div>
+          <div class="selected-text"><span>Selected</span></div>
+          <div class="selected-divider"></div>
+          <button id="select-button" class="btn btn-ghost">Select All</button>
+          <button id="deselect-button" class="btn btn-ghost">Deselect All</button>
+          <button id="invert-button" class="btn btn-ghost">Invert Selection</button>
+        </div>
+        <div class="select-empty">
+        </div>
       </div>
-      <div class="snapshots-infringement flex-item-snapshots">
-        <% if @infringement.snapshots.empty? %>
-          <div class="card-trip-empty">
-            <span>First screenshot will be available soon</span>
-          </div>
-        <% else %>
-          <% @infringement.snapshots.each do |snapshot| %>
-
-            <%= render partial: "snapshot_card", locals: { snapshot: snapshot } %>
-
+      <div class="btn-and-infringement">
+        <div class="infringement-page-buttons flex-item-buttons">
+          <button id="snapshot-button" class="btn btn-ghost btn-ghost-w120px">Snapshot</button>
+          <% if @infringement.interval == "1 snapshot" %>
+            <%= select_tag "select-timer", options_for_select(@timer_values, "1 year")%>
+            <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
+          <% elsif @state %>
+            <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: true%>
+            <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Stop</button>
+          <% else %>
+            <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: false%>
+            <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
           <% end %>
-        <% end %>
+
+          <button id="export-button" class="btn btn-ghost btn-ghost-w120px">Export All</button>
+
+          <!-- <button class="btn btn-ghost btn-ghost-w120px">Export</button> -->
+          <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost btn-ghost-w120px" %>
+          <!-- <button class="btn btn-ghost btn-ghost-w120px">Delete</button> -->
+        </div>
+        <div class="snapshots-infringement flex-item-snapshots">
+          <% if @infringement.snapshots.empty? %>
+            <div class="card-trip-empty">
+              <span>First screenshot will be available soon</span>
+            </div>
+          <% else %>
+            <% @infringement.snapshots.each do |snapshot| %>
+
+              <%= render partial: "snapshot_card", locals: { snapshot: snapshot } %>
+
+            <% end %>
+          <% end %>
+        </div>
       </div>
+
     </div>
+
   </div>
 </div>

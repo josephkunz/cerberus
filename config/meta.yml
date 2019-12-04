@@ -1,0 +1,7 @@
+# config/meta.yml
+
+meta_product_name: "Cerberus"
+meta_title: "CERBERUS - Protect your copyright in the digital age"
+meta_description: "Cerberus helps you enforce your client's copyright."
+meta_image: "cerberus_ogimage1.jpg" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

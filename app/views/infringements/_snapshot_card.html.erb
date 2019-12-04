@@ -1,11 +1,19 @@
 <div id="snapshot-card" class="card-trip">
-    <%= cl_image_tag(snapshot.image_path,
-          transformation: [
-            {width: 230, crop: "scale"},
-            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
-          ]) %>
-  <div class="card-trip-infos">
-      <h2></h2>
-      <p><strong> <%= link_to snapshot.time, snapshot_path(snapshot) %> </strong></p>
-  </div>
+  <%= link_to snapshot_path(snapshot), class: "card-trip-link" do %>
+    <div class="card-trip-cl-image">
+      <%= cl_image_tag(snapshot.image_path,
+            transformation: [
+              {width: 230, crop: "scale"},
+              {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
+            ]) %>
+    </div>
+    <div class="card-trip-infos">
+        <p><%= snapshot.time %></p>
+    </div>
+    <div class="card-trip-checkcard">
+      <div class="card-trip-checkbox" data-checked="false">
+        <i class="far fa-square"></i>
+      </div>
+    </div>
+  <% end %>
 </div>

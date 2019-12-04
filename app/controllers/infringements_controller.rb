@@ -11,27 +11,14 @@ class InfringementsController < ApplicationController
     @case = Case.find(params[:case_id])
     @infringement = @case.infringements.where(id: params[:id]).first
     @snapshot = @infringement.snapshots.where(id: params[:snapshot_id]).first
-    filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
+    @tracked_for = tracked_for(@infringement.created_at)
 
-    @url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
-                                              use_original_filename: true,
-                                              target_public_id: filename)
+    @timer_values = get_timer_values
 
-    @timer_values = ["1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
-                     "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
-                     "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
-                     "2 days", "3 days", "4 days", "5 days", "6 days", "7 days", "8 days",
-                     "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
-                     "15 days", "1 month", "2 months", "3 months", "4 months",
-                     "5 months", "6 months", "1 year"]
     if @infringement.event.frequency.positive?
       @state = true
     else
       @state = false
-    end
-
-    if !params[:snapshots].nil?
-      @number_of_snapshots = params[:snapshots].to_i
     end
   end
 
@@ -52,13 +39,43 @@ class InfringementsController < ApplicationController
 
   def update
     @infringement = Infringement.find(params[:id])
-    if !params[:interval].nil?
+    if params[:interval] && params[:state].nil?
       process_select_interval(@infringement, params[:interval])
-    elsif !params[:state].nil?
-      @state = process_start_stop_button(@infringement, params[:state])
-    elsif !params[:snapshot].nil?
+    elsif params[:state]
+      @state = process_start_stop_button(@infringement, params[:state], params[:interval])
+    elsif params[:snapshot]
       process_snapshot_button(@infringement)
     end
+  end
+
+  def refresh
+    @infringement = Infringement.find(params[:id])
+    @number_of_snapshots = params[:snapshots].to_i
+  end
+
+  def create_zip
+    @case = Case.find(params[:case_id])
+    @infringement = Infringement.find(params[:id])
+    filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
+
+    p prepare_array_of_public_ids(@infringement, params[:files])
+
+    if params[:files].empty?
+      url = Cloudinary::Utils.download_zip_url(tags: ["INFR_#{@infringement.name}_#{@infringement.id}"],
+                                               use_original_filename: true)
+    else
+      url = Cloudinary::Utils.download_zip_url(public_ids: prepare_array_of_public_ids(@infringement, params[:files]),
+                                               use_original_filename: true)
+    end
+    @path_to_file = "/cases/#{params[:case_id]}/infringements/#{params[:id]}/sendzip"
+    process_export(url)
+  end
+
+  def send_zip
+    @infringement = Infringement.find(params[:id])
+    filename = "INFR #{@infringement.name} #{Time.now.to_s}.zip"
+    File.rename('test.zip', filename)
+    send_file filename
   end
 
   private
@@ -89,8 +106,10 @@ class InfringementsController < ApplicationController
   end
 
   # Process start stop functionality
-  def process_start_stop_button(infringement, state)
+  def process_start_stop_button(infringement, state, interval)
     if state == "Start"
+      infringement.interval = interval
+      infringement.save
       infringement.event.frequency = compute_frequency(infringement.interval)
     else
       infringement.event.frequency = -1
@@ -122,5 +141,58 @@ class InfringementsController < ApplicationController
     when "year", "years"
       return interval_array[0].to_i * 60 * 60 * 24 * 365
     end
+  end
+
+  def get_timer_values
+    return ["1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
+             "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
+             "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
+             "2 days", "3 days", "4 days", "5 days", "6 days", "7 days", "8 days",
+             "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
+             "15 days", "1 month", "2 months", "3 months", "4 months",
+             "5 months", "6 months", "1 year"]
+  end
+
+  def process_export(url)
+    open('test.zip', 'wb') do |file|
+      file << open(url).read
+    end
+  end
+
+  def prepare_array_of_public_ids(infringement, params_string)
+    snapshots_ids = params_string.split("_")
+    public_ids = []
+
+    snapshots_ids.each do |id|
+      path = infringement.snapshots[id.to_i].image_path.to_s
+      public_ids << path.split("/").last.split(".").first
+    end
+
+    return public_ids
+  end
+
+  def tracked_for(start_time)
+    tracked = TimeDifference.between(start_time, Time.now).in_general
+    tracked_str = ""
+    tracked_str += "#{tracked[:years]}y " if tracked[:years].positive?
+    tracked_str += "#{tracked[:months]}m " if tracked[:months].positive?
+    tracked_str += "#{tracked[:weeks]}w " if tracked[:weeks].positive?
+    tracked_str += "#{tracked[:days]}d " if tracked[:days].positive?
+
+    if tracked[:hours].positive?
+      #hours = tracked[:hours].to_s.rjust(2, '0')
+      tracked_str += "#{tracked[:hours].to_s.rjust(2, '0')}:"
+    else
+      tracked_str += "00:"
+    end
+
+    if tracked[:minutes].positive?
+      #minutes = tracked[:minutes].to_s.rjust(2, '0')
+      tracked_str += "#{tracked[:minutes].to_s.rjust(2, '0')}"
+    else
+      tracked_str += "00"
+    end
+
+    return tracked_str
   end
 end

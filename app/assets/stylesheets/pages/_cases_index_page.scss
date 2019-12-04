@@ -1,6 +1,5 @@
 *:hover {
   text-decoration: none;
-  color: black;
 }
 
 .dashboard-title {
@@ -9,8 +8,8 @@
   text-align: center;
   margin: 0;
   padding-top: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
 
 }
 .dashboard-grid {
@@ -21,8 +20,8 @@
   background-color: $blue;
   padding: 20px;
   margin-top: 0px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
 }
 .dash-item {
   width: 100%;
@@ -81,11 +80,11 @@
 }
 
 .first {
-  width: 21%;
+  width: 40%;
   a {
     color: black;
-    font-family: Avenir Next;
-    font-weight: 600;
+
+    font-weight: 400;
     font-size: 18px;
     line-height: 20px;
     text-decoration: none;
@@ -95,14 +94,12 @@
 
   }
 }
-.second {
-  width: 40%;
-}
 .third {
-  width: 18%;
+  width: 30%;
 }
+
 .fourth {
-  width: 18%;
+  width: 28%;
 }
 
 .horizontal-line {
@@ -112,4 +109,16 @@
   border-width: 1px;
   border-color: $lightgray;
 
+}
+
+
+.link-to-text-decoration {
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+#h5-style {
+  font-size: 24px;
 }

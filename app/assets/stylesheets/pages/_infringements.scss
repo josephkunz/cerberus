@@ -1,60 +1,60 @@
 .infringements {
-  h1 {
-    font-family: Avenir Next;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 38px;
-    letter-spacing: 0.23em;
+  // h1 {
+  //   font-family: Avenir Next;
+  //   font-style: normal;
+  //   font-weight: normal;
+  //   font-size: 28px;
+  //   line-height: 38px;
+  //   letter-spacing: 0.23em;
 
-    color: #000000;
+  //   color: #000000;
 
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-    margin-bottom: 2px;
-  }
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  //   margin-bottom: 2px;
+  // }
 
-  h2 {
-    font-family: Avenir Next;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 25px;
-    /* identical to box height */
-    letter-spacing: 0.1em;
+  // h2 {
+  //   font-family: Avenir Next;
+  //   font-style: normal;
+  //   font-weight: normal;
+  //   font-size: 16px;
+  //   line-height: 25px;
+  //   /* identical to box height */
+  //   letter-spacing: 0.1em;
 
-    color: #000000;
+  //   color: #000000;
 
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-  }
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  // }
 
 
-  h3 {
-    font-family: Avenir Next;
-    font-style: italic;
-    font-weight: normal;
-    font-size: 22px;
-    line-height: 30px;
-    /* identical to box height */
-    letter-spacing: 0.15em;
+  // h3 {
+  //   font-family: Avenir Next;
+  //   font-style: italic;
+  //   font-weight: normal;
+  //   font-size: 22px;
+  //   line-height: 30px;
+  //   /* identical to box height */
+  //   letter-spacing: 0.15em;
 
-    color: #000000;
+  //   color: #000000;
 
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
-  }
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  // }
 
-  span {
-    font-family: Avenir Next;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.15em;
+  // span {
+  //   font-family: Avenir Next;
+  //   font-style: normal;
+  //   font-weight: normal;
+  //   font-size: 14px;
+  //   line-height: 19px;
+  //   letter-spacing: 0.15em;
 
-    color: #000000;
+  //   color: #000000;
 
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  //   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
 
-  }
+  // }
 
   .infringement-title {
     margin-bottom: 40px;
@@ -97,16 +97,65 @@
 
   }
 
-  p {
-    text-align: none !important;
-    font-family: Avenir Next;
-  }
+  // p {
+  //   text-align: none !important;
+  //   font-family: Avenir Next;
+  // }
 
   .description {
     border-left: 1px solid #000000;
     padding-left: 40px;
 
 
+
+  }
+
+  .select-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .select-empty {
+    width: 100%;
+  }
+
+  .select-menu-infringement {
+    visibility: hidden;
+    padding: 0px 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    margin-left: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+    height: 50px;
+    //width:  550px;
+
+    .selected-icon {
+      margin-left: 5px;
+      margin-right: 10px;
+    }
+
+    .selected-text {
+      white-space: nowrap;
+    }
+
+    .selected-divider {
+      border-left: 1px solid black;
+      margin: 5px 15px;
+
+      height:80%;
+    }
+
+    .btn {
+      white-space: nowrap;
+      padding: 4px 10px;
+      font-size: 14px;
+      margin: 0px 5px;
+    }
 
   }
 }

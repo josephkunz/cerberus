@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  get '/cases/:case_id/infringements/:id/refresh', to: 'infringements#refresh'
+  get '/cases/:case_id/infringements/:id/sendzip', to: 'infringements#send_zip'
+  get '/cases/:case_id/infringements/:id/createzip', to: 'infringements#create_zip'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
