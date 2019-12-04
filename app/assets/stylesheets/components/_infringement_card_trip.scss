@@ -19,7 +19,7 @@
 
   &:hover .card-trip-checkcard {
     visibility: visible;
-    transition-delay: 1s;
+    transition-delay: 0.7s;
   }
 
   &:active {
@@ -27,9 +27,33 @@
     box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.18);
   }
 
-  &:active .card-trip-checkcard{
-    transform: none;
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.18);
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+}
+
+.card-trip-noclick {
+  overflow: hidden;
+  background-color: #f8f8f8;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  width: 230px;
+  height: 230px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  position: relative;
+
+  background-color: #FFFFFF;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.18);
+  filter: grayscale(0%);
+
+
+  &:hover .card-trip-checkcard {
+    visibility: visible;
+    transition-delay: 0.7s;
   }
 
   a {
@@ -37,6 +61,11 @@
     color: black;
   }
 
+}
+
+.card-clicked {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.18);
 }
 
 .card-trip-link {
