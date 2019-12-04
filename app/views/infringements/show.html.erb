@@ -1,66 +1,67 @@
 <div class="container">
-  <div class="box infringements">
-    <div class="case">
+  <div class="infringement">
+    <div class="infringement-case">
       <div class="infringement-title">
         <h1><%= @infringement.case.name.upcase %> </h1>
         <h2><%= @infringement.case.number %></h2>
       </div>
 
-      <h3>Basic Information</h3>
-      <div class="flex-container">
-        <div class="basic-info-legend">
-          <span>Created:</span>
-          <span>Tracked:</span>
-          <span>Records:</span>
-        </div>
-        <div class="basic-info-values">
-          <span><%= @infringement.created_at.strftime("%F") %></span>
-          <span><%= @tracked_for %></span>
-          <span><%= @infringement.snapshots.count %></span>
-        </div>
-
-        <!-- <div class="flex-item-1" > <p> <strong>First Occurence: </strong> <%= @infringement.created_at %> </p></div> -->
-        <div class="flex-item-2 description">
-          <span>Description:</span>
-          <p><%= @infringement.description %></p>
-        </div>
+    <div class="infringement-snapshot-titlebox">
+      <div class="infringement-snapshot-titlebox-title">
+        <h3>Snapshots</h3>
       </div>
-      <h3>Snapshots</h3>
-    </div>
-    <div>
       <div class="select-container">
         <div class="select-menu-infringement">
           <div class="selected-icon"><i class="far fa-check-square"></i></div>
           <div class="selected-text"><span>Selected</span></div>
           <div class="selected-divider"></div>
-          <button id="select-button" class="btn btn-ghost">Select All</button>
-          <button id="deselect-button" class="btn btn-ghost">Deselect All</button>
-          <button id="invert-button" class="btn btn-ghost">Invert Selection</button>
+          <button id="select-button" class="btn-ghost">Select All</button>
+          <button id="deselect-button" class="btn-ghost">Deselect All</button>
+          <button id="invert-button" class="btn-ghost">Invert Selection</button>
         </div>
         <div class="select-empty">
         </div>
       </div>
-      <div class="btn-and-infringement">
-        <div class="infringement-page-buttons flex-item-buttons">
-          <button id="snapshot-button" class="btn btn-ghost btn-ghost-w120px">Snapshot</button>
-          <% if @infringement.interval == "1 snapshot" %>
-            <%= select_tag "select-timer", options_for_select(@timer_values, "1 year")%>
-            <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
-          <% elsif @state %>
-            <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: true%>
-            <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Stop</button>
-          <% else %>
-            <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval),  disabled: false%>
-            <button id="play-button" class="btn btn-ghost btn-ghost-w120px">Start</button>
-          <% end %>
+    </div>
+    </div>
+    <div>
 
-          <button id="export-button" class="btn btn-ghost btn-ghost-w120px">Export All</button>
-
-          <!-- <button class="btn btn-ghost btn-ghost-w120px">Export</button> -->
-          <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost btn-ghost-w120px" %>
-          <!-- <button class="btn btn-ghost btn-ghost-w120px">Delete</button> -->
+      <div class="infringement-side-and-snapshots">
+        <div class="infringement-sidebar flex-item-buttons">
+          <div class="infringement-info">
+            <div>
+              <span><strong>Infringement Info</strong></span>
+            </div>
+            <div class="infringement-info-details">
+              <div class="basic-info-legend">
+                <span>Created:</span>
+                <span>Tracked:</span>
+                <span>Records:</span>
+              </div>
+              <div class="basic-info-values">
+                <span><%= @infringement.created_at.strftime("%F") %></span>
+                <span><%= @tracked_for %></span>
+                <span><%= @infringement.snapshots.count %></span>
+              </div>
+            </div>
+          </div>
+          <div class="infringement-buttons-general">
+            <button id="snapshot-button" class="btn btn-ghost btn-margin">Take Snapshot</button>
+            <button id="export-button" class="btn btn-ghost btn-margin">Export All</button>
+            <%= link_to "Delete", case_infringement_path, method: :delete, class: "btn btn-ghost select-margin" %>
+            <% if @infringement.interval == "1 snapshot" %>
+              <%= select_tag "select-timer", options_for_select(@timer_values, "1 year", class: "select-box btn-margin")%>
+              <button id="play-button" class="btn btn-ghost">Start</button>
+            <% elsif @state %>
+              <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval), class: "select-box btn-margin", disabled: true%>
+              <button id="play-button" class="btn btn-ghost">Stop</button>
+            <% else %>
+              <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval), class: "select-box btn-margin",  disabled: false%>
+              <button id="play-button" class="btn btn-ghost">Start</button>
+            <% end %>
+          </div>
         </div>
-        <div class="snapshots-infringement flex-item-snapshots">
+        <div class="infringement-snapshots">
           <% if @infringement.snapshots.empty? %>
             <div class="card-trip-empty">
               <span>First screenshot will be available soon</span>

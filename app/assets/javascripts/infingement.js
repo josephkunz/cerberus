@@ -6,6 +6,7 @@ const csfrToken = document.head.querySelector("[name~=csrf-token][content]").con
 
 // Select items
 const selectMenu = document.querySelector(".select-menu-infringement");
+const cards = document.querySelectorAll("#snapshot-card");
 const cardLinks = document.querySelectorAll(".card-trip-link");
 const checkBoxes = document.querySelectorAll(".card-trip-checkbox");
 const checkCards = document.querySelectorAll(".card-trip-checkcard");
@@ -111,6 +112,8 @@ if (selectTimer != null) {
 
   const showCheckCards = () => {
     for (let i = 0; i < checkCards.length; i += 1) {
+      cards[i].classList.remove("card-trip");
+      cards[i].classList.add("card-trip-noclick");
       checkCards[i].style.visibility = "visible";
     }
   }
@@ -125,9 +128,34 @@ if (selectTimer != null) {
     }
     if (checkFlag === false) {
       for (let i = 0; i < checkCards.length; i += 1) {
+        cards[i].classList.remove("card-trip-noclick");
+        cards[i].classList.add("card-trip");
         checkCards[i].style.visibility = null;
       }
       hideSelectMenu();
+    }
+  }
+
+  const cardClickOn = (event) => {
+    for (let i = 0; i < cards.length; i += 1) {
+      cards[i].classList.remove("card-trip");
+      cards[i].classList.add("card-trip-noclick");
+    }
+  }
+
+  const cardClickOff = (event) => {
+    let checkFlag = false
+    for (let i = 0; i < checkBoxes.length; i += 1) {
+      if (checkBoxes[i].dataset.checked === "true") {
+        checkFlag = true;
+        break;
+      }
+    }
+    if (checkFlag === false) {
+      for (let i = 0; i < cards.length; i += 1) {
+        cards[i].classList.remove("card-trip-noclick");
+        cards[i].classList.add("card-trip");
+      }
     }
   }
 
@@ -159,6 +187,8 @@ if (selectTimer != null) {
 
   for (let i = 0; i < checkBoxes.length; i += 1) {
     checkBoxes[i].addEventListener("click", checkBoxClick);
+    checkBoxes[i].addEventListener("mousedown", cardClickOn);
+    checkBoxes[i].addEventListener("mouseup", cardClickOff);
     cardLinks[i].addEventListener("click", cardLinkClick);
   }
 
@@ -179,6 +209,7 @@ if (selectTimer != null) {
       checkCards[i].style.visibility = null;
     }
     numberOfSelected = 0;
+    cardClickOff(null);
     updateSelectedCount();
     updateExportButton();
     hideSelectMenu();
@@ -197,6 +228,7 @@ if (selectTimer != null) {
     numberOfSelected = checkBoxes.length - numberOfSelected;
     if (numberOfSelected === 0) {
       hideSelectMenu();
+      cardClickOff(null);
     }
     hideCheckCards();
     updateSelectedCount();
