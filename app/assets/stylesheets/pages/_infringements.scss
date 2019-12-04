@@ -1,9 +1,24 @@
 .infringement {
   padding: 29px;
 
-  .infringement-title {
-    margin-bottom: 40px;
+  .infringement-title-box {
+    display: flex;
+    justify-content: space-between;
+
+    .infringement-title {
+      margin-bottom: 40px;
+    }
+
+    .btn-margin-right {
+      margin-right: 10px;
+    }
+
+    #btn-delete-infringement {
+      width: 200px;
+    }
   }
+
+
 
   .infringement-snapshot-titlebox {
     margin-top: 60px;
@@ -32,11 +47,8 @@
       justify-content: flex-start;
       align-items: center;
       border: 2px dotted #DDDDDD;
-      //margin-left: 200px;
       border-radius: 3px;
-      //box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
       height: 50px;
-      //width:  550px;
 
       .selected-icon {
         margin-left: 5px;
@@ -128,14 +140,13 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
-    border-left: 1px solid #000000;
+    //border-left: 1px solid #000000;
     padding-left: 30px;
 
   }
 
   .infringement-sidebar {
-    //margin-top: 20px;
-    width: 390px;
+    width: 245px;
     padding-right: 30px;
     position: sticky;
     top: 20px;

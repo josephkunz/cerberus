@@ -1,0 +1,16 @@
+<div>
+  <span><strong>Infringement Info</strong></span>
+</div>
+<div class="infringement-info-details">
+  <div class="basic-info-legend">
+    <span>Created:</span>
+    <span>Tracked:</span>
+    <span>Records:</span>
+  </div>
+  <div class="basic-info-values">
+    <span><%= infringement.created_at.strftime("%F") %></span>
+    <span><%= tracked_for %></span>
+    <span><%= infringement.snapshots.count %></span>
+  </div>
+</div>
+
