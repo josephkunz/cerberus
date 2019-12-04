@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8970197"
-     inkscape:cx="938.04082"
-     inkscape:cy="138.3639"
+     inkscape:zoom="1.3413955"
+     inkscape:cx="242.29641"
+     inkscape:cy="638.05263"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36,8 +36,8 @@
      inkscape:showpageshadow="false"
      inkscape:window-width="1508"
      inkscape:window-height="958"
-     inkscape:window-x="0"
-     inkscape:window-y="1"
+     inkscape:window-x="20"
+     inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
@@ -60,10 +60,10 @@
        id="g1063"
        style="fill:#011638;fill-opacity:1">
       <path
-         sodipodi:nodetypes="ccscccccc"
+         sodipodi:nodetypes="ccscccccccc"
          inkscape:connector-curvature="0"
          id="rect843"
-         d="M -0.22375087,185.6059 103.40246,184.82023 c 10.57545,0.0618 41.45227,0.52527 66.97348,-8.31569 6.94443,-2.40566 13.16737,-10.21753 18.40928,-15.61007 4.48148,-4.66771 12.77399,-11.31157 19.72421,-14.0788 12.71056,-3.92879 16.54855,-3.54607 90.01833,-3.04406 0,0 -0.0503,102.34685 -0.0503,140.27292 H -0.22375087 Z"
+         d="M -0.22375087,185.6059 103.40246,184.82023 c 10.57545,0.0618 41.45227,0.52527 66.97348,-8.31569 6.94443,-2.40566 13.16737,-10.21753 18.40928,-15.61007 4.48148,-4.66771 12.77399,-11.31157 19.72421,-14.0788 12.71056,-3.92879 16.54855,-3.54607 90.01833,-3.04406 0,0 -0.0503,102.34685 -0.0503,140.27292 l -75.32041,0.27895 c -44.75037,0.16351 -43.04486,-25.90965 -133.882614,-24.69667 -34.125317,0.32817 -55.629038,0.14939 -89.49818687,0.14939 z"
          style="fill:#011638;fill-opacity:1;stroke:none;stroke-width:0.31110525;stroke-opacity:1" />
     </g>
     <ellipse
