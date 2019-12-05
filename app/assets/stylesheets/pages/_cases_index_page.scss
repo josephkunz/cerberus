@@ -6,6 +6,66 @@
   padding: 29px;
 }
 
+.mainbox-cases {
+  display:flex;
+  justify-content:flex-end;
+}
+
+.window-cases {
+  flex-grow: 1;
+}
+
+.sidebar-cases {
+  width: 290px;
+  margin-left: 50px;
+}
+
+.statistics-cases {
+  width: 100%;
+  background-color: $infobox;
+  padding: 15px 30px;
+  border-radius: 3px;
+  font-size: 15px;
+  margin-bottom: 5px;
+
+  .statistics-details-cases {
+      margin-top: 7px;
+      display: flex;
+    }
+
+  .basic-info-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 10px;
+    height: 70px;
+    width: 150px;
+    }
+
+    .basic-info-values {
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      height: 70px;
+    }
+}
+
+.latest-cases {
+  margin-top: 15px;
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .latest-title-cases {
+    margin-bottom: 7px;
+  }
+}
+
 .dashboard-title {
   background-color: $infobox;
   text-align: center;

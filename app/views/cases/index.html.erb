@@ -6,73 +6,12 @@
     <button id="form_button" class="btn-blue" onclick="showHide(event)">Create New Case</button>
   </div>
   <br>
-  <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
-  <!-- <h4 class="dashboard-title"> Dashboard </h4> -->
-  <div class="dashboard-grid">
-    <div>
-      <!-- Calculator of currently running events -->
-      <% infringe_count = 0 %>
-      <% @events.each do |my_event| %>
-        <% if my_event.frequency.positive? %>
-          <% infringe_count += 1  %>
-          <% end %>
-      <% end %>
-      <div style="text-align: center; font-size: 22px;">
-        Actively Monitored <%= "Website".pluralize(infringe_count) %>:
-      </div>
-      <div style="text-align: center; color: mediumseagreen; font-size: 30px;">
-          <i class="fas fa-sync fa-spin"></i> &nbsp;<%= infringe_count %>
-      </div>
-    </div>
-    <%# raise %>
 
-    <!-- Calculator of credits used up -->
-    <% credits_used = 0 %>
-    <% @my_snapshots.each do |one_snap| %>
-      <% if one_snap.infringement.case.user == current_user %>
-        <% credits_used += 1 %>
-      <% end %>
-    <% end %>
-    <div>
-      <div style="text-align: center; font-size: 22px;">
-        Credits Remaining:
-      </div>
-
-      <div style="text-align: center; color: #280891; font-size: 30px;">
-        <%= 400 - credits_used %>&nbsp; <i class="fas fa-coins"></i>
-      </div>
-    </div>
-  </div>
+  <div class="mainbox-cases">
+    <div class="window-cases">
 
 
-  <!-- CURRENTLY COMMENTED OUT SNAPSHOTS - make available on button click if there is time -->
-  <!-- GRID of the most recent snapshots in the different Cases -->
-<!--   <% if @snapshots.any? %>
-    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
-    <div class="dashboard-grid">
-      <% @snapshots.each do |snapshot| %>
-        <%= link_to case_path(snapshot.infringement.case) do %>
-          <div class="dash-item">
-            <%= cl_image_tag(snapshot.image_path,
-          transformation: [
-            {width: 230, crop: "scale"},
-            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
-          ]) %>
-            <p> <%= snapshot.time %> </p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% else %>
-    <h4 class="dashboard-title"> No Screenshots Yet! </h4>
-  <% end %> -->
-
-
-  <!-- Open cases header with NEW CASE Button -->
-
-
-  <!-- Iterate through and display each case in a CARD -->
-  <% @cases.each do |c| %>
+<% @cases.each do |c| %>
 
     <!-- store the client for listing in 1st box -->
     <% client = Client.find(c.client_id) %>
@@ -130,6 +69,130 @@
         <% end %>
       </div>
     <% end %>
+
+
+    </div>
+    <div class="sidebar-cases">
+      <div class="statistics-cases">
+        <div>
+          <span><strong>My Statistics</strong></span>
+        </div>
+        <div class="statistics-details-cases">
+          <div class="basic-info-legend">
+            <span>Cases opened:</span>
+            <span>Infringements:</span>
+            <span>Monitoring:</span>
+          </div>
+          <div class="basic-info-values">
+            <span><%= @cases.count %></span>
+            <span><%= @cases.first.user.infringements.count %></span>
+            <span><i class="fas fa-sync fa-spin" style="color:green"></i> <%= @active %> / <i class="far fa-stop-circle" style="color:red"></i> <%= @pasive %></span>
+          </div>
+        </div>
+      </div>
+      <% credits_used = 0 %>
+      <% @my_snapshots.each do |one_snap| %>
+        <% if one_snap.infringement.case.user == current_user %>
+          <% credits_used += 1 %>
+        <% end %>
+      <% end %>
+      <% credits_percent = (credits_used / 400.0 * 100).round %>
+      <div class="statistics-cases">
+        <div>
+          <span><strong>My Credits</strong></span>
+        </div>
+        <div class="statistics-details-cases">
+          <div class="basic-info-legend">
+            <span>Total credits:</span>
+            <span>Credits used:</span>
+            <span>Snapshots created:</span>
+          </div>
+          <div class="basic-info-values">
+            <span>400 <i class="fas fa-coins" style="color:#ffb600"></i></span>
+            <span><%= credits_used %> <i class="fas fa-coins" style="color:#ffb600"></i> (<%= credits_percent %>%)</span>
+            <span><%= @snapshots_count %></span>
+          </div>
+        </div>
+      </div>
+      <div class="latest-cases">
+        <div class="latest-title-cases">
+          <span><strong>Latest Snapshots</strong></span>
+        </div>
+        <% index = 0 %>
+        <% @latest_snapshots.each do |snapshot| %>
+          <%= render partial: "latest_screenshot", locals: { snapshot: snapshot, base_url: @base_urls[index] } %>
+          <% index += 1 %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
+  <!-- <h4 class="dashboard-title"> Dashboard </h4> -->
+  <div class="dashboard-grid">
+    <div>
+      <!-- Calculator of currently running events -->
+      <% infringe_count = 0 %>
+      <% @events.each do |my_event| %>
+        <% if my_event.frequency.positive? %>
+          <% infringe_count += 1  %>
+          <% end %>
+      <% end %>
+      <div style="text-align: center; font-size: 22px;">
+        Actively Monitored <%= "Website".pluralize(infringe_count) %>:
+      </div>
+      <div style="text-align: center; color: mediumseagreen; font-size: 30px;">
+          <i class="fas fa-sync fa-spin"></i> &nbsp;<%= infringe_count %>
+      </div>
+    </div>
+    <%# raise %>
+
+    <!-- Calculator of credits used up -->
+
+    <div>
+      <div style="text-align: center; font-size: 22px;">
+        Credits Remaining:
+      </div>
+
+      <div style="text-align: center; color: #280891; font-size: 30px;">
+        <%= 400 - credits_used %>&nbsp; <i class="fas fa-coins"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- CURRENTLY COMMENTED OUT SNAPSHOTS - make available on button click if there is time -->
+  <!-- GRID of the most recent snapshots in the different Cases -->
+<!--   <% if @snapshots.any? %>
+    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
+    <div class="dashboard-grid">
+      <% @snapshots.each do |snapshot| %>
+        <%= link_to case_path(snapshot.infringement.case) do %>
+          <div class="dash-item">
+            <%= cl_image_tag(snapshot.image_path,
+          transformation: [
+            {width: 230, crop: "scale"},
+            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
+          ]) %>
+            <p> <%= snapshot.time %> </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <h4 class="dashboard-title"> No Screenshots Yet! </h4>
+  <% end %> -->
+
+
+  <!-- Open cases header with NEW CASE Button -->
+
+
+  <!-- Iterate through and display each case in a CARD -->
+
 
     <div id="page-mask"></div>
 
