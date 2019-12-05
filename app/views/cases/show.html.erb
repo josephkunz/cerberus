@@ -8,9 +8,6 @@
         <h1><%= @case.name.upcase %></h1>
         <h2><%= @case.number %></h2>
       </div>
-      <div class="case-infr-btn">
-        <button class="btn-ghost float-right"><%= link_to 'Go Back', cases_path, style: " text-decoration: none" %></button>
-      </div>
     </div>
 
     <div class="case-description">
@@ -50,9 +47,12 @@
       </div>
 
       <div class="case-title-buttons">
-        <button id="form_button_edit" class="button btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
+        <!-- <button id="form_button_edit" class="on btn-ghost float-rightbutt" onclick="showHideEdit(event)">Edit Case</button> -->
+        <i class="far fa-edit" id="form_button_edit" onclick="showHideEdit(event)"></i>
         <div style="width: 2vw;"></div>
-        <%= link_to "Delete Case", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, id: "delete-btn", class: "button btn-ghost btn-ghost-w160px float-right"%>
+        <%= link_to case_path(@case),  method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="far fa-trash-alt" id="delete-icon" ></i>
+        <% end %>
       </div>
 
     </div>
