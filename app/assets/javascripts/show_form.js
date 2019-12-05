@@ -27,7 +27,7 @@ function showHide(event) {
 
 
 
-// TODO: REFACTOR THIS CODE TO BE MORE DRY - REID SHOULD DO THIS
+// TODO: REFACTOR THIS CODE TO BE MORE DRY
 
 function showHideEdit(event) {
     var span = document.getElementsByClassName("close-edit")[0];
