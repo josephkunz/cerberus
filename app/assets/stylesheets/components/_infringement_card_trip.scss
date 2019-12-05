@@ -1,6 +1,6 @@
 .card-trip {
   overflow: hidden;
-  background-color: #f8f8f8;
+  background-color: #f5f4ff;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
   width: 230px;
   height: 230px;
@@ -10,6 +10,7 @@
   border-radius: 3px;
   position: relative;
   filter: grayscale(50%);
+  transition: all 0.2s ease;
 
   &:hover {
     background-color: #FFFFFF;
