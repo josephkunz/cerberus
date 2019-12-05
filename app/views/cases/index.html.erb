@@ -25,8 +25,31 @@
         78 &nbsp; <i class="fas fa-coins"></i>
       </div>
     </div>
-
   </div>
+
+
+  <!-- CURRENTLY COMMENTED OUT SNAPSHOTS - make available on button click if there is time -->
+  <!-- GRID of the most recent snapshots in the different Cases -->
+<!--   <% if @snapshots.any? %>
+    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
+    <div class="dashboard-grid">
+      <% @snapshots.each do |snapshot| %>
+        <%= link_to case_path(snapshot.infringement.case) do %>
+          <div class="dash-item">
+            <%= cl_image_tag(snapshot.image_path,
+          transformation: [
+            {width: 230, crop: "scale"},
+            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
+          ]) %>
+            <p> <%= snapshot.time %> </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <h4 class="dashboard-title"> No Screenshots Yet! </h4>
+  <% end %> -->
+
 
   <!-- Open cases header with NEW CASE Button -->
   <div class="open-cases-top-bar">
@@ -93,29 +116,29 @@
           </div>
         <% end %>
       </div>
-  <% end %>
+    <% end %>
+
+    <div id="page-mask"></div>
 
     <div id="show-form">
-      <!-- TODO: Make the background shading div cover the whole screen with a gray transparent cover to highlight the modal -->
-      <div class="background-shading">
-        <div class="form-content">
-          <span class="close">&times;</span>
-            <div class="form-container">
-              <h2>Add a new case</h2>
-              <%= simple_form_for @case do |f| %>
-                <%= f.input :name, label: 'Name:' %>
-                <%= f.input :number, label: 'Number:' %>
-                <%= f.input :description, label: 'Description:' %>
-                <%= f.simple_fields_for :clients do |m| %>
-                  <%= m.input :first_name, label: 'First name:' %>
-                  <%= m.input :last_name, label: 'Last name:' %>
-                <% end %>
-                <%= f.submit "Add a new case", class: "btn btn-ghost" %>
+      <div class="form-content">
+        <span class="close">&times;</span>
+          <div class="form-container">
+            <h2>Add a new case</h2>
+            <%= simple_form_for @case do |f| %>
+              <%= f.input :name, label: 'Name:' %>
+              <%= f.input :number, label: 'Number:' %>
+              <%= f.input :description, label: 'Description:' %>
+              <%= f.simple_fields_for :clients do |m| %>
+                <%= m.input :first_name, label: 'First name:' %>
+                <%= m.input :last_name, label: 'Last name:' %>
               <% end %>
-          </div>
+              <%= f.submit "Add a new case", class: "btn btn-ghost" %>
+            <% end %>
         </div>
       </div>
     </div>
+
   </div>
 
 </div>
