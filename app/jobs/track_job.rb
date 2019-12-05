@@ -59,7 +59,7 @@ class TrackJob < ApplicationJob
     options = {
       url: url,
       fullpage: true,
-      thumbnail_max_width: 1200,
+      thumbnail_max_width: 800,
       #viewport: "1480x1480",
       unique: Time.now.to_i / 30
     }

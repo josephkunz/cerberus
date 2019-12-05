@@ -7,112 +7,18 @@ const csfrToken = document.head.querySelector("[name~=csrf-token][content]").con
 
 // Select items
 const selectMenu = document.querySelector(".select-menu-infringement");
-const cards = document.querySelectorAll("#snapshot-card");
-const cardLinks = document.querySelectorAll(".card-trip-link");
-const checkBoxes = document.querySelectorAll(".card-trip-checkbox");
-const checkCards = document.querySelectorAll(".card-trip-checkcard");
-const selectedText = document.querySelectorAll(".selected-text span");
+let cards = document.querySelectorAll("#snapshot-card");
+let cardLinks = document.querySelectorAll(".card-trip-link");
+let checkBoxes = document.querySelectorAll(".card-trip-checkbox");
+let checkCards = document.querySelectorAll(".card-trip-checkcard");
+let selectedText = document.querySelectorAll(".selected-text span");
 const selectAllButton = document.getElementById("select-button");
 const deselectAllButton = document.getElementById("deselect-button");
 const invertSelectionButton = document.getElementById("invert-button");
 let numberOfSelected = 0;
 
 if (selectTimer != null) {
-  selectTimer.addEventListener("change", (event) => {
-    Rails.ajax({
-      url: "",
-      type: "put",
-      data: `interval=${selectTimer.value}`,
-      success: (data) => { },
-      error: (data) => {}
-    })
-  });
 
-  playButton.addEventListener("click", (event) => {
-    let state = "";
-    if (playButton.innerText === "Stop")  {
-      state = "Stop";
-    } else {
-      state = "Start";
-    }
-
-    Rails.ajax({
-      url: "",
-      type: "put",
-      data: `state=${state}&interval=${selectTimer.value}`,
-      success: (data) => { },
-      error: (data) => {}
-    })
-  });
-
-  snapshotButton.addEventListener("click", (event) => {
-    snapshotButton.innerText = "Taking Snapshot..."
-    snapshotButton.disabled = true;
-    Rails.ajax({
-      url: "",
-      type: "put",
-      data: `snapshot=true`,
-      success: (data) => { },
-      error: (data) => {}
-    })
-  });
-
-  exportButton.addEventListener("click", (event) => {
-    exportButton.innerText = "Downloading..."
-    exportButton.disabled = true;
-    deleteButton.disabled = true;
-
-    Rails.ajax({
-      url: window.location.pathname + "/createzip",
-      type: "get",
-      data: `files=${selectedParametersString()}`,
-      success: (data) => { },
-      error: (data) => {}
-    })
-  });
-
-  deleteButton.addEventListener("click", (event) => {
-    deleteButton.innerText = "Deleting..."
-    deleteButton.disabled = true;
-    exportButton.disabled = true;
-
-    Rails.ajax({
-      url: window.location.pathname + "/deletesnapshots",
-      type: "get",
-      data: `files=${selectedParametersString()}`,
-      success: (data) => { },
-      error: (data) => {}
-    })
-
-    for (let i = 0; i < checkBoxes.length; i += 1) {
-      if (checkBoxes[i].dataset.checked === "true") {
-        cards[i].parentNode.removeChild(cards[i]);
-      }
-    }
-
-    for (let i = 0; i < checkBoxes.length; i += 1) {
-      checkBoxes[i].dataset.checked = "false";
-      checkBoxes[i].innerHTML = '<i class="far fa-square"></i>';
-      checkCards[i].style.visibility = null;
-    }
-
-    numberOfSelected = 0;
-    cardClickOff(null);
-    updateSelectedCount();
-    hideSelectMenu();
-  });
-
-  setInterval(function() {
-    const snapshotCards = document.querySelectorAll("#snapshot-card");
-    Rails.ajax({
-      url: window.location.pathname + "/refresh",
-      type: "get",
-      dataType: "script",
-      data: `snapshots=${snapshotCards.length}`,
-      success: (data) => { },
-      error: (data) => {}
-    })
-  }, 5000);
 
 
 
@@ -280,5 +186,129 @@ if (selectTimer != null) {
   deselectAllButton.addEventListener("click", deselectAll);
 
   invertSelectionButton.addEventListener("click", invertSelection);
+
+
+
+
+  selectTimer.addEventListener("change", (event) => {
+    Rails.ajax({
+      url: "",
+      type: "put",
+      data: `interval=${selectTimer.value}`,
+      success: (data) => { },
+      error: (data) => {}
+    })
+  });
+
+  playButton.addEventListener("click", (event) => {
+    let state = "";
+    if (playButton.innerText === "Stop")  {
+      state = "Stop";
+    } else {
+      state = "Start";
+    }
+
+    Rails.ajax({
+      url: "",
+      type: "put",
+      data: `state=${state}&interval=${selectTimer.value}`,
+      success: (data) => { },
+      error: (data) => {}
+    })
+  });
+
+  snapshotButton.addEventListener("click", (event) => {
+    snapshotButton.innerText = "Taking Snapshot..."
+    snapshotButton.disabled = true;
+    Rails.ajax({
+      url: "",
+      type: "put",
+      data: `snapshot=true`,
+      success: (data) => { },
+      error: (data) => {}
+    })
+  });
+
+  exportButton.addEventListener("click", (event) => {
+    exportButton.innerText = "Downloading..."
+    exportButton.disabled = true;
+    deleteButton.disabled = true;
+
+    Rails.ajax({
+      url: window.location.pathname + "/createzip",
+      type: "get",
+      data: `files=${selectedParametersString()}`,
+      success: (data) => { },
+      error: (data) => {}
+    })
+  });
+
+  deleteButton.addEventListener("click", (event) => {
+    deleteButton.innerText = "Deleting..."
+    deleteButton.disabled = true;
+    exportButton.disabled = true;
+
+    Rails.ajax({
+      url: window.location.pathname + "/deletesnapshots",
+      type: "get",
+      data: `files=${selectedParametersString()}`,
+      success: (data) => { },
+      error: (data) => {}
+    })
+
+    for (let i = 0; i < checkBoxes.length; i += 1) {
+      if (checkBoxes[i].dataset.checked === "true") {
+        cards[i].parentNode.removeChild(cards[i]);
+      }
+    }
+
+    cards = document.querySelectorAll("#snapshot-card");
+    cardLinks = document.querySelectorAll(".card-trip-link");
+    checkBoxes = document.querySelectorAll(".card-trip-checkbox");
+    checkCards = document.querySelectorAll(".card-trip-checkcard");
+    selectedText = document.querySelectorAll(".selected-text span");
+
+    for (let i = 0; i < checkBoxes.length; i += 1) {
+      checkBoxes[i].dataset.checked = "false";
+      checkBoxes[i].innerHTML = '<i class="far fa-square"></i>';
+      checkCards[i].style.visibility = null;
+    }
+
+    numberOfSelected = 0;
+    cardClickOff(null);
+    updateSelectedCount();
+    hideSelectMenu();
+  });
+
+  setInterval(function() {
+    const snapshotCards = document.querySelectorAll("#snapshot-card");
+    Rails.ajax({
+      url: window.location.pathname + "/refresh",
+      type: "get",
+      dataType: "script",
+      data: `snapshots=${snapshotCards.length}`,
+      success: (data) => {
+        cards = document.querySelectorAll("#snapshot-card");
+        cardLinks = document.querySelectorAll(".card-trip-link");
+        checkBoxes = document.querySelectorAll(".card-trip-checkbox");
+        checkCards = document.querySelectorAll(".card-trip-checkcard");
+        selectedText = document.querySelectorAll(".selected-text span");
+        for (let i = 0; i < checkBoxes.length; i += 1) {
+          checkBoxes[i].addEventListener("click", checkBoxClick);
+          checkBoxes[i].addEventListener("mousedown", cardClickOn);
+          checkBoxes[i].addEventListener("mouseup", cardClickOff);
+          cardLinks[i].addEventListener("click", cardLinkClick);
+        }
+      },
+      error: (data) => {}
+    })
+  }, 5000);
+
+
+
+
+
+
+
 }
 
