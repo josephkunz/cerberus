@@ -1,14 +1,25 @@
+/* The mask that darkens the background when you click to open a form */
+#page-mask {
+  z-index: 801; // Sits right above the Navbar (navbar @ z800 form @ z802)
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0,0,56,0.5);
+  display: none;
+}
+
 /* The Modal (background) */
 #show-form {
   margin: 0 auto;
   border: 1px solid #DDD;
   box-sizing: border-box;
-  // box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
   padding: 20px;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 802; /* Sit on top */
   min-width: 50%; /* Full width */
   min-height: 50%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -41,27 +52,18 @@
   cursor: pointer;
 }
 
-.background-shading {
-  // background-color: rgba(200, 200, 200, 0.5);
-  // height: 100vh;
-  // width: 100vw;
-}
-
-
-
 /* I NEED TO REFACTOR THIS LATER - REID */
 /* ------------------------------------ */
 
 #show-form-edit {
   margin: 0 auto;
-  border: 1px solid #000000;
+  border: 1px solid #DDD;
   box-sizing: border-box;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
-  border-radius: 2px;
+  border-radius: 6px;
   padding: 20px;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 802; /* Sit on top */
   min-width: 50%; /* Full width */
   min-height: 50%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
