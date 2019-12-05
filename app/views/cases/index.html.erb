@@ -5,29 +5,33 @@
   <br>
 
   <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
-  <% if @snapshots.any? %>
-    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
-    <div class="dashboard-grid">
-      <!-- iterate through 5 snaps and put them in a CSS grid with 5 spaces -->
-      <% @snapshots.each do |snapshot| %>
-        <%= link_to case_path(snapshot.infringement.case) do %>
-          <div class="dash-item">
-            <%= cl_image_tag(snapshot.image_path,
-          transformation: [
-            {width: 300, crop: "scale"},
-            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
-          ]) %>
-            <p> <%= snapshot.time %> </p>
-          </div>
-        <% end %>
-      <% end %>
+  <h4 class="dashboard-title"> Dashboard </h4>
+  <div class="dashboard-grid">
+    <div>
+      <div style="text-align: center; font-size: 22px;">
+        Actively Monitored Sites:
+      </div>
+      <div style="text-align: center; color: mediumseagreen; font-size: 30px;">
+          <i class="fas fa-sync fa-spin"></i> &nbsp; 6
+      </div>
     </div>
-  <% end %>
+
+    <div>
+      <div style="text-align: center; font-size: 22px;">
+        Credits Remaining:
+      </div>
+
+      <div style="text-align: center; color: #280891; font-size: 30px;">
+        78 &nbsp; <i class="fas fa-coins"></i>
+      </div>
+    </div>
+
+  </div>
 
   <!-- Open cases header with NEW CASE Button -->
   <div class="open-cases-top-bar">
     <h1>Open Cases:</h1>
-    <button id="form_button" class="btn btn-ghost" onclick="showHide(event)">Create New Case</button>
+    <button id="form_button" class="btn-blue" onclick="showHide(event)">Create New Case</button>
   </div>
   <br>
 
@@ -70,14 +74,7 @@
               <div class="horizontal-line"></div>
 
 
-              <!-- 2nd box in Case card:  DESCRIPTION-->
-              <!-- <div class="case-info-box second">
-                <p class="truncate-overflow"><%= c.description[0..200] %></p>
-              </div>
-              <div class="horizontal-line"></div> -->
-
-
-              <!-- 3rd box in Case card: FIRSTNAME, LASTNAME, DATE -->
+              <!-- 2nd box in Case card: FIRSTNAME, LASTNAME, DATE -->
               <div class="case-info-box third">
                 <i class="fas fa-user"></i>&nbsp;<%= " " + client.first_name %>&nbsp;<%=  " " + client.last_name %>
                 <br>
@@ -86,7 +83,7 @@
               <div class="horizontal-line"></div>
 
 
-              <!-- 4th box in Case card:  NUMBER OF INFRINGEMENTS & TOTAL SCREENSHOTS-->
+              <!-- 3rd box in Case card:  NUMBER OF INFRINGEMENTS & TOTAL SCREENSHOTS-->
               <div class="case-info-box fourth">
                 <i class="fas fa-file-alt"></i>&nbsp;<%=  " " + pluralize(infringement_count, 'infringement') %>
                 <br>
@@ -98,24 +95,24 @@
       </div>
   <% end %>
 
-  <!-- TODO: Make archived cases -->
-  <!-- <h2>Archived cases</h2> -->
-
     <div id="show-form">
-      <div class="form-content">
-        <span class="close">&times;</span>
-          <div class="form-container">
-            <h2>Add a new case</h2>
-            <%= simple_form_for @case do |f| %>
-              <%= f.input :name, label: 'Name:' %>
-              <%= f.input :number, label: 'Number:' %>
-              <%= f.input :description, label: 'Description:' %>
-              <%= f.simple_fields_for :clients do |m| %>
-                <%= m.input :first_name, label: 'First name:' %>
-                <%= m.input :last_name, label: 'Last name:' %>
+      <!-- TODO: Make the background shading div cover the whole screen with a gray transparent cover to highlight the modal -->
+      <div class="background-shading">
+        <div class="form-content">
+          <span class="close">&times;</span>
+            <div class="form-container">
+              <h2>Add a new case</h2>
+              <%= simple_form_for @case do |f| %>
+                <%= f.input :name, label: 'Name:' %>
+                <%= f.input :number, label: 'Number:' %>
+                <%= f.input :description, label: 'Description:' %>
+                <%= f.simple_fields_for :clients do |m| %>
+                  <%= m.input :first_name, label: 'First name:' %>
+                  <%= m.input :last_name, label: 'Last name:' %>
+                <% end %>
+                <%= f.submit "Add a new case", class: "btn btn-ghost" %>
               <% end %>
-              <%= f.submit "Add a new case", class: "btn btn-ghost" %>
-            <% end %>
+          </div>
         </div>
       </div>
     </div>

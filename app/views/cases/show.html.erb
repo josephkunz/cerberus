@@ -1,53 +1,65 @@
 <div class="container">
 
   <div class="case">
+
     <div class="case-title">
+
       <div class="case-title-box">
         <h1><%= @case.name.upcase %></h1>
         <h2><%= @case.number %></h2>
       </div>
-      <div class="case-title-buttons">
-        <button id="form_button_edit" class="btn btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
-        <%= link_to "Delete Case", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, id: "delete-btn", class: "btn btn-ghost btn-ghost-w120px"%>
-      </div>
+
     </div>
+
     <div class="case-description">
+
       <h3>Description</h3>
-          <div class="box-description">
 
-                    <div class="info-group">
-                      <div class="basic-info-legend">
-                        <span>Created:</span>
-                        <span>Infringements:</span>
-                        <span>Monitoring:</span>
-                      </div>
-                      <div class="basic-info-values">
-                        <span><%= @case.created_at.strftime("%F") %></span>
-                        <span><%= @case.infringements.count %> page(s), <%= @number_of_records %> record(s)</span>
-                        <% if @active_pages.zero? %>
-                          <span>Stopped</span>
-                        <% else %>
-                          <span>Active, <%= @active_pages %> page(s)</span>
-                        <% end %>
-                      </div>
-                    </div>
+      <div class="box-description">
 
-                    <div class="description-group">
-                      <div class="basic-info-legend-description">
-                        <span>Description:</span>
-                      </div>
-                      <div class="basic-info-description">
-                        <p><%= @case.description %></p>
-                      </div>
-                    </div>
+        <div class="info-group">
+          <div class="basic-info-legend">
+            <span>Created:</span>
+            <span>Infringements:</span> <br>
+            <span>Monitoring:</span>
           </div>
+          <div class="basic-info-values">
+            <span><%= @case.created_at.strftime("%F") %></span>
+            <span><%= @case.infringements.count %> page(s), <br> <%= @number_of_records %> record(s)</span>
+            <% if @active_pages.zero? %>
+              <span>Stopped</span>
+            <% else %>
+              <span>Active, <%= @active_pages %> page(s)</span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="description-group">
+
+          <div class="basic-info-legend-description">
+            <span>Description:</span>
+          </div>
+
+          <div class="basic-info-description">
+            <p><%= @case.description %></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="case-title-buttons">
+        <button id="form_button_edit" class="button btn-ghost float-right" onclick="showHideEdit(event)">Edit Case</button>
+        <div style="width: 2vw;"></div>
+        <%= link_to "Delete Case", case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, id: "delete-btn", class: "button btn-ghost btn-ghost-w160px float-right"%>
+      </div>
+
     </div>
 
     <div class="case-infringements">
       <div class="case-infr-title">
         <h3>Infringements</h3>
         <div class="case-infr-btn">
-          <button id="form_button" class="btn btn-ghost float-right" onclick="showHide(event)">Add New Infringement</button>
+          <button id="form_button" class="btn-blue float-right" onclick="showHide(event)">Add New Infringement</button>
         </div>
       </div>
 

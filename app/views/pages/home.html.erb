@@ -3,11 +3,18 @@
 <!-- TODO - Reid: play with homepage animations -->
 <div style="display: flex; flex-direction: column;">
 
+  <!-- Landing page: a svg file and button -->
   <div class="frontpage">
-    <div class="frontpage-doggy">
-      <%= image_tag 'logo.png', class: 'doggy-image' %>
-    </div>
+    <!-- Entire background of frontpage landing in an SVG -->
+    <%= image_tag "background.svg" %>
+    <!-- Cases button in bottom right corner if user is signed in -->
+    <% if user_signed_in? %>
+      <%= link_to cases_path, class: "cases-button" do %>
+          Cases &nbsp; <i class="fas fa-arrow-right"></i>
+      <% end %>
+    <% end %>
   </div>
+
 
   <div class="how-it-works-card">
     <div class="h2-p-hiw-card text-color">
@@ -37,9 +44,9 @@
     </div>
   </div>
 
-  <!-- Login Sign-In Bar -->
-  <div style="display: flex; justify-content: center; height: 30vh;">
 
+  <!-- Login Sign-In Bar -->
+  <!-- <div style="display: flex; justify-content: center; height: 30vh;">
     <div class="login-signin-bar">
       <div>
         <%= link_to 'Login', user_session_path, class: 'btn btn-ghost' %>
@@ -52,11 +59,6 @@
         <button class="btn btn-ghost" type="submit"> Sign Up </button>
       </form>
     </div>
-
-  </div>
-
-
-
-
+  </div> -->
 
 </div>
