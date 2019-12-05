@@ -1,0 +1,45 @@
+.snapshot {
+  padding: 29px;
+}
+
+.snapshot-title-box {
+    display: flex;
+    justify-content: space-between;
+
+    .snapshot-title {
+      margin-bottom: 20px;
+    }
+
+    .snapshot-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-margin {
+      margin-right: 4px;
+    }
+}
+
+.arrow-left-snapshots, .arrow-right-snapshots {
+  font-size: 18px;
+  color: $royalblue;
+
+  &:hover {
+    cursor: pointer;
+    color: $lightpurple;
+  }
+}
+
+.message-snapshots {
+  a {
+    color: $royalblue;
+
+    &:hover {
+      color: $lightpurple;
+      text-decoration: none;
+    }
+  }
+
+}
+
+

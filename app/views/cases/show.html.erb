@@ -127,7 +127,7 @@
           <div class="infr-card-infobox">
             <div class="infr-card-infobox-a">
               <i class="far fa-image"><span><%= pluralize(infr.snapshots.count, 'snapshot') %></span></i>
-              <i class="far fa-clock"><span><%= infr.interval %></span></i>
+              <i class="far fa-clock"><span><%= @every[infr.interval.to_sym] %></span></i>
             </div>
             <div class="infr-card-infobox-b">
               <% if infr.event.frequency.positive? %>

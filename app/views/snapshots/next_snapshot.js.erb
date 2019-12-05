@@ -1,0 +1,3 @@
+document.querySelector(".snapshot-window-snapshots").innerHTML = '<%= j cl_image_tag @new_snapshot.image_path, id: "img-snapshots", class: "img-fluid", data: { arrayid: @number } %>'
+document.querySelector(".message-snapshots").innerHTML = 'This is <a href="<%= @infringement.url %>"><%= @base_url %></a> as available online at <%= @new_snapshot.time %>.'
+document.querySelector(".save-button-snapshots").innerHTML = '<a href="<%= cl_image_path(@new_snapshot.image_path) %>" class="btn btn-blue btn-margin">Save Snapshot</a>'

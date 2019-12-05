@@ -6,7 +6,7 @@
     justify-content: space-between;
 
     .infringement-title {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .btn-margin-right {
@@ -21,7 +21,7 @@
 
 
   .infringement-snapshot-titlebox {
-    margin-top: 60px;
+    margin-top: 0px;
     margin-bottom: 10px;
     display: flex;
     align-items: flex-end;
@@ -46,7 +46,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      border: 2px dotted #DDDDDD;
+      border: 2px dotted #c6c4ed;
       border-radius: 3px;
       height: 50px;
 
@@ -68,7 +68,7 @@
         height:80%;
       }
 
-      .btn-ghost {
+      .btn-blue {
         white-space: nowrap;
         padding: 4px 10px;
         font-size: 14px;
@@ -82,7 +82,7 @@
 
   .infringement-info {
     width: 100%;
-    background-color: #DDDDEE;
+    background-color: $infobox;
     padding: 15px;
     border-radius: 3px;
     font-size: 15px;
@@ -111,13 +111,17 @@
 
   }
 
-  .btn-ghost {
+  .btn-blue {
     width: 180px;
     margin: 0;
   }
 
   .btn-margin {
     margin-bottom: 10px;
+  }
+
+  .btn-margin-large {
+    margin-bottom: 40px;
   }
 
   .select-margin {
@@ -127,7 +131,7 @@
   .infringement-buttons-general {
     margin-top: 10px;
     width: 100%;
-    border: 2px dotted #DDDDDD;
+    border: 2px dotted #c6c4ed;
     padding: 15px;
     border-radius: 3px;
   }

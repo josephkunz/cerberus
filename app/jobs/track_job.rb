@@ -58,9 +58,9 @@ class TrackJob < ApplicationJob
   def prepare_url2png(url)
     options = {
       url: url,
-      fullpage: true,
-      thumbnail_max_width: 800,
-      #viewport: "1480x1480",
+      fullpage: false,
+      thumbnail_max_width: 680,
+      viewport: "1200x2000",
       unique: Time.now.to_i / 30
     }
 

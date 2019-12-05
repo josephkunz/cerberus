@@ -21,7 +21,6 @@ class CasesController < ApplicationController
     #Credits counter in dashboard
     @my_cases = Case.where(user_id: current_user.id)
     @my_snapshots = Snapshot.all
-
   end
 
   def show
@@ -39,7 +38,7 @@ class CasesController < ApplicationController
       end
     end
 
-    # @infringement = Infringement.find(@case.infringements)
+    @every = every
   end
 
   def create
@@ -77,5 +76,12 @@ class CasesController < ApplicationController
 
   def client_params
     params.require(:case).require(:clients).permit(:first_name, :last_name)
+  end
+
+  def every
+    { "1 snapshot": "1 snapshot", "30 seconds": "Every 30 sec." , "1 minute": "Every minute", "1 hour": "Every hour",
+      "6 hours": "Every 6 hours", "12 hours": "Every 12 hours", "1 day": "Every day",
+      "7 days": "Every 7 days", "14 days": "Every 14 days", "1 month": "Every month",
+      "6 months": "Every 6 months", "1 year": "Every year" }
   end
 end

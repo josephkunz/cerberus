@@ -4,11 +4,11 @@
       <div class="infringement-title-box">
         <div class="infringement-title">
           <h1><%= @infringement.case.name.upcase %> </h1>
-          <h2><%= @infringement.case.number %></h2>
+          <h2><%= @infringement.name %></h2>
         </div>
-        <div class="case-title-buttons">
-          <%= link_to "Delete Infringement", case_infringement_path, method: :delete, id: "btn-delete-infringement", class: "btn btn-ghost btn-margin-right" %>
-          <%= link_to "Go Back to Case", case_path(@case), class: "btn btn-ghost btn-ghost-w120px" %>
+        <div>
+          <%= link_to "Delete Infringement", case_infringement_path, method: :delete, data: { confirm: "Are you sure?" }, id: "btn-delete-infringement", class: "btn btn-blue" %>
+          <%= link_to "Go Back to Case", case_path(@case), class: "btn btn-blue" %>
         </div>
       </div>
     <div class="infringement-snapshot-titlebox">
@@ -20,9 +20,9 @@
           <div class="selected-icon"><i class="far fa-check-square"></i></div>
           <div class="selected-text"><span>Selected</span></div>
           <div class="selected-divider"></div>
-          <button id="select-button" class="btn-ghost">Select All</button>
-          <button id="deselect-button" class="btn-ghost">Deselect All</button>
-          <button id="invert-button" class="btn-ghost">Invert Selection</button>
+          <button id="select-button" class="btn-blue">Select All</button>
+          <button id="deselect-button" class="btn-blue">Deselect All</button>
+          <button id="invert-button" class="btn-blue">Invert Selection</button>
         </div>
         <div class="select-empty">
         </div>
@@ -37,19 +37,19 @@
             <%= render partial: "infringement_info", locals: { infringement: @infringement, tracked_for: @tracked_for } %>
           </div>
           <div class="infringement-buttons-general">
-            <button id="snapshot-button" class="btn btn-ghost btn-margin">Take Snapshot</button>
-            <button id="export-button" class="btn btn-ghost btn-margin">Export All</button>
-            <button id="delete-button" class="btn btn-ghost btn-margin">Delete All</button>
+            <button id="snapshot-button" class="btn btn-blue btn-margin">Take Snapshot</button>
+            <button id="export-button" class="btn btn-blue btn-margin">Export All</button>
+            <button id="delete-button" class="btn btn-blue btn-margin-large">Delete All</button>
 
             <% if @infringement.interval == "1 snapshot" %>
               <%= select_tag "select-timer", options_for_select(@timer_values, "1 year"), class: "select-box btn-margin"%>
-              <button id="play-button" class="btn btn-ghost">Start</button>
+              <button id="play-button" class="btn btn-blue">Start</button>
             <% elsif @state %>
               <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval), class: "select-box btn-margin", disabled: true%>
-              <button id="play-button" class="btn btn-ghost">Stop</button>
+              <button id="play-button" class="btn btn-blue">Stop</button>
             <% else %>
               <%= select_tag "select-timer", options_for_select(@timer_values, @infringement.interval), class: "select-box btn-margin",  disabled: false%>
-              <button id="play-button" class="btn btn-ghost">Start</button>
+              <button id="play-button" class="btn btn-blue">Start</button>
             <% end %>
           </div>
         </div>

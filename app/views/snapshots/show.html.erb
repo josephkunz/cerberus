@@ -1,28 +1,38 @@
 <div class="container">
-  <div class="box">
-    <h1><%= @infringement.name %></h1>
-    <h2></h2>
-
-    <!-- Header of the printout -->
-    <div class="container p-3 my-3" style ="background-color: #DDE; border-radius: 4px;">
-      <div class="d-flex justify-content-between">
-        <div class="float-left">This is &nbsp; <em style="color: #4F44DE"><%= @infringement.url %></em> &nbsp; as available online at <%= @snapshot.time %>.</div>
-
-        <div class="float-right">
-          <!-- saving option -->
-          <a href="<%= cl_image_path(@snapshot.image_path) %>"><i class="fas fa-file-export"></i></a>
-          <!-- printing option -->
-           <a href="#" onclick="window.print();return false;"><i class="fas fa-print"></i></a>
+  <div class="snapshot">
+    <div class="snapshot-title-box">
+      <div class="snapshot-title">
+        <h1><%= @infringement.name %> </h1>
+      </div>
+      <div class="snapshot-buttons">
+        <div>
+          <button id="btn-print-snapshot" class="btn btn-blue btn-margin">Print Snapshot</button>
         </div>
-
+        <div class="save-button-snapshots">
+          <a href="<%= cl_image_path(@snapshot.image_path) %>" class="btn btn-blue btn-margin">Save Snapshot</a>
+        </div>
+        <div>
+          <%= link_to "Close", case_infringement_path(@infringement.case, @infringement), class: "btn btn-blue" %>
+        </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center">
-      <%= cl_image_tag @snapshot.image_path, class: "img-fluid" %>
+    <!-- Header of the printout -->
+    <div class="container p-3 my-3" style ="background-color: #DDE; border-radius: 3px;">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="arrow-left-snapshots"><i class="fas fa-arrow-left"></i></div>
+        <div class="message-snapshots">This is <a href="<%= @infringement.url %>"><%= @base_url %></a> as available online at <%= @snapshot.time %>.</div>
+        <div class="arrow-right-snapshots"><i class="fas fa-arrow-right"></i></div>
+      </div>
+    </div>
+
+
+    <div class="snapshot-window-snapshots d-flex justify-content-center">
+      <%= cl_image_tag @snapshot.image_path, id: "img-snapshots", class: "img-fluid", data: { arrayid: @number } %>
     </div>
     <div class="container p-3 my-3" style ="background-color: #DDE; border-radius: 4px;">
       The authenticity of this screenshot is guaranteed by Cerberus - the online standard for copyright infringement documentation. Read more at http://cerberus.legal/about
     </div>
   </div>
+</div>
 </div>
