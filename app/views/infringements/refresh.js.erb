@@ -3,6 +3,7 @@ document.querySelector(".infringement-info").innerHTML = '<%= j render partial: 
   document.querySelector(".infringement-snapshots").innerHTML = '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>';
   snapshotButton.innerText = "Take Snapshot";
   snapshotButton.disabled = false;
+
 <% elsif @infringement.snapshots.count > @number_of_snapshots %>
   document.querySelector(".infringement-snapshots").insertAdjacentHTML('beforeend', '<%= j render partial: "snapshot_card", locals: { snapshot: @infringement.snapshots.last } %>');
   snapshotButton.innerText = "Take Snapshot";

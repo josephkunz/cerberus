@@ -137,6 +137,8 @@ class InfringementsController < ApplicationController
 
     interval_array = interval_string.split(" ")
     case interval_array[1]
+    when "second", "seconds"
+      return interval_array[0].to_i
     when "minute", "minutes"
       return interval_array[0].to_i * 60
     when "hour", "hours"
@@ -151,13 +153,8 @@ class InfringementsController < ApplicationController
   end
 
   def get_timer_values
-    return ["1 minute", "2 minutes", "10 minutes", "20 minutes", "30 minutes", "1 hour",
-             "2 hours", "3 hours", "4 hours", "5 hours", "6 hours", "7 hours",
-             "8 hours", "9 hours", "10 hours", "11 hours", "12 hours", "1 day",
-             "2 days", "3 days", "4 days", "5 days", "6 days", "7 days", "8 days",
-             "9 days", "10 days", "11 days", "12 days", "13 days", "14 days",
-             "15 days", "1 month", "2 months", "3 months", "4 months",
-             "5 months", "6 months", "1 year"]
+    return ["30 seconds", "1 minute", "1 hour", "6 hours", "12 hours", "1 day",
+            "7 days", "14 days", "1 month", "6 months", "1 year"]
   end
 
   def process_export(url)
