@@ -19,12 +19,12 @@
         <div class="info-group">
           <div class="basic-info-legend">
             <span>Created:</span>
-            <span>Infringements:</span> <br>
+            <span>Infringements:</span>
             <span>Monitoring:</span>
           </div>
           <div class="basic-info-values">
             <span><%= @case.created_at.strftime("%F") %></span>
-            <span><%= pluralize(@case.infringements.count, 'page') %>, <br> <%= pluralize(@number_of_records, 'record') %></span>
+            <span><%= pluralize(@case.infringements.count, 'page') %>, <%= pluralize(@number_of_records, 'record') %></span>
             <% if @active_pages.zero? %>
               <span>Stopped</span>
             <% else %>
@@ -48,10 +48,14 @@
 
       <div class="case-title-buttons">
         <!-- <button id="form_button_edit" class="on btn-ghost float-rightbutt" onclick="showHideEdit(event)">Edit Case</button> -->
-        <i class="far fa-edit" id="form_button_edit" onclick="showHideEdit(event)"></i>
-        <div style="width: 2vw;"></div>
-        <%= link_to case_path(@case),  method: :delete, data: { confirm: "Are you sure?" } do %>
-          <i class="far fa-trash-alt" id="delete-icon" ></i>
+
+        <!-- <i class="far fa-edit" id="form_button_edit" onclick="showHideEdit(event)"></i> -->
+        <div onclick="showHideEdit(event)">
+          <%= cl_image_tag "https://res.cloudinary.com/os00/image/upload/v1575577763/edit-78_wnuojg.png", id: "icon_edit", class: "description-icons-case" %>
+        </div>
+        <!-- <div style="width: 2vw;"></div> -->
+        <%= link_to case_path(@case),  method: :delete, data: { confirm: "Are you sure?" }, class: "description-links-case" do %>
+          <%= cl_image_tag "https://res.cloudinary.com/os00/image/upload/v1575577003/trash-simple_plcmfp.png", id: "form_button_edit", class: "description-icons-case" %>
         <% end %>
       </div>
 
