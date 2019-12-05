@@ -141,3 +141,24 @@
     flex-wrap: wrap;
   }
 }
+
+#delete-icon {
+  font-size: 32px;
+  color: #4F44DE;
+  opacity: 0.5;
+}
+
+
+#form_button_edit {
+  font-size: 32px;
+  color: #4F44DE;
+  opacity: 0.5;
+}
+
+#delete-icon:hover {
+  opacity: 1.0;
+}
+
+#form_button_edit:hover {
+  opacity: 1.0;
+}
