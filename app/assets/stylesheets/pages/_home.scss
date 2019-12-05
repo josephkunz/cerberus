@@ -2,42 +2,30 @@
 // TODO - Reid: Add homepage animation after new homepage created
 // #grey_triangle {  }
 
-#title {
+
+.frontpage img {
+  width: 100%;
+}
+
+
+.cases-button {
+  background-color: white;
+  font-size: 2vw;
+  border-radius: 6px;
   position: absolute;
-  top: 53vh;
-  left: 4vh;
-  h1 {
-    font-size: 80px;
+  top: 78vh;
+  right: 9vw;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  transition: 0.6s;
+
+
+  &:hover {
+    background-color: $lightpurple;
+    text-decoration: none;
   }
-}
-
-#logo {
-  position: absolute;
-  top: 66vh;
-  left: 4vh;
-  h2{
-    /* platform to document and protect your copyright online */
-    color: white;
-  }
-  span {
-    color: #4E43DE;
-  }
-}
-
-.frontpage {
-  background-image: image-url('background.svg');
-  background-size: cover;
-  height: 122vh;
-}
-
-.doggy-image {
-  height: 550px;
-}
-
-.frontpage-doggy {
-  position: absolute;
-  bottom: 50px;
-  right: 22vw;
 }
 
 
@@ -47,12 +35,10 @@
   position: relative;
   margin-top: 30px;
 }
-
 .new_user {
   display: flex;
   align-content: center;
 }
-
 .or {
   position: static;
   margin-left: 30px;

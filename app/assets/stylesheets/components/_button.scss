@@ -19,3 +19,19 @@
 .btn-ghost-w120px {
   width: 120px
 }
+
+.btn-blue {
+  color: white;
+  background-color: $royalblue;
+  border: 1px solid $darkgray;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: lighter;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+
+.btn-blue:hover {
+  background-color: $lightpurple;
+}

@@ -3,7 +3,7 @@
 }
 
 .dashboard-title {
-  background-color: #CCC;
+  background-color: $infobox;
   text-align: center;
   margin: 0;
   padding-top: 20px;
@@ -13,10 +13,10 @@
 }
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin-bottom: 40px;
   grid-gap: 20px;
-  background-color: #CCC;
+  background-color: $infobox;
   padding: 20px;
   padding-bottom: 35px;
   margin-top: 0px;
