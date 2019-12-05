@@ -33,21 +33,23 @@ class SnapshotsController < ApplicationController
   private
 
   def base_url(infringement)
+    p infringement.url
     base_url = infringement.url
-    if infringement.url.include?("http")
-      base_url.gsub!("http://", "")
-      base_url.gsub!("https://", "")
+    if base_url.include?("https")
+      base_url_nohttp = base_url.gsub("https://", "")
+      url_array = base_url_nohttp.split("/")
+    elsif base_url.include?("http")
+      base_url_nohttp = base_url.gsub("http://", "")
+      url_array = base_url_nohttp.split("/")
+    else
+      url_array = base_url.split("/")
     end
 
-    p base_url
-    url_array = base_url.split("/")
-    p url_array
     if url_array.count > 1
-      base_url = url_array[0] + "/..."
+      return url_array[0] + "/..."
     else
-      base_url = url_array[0]
+      return url_array[0]
     end
-    return base_url
   end
 
 end
