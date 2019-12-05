@@ -14,6 +14,14 @@ class CasesController < ApplicationController
 
     @case = Case.new
     @client = Client.new
+
+    #Infringement counter in dashboard
+    @events = Event.all
+
+    #Credits counter in dashboard
+    @my_cases = Case.where(user_id: current_user.id)
+    @my_snapshots = Snapshot.all
+
   end
 
   def show
