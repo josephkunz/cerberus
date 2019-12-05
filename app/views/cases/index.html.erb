@@ -1,9 +1,11 @@
 <div class="container">
+  <div class="cases">
 
+  <div class="open-cases-top-bar">
+    <h1>CASES</h1>
+    <button id="form_button" class="btn-blue" onclick="showHide(event)">Create New Case</button>
+  </div>
   <br>
-  <h1><strong>CASES</strong></h1>
-  <br>
-
   <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
   <!-- <h4 class="dashboard-title"> Dashboard </h4> -->
   <div class="dashboard-grid">
@@ -67,11 +69,7 @@
 
 
   <!-- Open cases header with NEW CASE Button -->
-  <div class="open-cases-top-bar">
-    <h1>Open Cases:</h1>
-    <button id="form_button" class="btn-blue" onclick="showHide(event)">Create New Case</button>
-  </div>
-  <br>
+
 
   <!-- Iterate through and display each case in a CARD -->
   <% @cases.each do |c| %>
@@ -123,9 +121,9 @@
 
               <!-- 3rd box in Case card:  NUMBER OF INFRINGEMENTS & TOTAL SCREENSHOTS-->
               <div class="case-info-box fourth">
-                <i class="fas fa-file-alt"></i>&nbsp;<%=  " " + pluralize(infringement_count, 'Infringing Pages') %>
+                <i class="fas fa-file-alt"></i>&nbsp;<%=  " " + pluralize(infringement_count, 'Infringing Page') %>
                 <br>
-                <i class="fas fa-info-circle"></i>&nbsp;<%=  " " + pluralize(screenshot_count, 'Total Screenshots') %>
+                <i class="fas fa-info-circle"></i>&nbsp;<%=  " " + pluralize(screenshot_count, 'Total Screenshot') %>
               </div>
 
           </div>
@@ -155,5 +153,6 @@
     </div>
 
   </div>
+</div>
 
 </div>
