@@ -1,7 +1,10 @@
 if (numberOfSelected === 0 || numberOfSelected === checkBoxes.length) {
   exportButton.innerText = `Export All`;
+  deleteButton.innerText = "Delete All";
 } else {
   exportButton.innerText = `Export (${numberOfSelected})`
+  deleteButton.innerText = `Delete (${numberOfSelected})`
 }
 exportButton.disabled = false;
+deleteButton.disabled = false;
 window.location.href = "<%= @path_to_file %>"
