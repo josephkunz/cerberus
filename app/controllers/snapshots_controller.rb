@@ -33,7 +33,6 @@ class SnapshotsController < ApplicationController
   private
 
   def base_url(infringement)
-    p infringement.url
     base_url = infringement.url
     if base_url.include?("https")
       base_url_nohttp = base_url.gsub("https://", "")

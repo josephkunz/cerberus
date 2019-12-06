@@ -9,7 +9,7 @@
   border: 1px solid #aaaaaa;
   border-radius: 3px;
   position: relative;
-  filter: grayscale(50%);
+  filter: grayscale(60%);
   transition: all 0.2s ease;
 
   &:hover {
@@ -143,6 +143,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+
 
   span {
     text-align: center;
