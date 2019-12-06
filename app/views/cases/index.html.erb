@@ -39,6 +39,8 @@
                     <%= c.name %>&nbsp;
                   <% if flag === true %>
                     <i class="fas fa-sync" style="color:mediumseagreen"></i>
+                  <% else %>
+                    <i class="far fa-stop-circle" style="color:red"></i>
                   <% end %>
                   </h5>
                   <p>
@@ -128,64 +130,7 @@
 
   </div>
 
-  <br>
-  <br>
 
-  <!-- DASHBOARD is a GRID the most recent snapshots in the different Cases -->
-  <!-- <h4 class="dashboard-title"> Dashboard </h4> -->
-  <div class="dashboard-grid">
-    <div>
-      <!-- Calculator of currently running events -->
-      <% infringe_count = 0 %>
-      <% @events.each do |my_event| %>
-        <% if my_event.frequency.positive? %>
-          <% infringe_count += 1  %>
-          <% end %>
-      <% end %>
-      <div style="text-align: center; font-size: 22px;">
-        Actively Monitored <%= "Website".pluralize(infringe_count) %>:
-      </div>
-      <div style="text-align: center; color: mediumseagreen; font-size: 30px;">
-          <i class="fas fa-sync fa-spin"></i> &nbsp;<%= infringe_count %>
-      </div>
-    </div>
-    <%# raise %>
-
-    <!-- Calculator of credits used up -->
-
-    <div>
-      <div style="text-align: center; font-size: 22px;">
-        Credits Remaining:
-      </div>
-
-      <div style="text-align: center; color: #280891; font-size: 30px;">
-        <%= 400 - credits_used %>&nbsp; <i class="fas fa-coins"></i>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- CURRENTLY COMMENTED OUT SNAPSHOTS - make available on button click if there is time -->
-  <!-- GRID of the most recent snapshots in the different Cases -->
-<!--   <% if @snapshots.any? %>
-    <h4 class="dashboard-title"> Dashboard - Most Recent Screenshots </h4>
-    <div class="dashboard-grid">
-      <% @snapshots.each do |snapshot| %>
-        <%= link_to case_path(snapshot.infringement.case) do %>
-          <div class="dash-item">
-            <%= cl_image_tag(snapshot.image_path,
-          transformation: [
-            {width: 230, crop: "scale"},
-            {gravity: "north", height: 200, width: 230, y: 10, crop: "crop"}
-          ]) %>
-            <p> <%= snapshot.time %> </p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% else %>
-    <h4 class="dashboard-title"> No Screenshots Yet! </h4>
-  <% end %> -->
 
 
   <!-- Open cases header with NEW CASE Button -->
