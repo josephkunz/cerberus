@@ -21,6 +21,19 @@ class CasesController < ApplicationController
     #Credits counter in dashboard
     @my_cases = Case.where(user_id: current_user.id)
     @my_snapshots = Snapshot.all
+
+    @active = 0
+    @pasive = 0
+    @cases.each do |c|
+      c.events.each { |event| event.frequency.positive? ? @active += 1 : @pasive += 1 }
+    end
+
+    @snapshots_count = 0
+    @cases.each { |c| @snapshots_count += c.snapshots.count }
+
+    @base_urls = []
+    @latest_snapshots = @cases.first.user.snapshots.order(time: :desc).first(3)
+    @latest_snapshots.each { |snapshot| @base_urls << base_url(snapshot.infringement) }
   end
 
   def show
@@ -83,5 +96,24 @@ class CasesController < ApplicationController
       "6 hours": "Every 6 hours", "12 hours": "Every 12 hours", "1 day": "Every day",
       "7 days": "Every 7 days", "14 days": "Every 14 days", "1 month": "Every month",
       "6 months": "Every 6 months", "1 year": "Every year" }
+  end
+
+  def base_url(infringement)
+    base_url = infringement.url
+    if base_url.include?("https")
+      base_url_nohttp = base_url.gsub("https://", "")
+      url_array = base_url_nohttp.split("/")
+    elsif base_url.include?("http")
+      base_url_nohttp = base_url.gsub("http://", "")
+      url_array = base_url_nohttp.split("/")
+    else
+      url_array = base_url.split("/")
+    end
+
+    if url_array.count > 1
+      return url_array[0] + "/..."
+    else
+      return url_array[0]
+    end
   end
 end

@@ -1,0 +1,15 @@
+<%= link_to snapshot_path(snapshot) do %>
+  <div class="latest-screenshot">
+    <div class="image-latest">
+      <%= cl_image_tag(snapshot.image_path, transformation: [
+                {width: 120, crop: "scale"},
+                {gravity: "north", height: 98, width: 98, x:10, y: 5, crop: "crop"}
+              ]) %>
+    </div>
+    <div class="info-latest">
+      <div class="case-info-latest"><span><%= snapshot.infringement.case.name %></span></div>
+      <div class="url-info-latest"><span><%= base_url %></span></div>
+      <div class="time-info-latest"><span><%= snapshot.time %></span></div>
+    </div>
+  </div>
+<% end %>
