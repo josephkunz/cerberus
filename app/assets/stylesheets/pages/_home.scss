@@ -10,15 +10,17 @@
 
 
 .cases-button {
-  background-color: white;
+  display: flex;
+  align-items: center;
   height: 50px;
-  font-size: 2vw;
+  background-color: white;
+  font-size: 21px;
   border-radius: 6px;
   position: absolute;
-  bottom: 5vh;
-  right: 21vw;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  bottom: 60px;
+  right: 30vw;
+  // padding-top: 10px;
+  // padding-bottom: 10px;
   padding-left: 25px;
   padding-right: 25px;
   transition: 0.6s;
