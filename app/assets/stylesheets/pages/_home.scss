@@ -5,6 +5,7 @@
 
 .frontpage img {
   width: 100%;
+  margin-bottom: 3vh;
 }
 
 
@@ -14,17 +15,42 @@
   border-radius: 6px;
   position: absolute;
   top: 78vh;
-  right: 9vw;
+  right: 21vw;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 25px;
   padding-right: 25px;
   transition: 0.6s;
-
-
   &:hover {
     background-color: $lightpurple;
     text-decoration: none;
+  }
+}
+
+.row-home {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.card-home {
+  width: 68%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.card-text-home {
+  h2 {
+    font-size: 34px;
+    letter-spacing: 0.05rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  p {
+    font-size: 20px;
+    letter-spacing: 0.05rem;
+    margin-bottom: 16px;
   }
 }
 
@@ -58,10 +84,6 @@
   &:hover {
     background-color: #DDD;
   }
-}
-
-#home-input:hover {
-  // background-color: #eaeaea;
 }
 
 
