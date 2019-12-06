@@ -1,12 +1,10 @@
-<!-- <%= image_tag 'rect.png', {id: 'grey_triangle'} %> -->
 
-<!-- TODO - Reid: play with homepage animations -->
 <div style="display: flex; flex-direction: column;">
 
   <!-- Landing page: a svg file and button -->
   <div class="frontpage">
     <!-- Entire background of frontpage landing in an SVG -->
-    <%= image_tag "background.svg" %>
+    <%= image_tag "background2.svg" %>
     <!-- Cases button in bottom right corner if user is signed in -->
     <% if user_signed_in? %>
       <%= link_to cases_path, class: "cases-button" do %>
@@ -15,8 +13,49 @@
     <% end %>
   </div>
 
+  <div class="row-home">
+    <div class="card-home">
+      <div class="card-text-home">
+        <h2> Efficient and Reliable Documentation </h2>
+        <p> <i class="fas fa-dot-circle" style="color: #0B0A83;"></i> You can better defend the digital content creators you represent </p>
+        <p> <i class="fas fa-dot-circle" style="color: #0B0A83;"></i> Legal action can be backed by verified evidence of copyright infringement </p>
+      </div>
+      <%= image_tag "infringing_pages.svg", style: "width: 220px;" %>
+    </div>
+  </div>
 
-  <div class="how-it-works-card">
+  <div class="row-home">
+    <div class="card-home">
+      <%= image_tag "webpage.svg", style: "width: 300px;" %>
+      <div class="card-text-home">
+        <h2> Automatically Track Infringing Webpages </h2>
+        <p> <i class="fas fa-dot-circle" style="color: #0B0A83;"></i> A simple user interface gives a range of tracking options </p>
+        <p> <i class="fas fa-dot-circle" style="color: #0B0A83;"></i> Cases are easily managed with an organized structure </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-home">
+    <div class="card-home">
+      <div class="card-text-home">
+        <h2> Screenshots are Legally Authenticated </h2>
+        <p> <i class="fas fa-dot-circle" style="color: #0B0A83;"></i> Cease and Desist letters carry the weight of documented evidence </p>
+        <p> <i class="fas fa-dot-circle" style="color: #0B0A83;"></i> Lawsuits no longer rely on just testimony and allegation </p>
+      </div>
+      <%= image_tag "briefcase.svg", style: "width: 300px" %>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!--   <div class="how-it-works-card">
     <div class="h2-p-hiw-card text-color">
       <h2 id="h2-style">What is the issue?</h2>
       <p id="p-style">Your client's protected work is wrongfully displayed on a website. You have no way to know if the infringement is ongoing, or how you can track the copyright violation. </p>
@@ -42,8 +81,7 @@
     <div class="img-hiw-card">
       <%= image_tag "logo.png", :id => "img-style" %>
     </div>
-  </div>
-
+  </div> -->
 
   <!-- Login Sign-In Bar -->
   <!-- <div style="display: flex; justify-content: center; height: 30vh;">
@@ -61,4 +99,4 @@
     </div>
   </div> -->
 
-</div>
+
