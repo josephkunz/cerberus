@@ -20,6 +20,12 @@
     }
 }
 
+.snapshot-container {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+  background-color: #DDE;
+  border-radius: 4px;
+}
+
 .arrow-left-snapshots, .arrow-right-snapshots {
   font-size: 18px;
   color: $royalblue;
