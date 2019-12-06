@@ -5,12 +5,12 @@
   height: 100px;
   width: 290px;
   background-color: #f5f4ff;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
   border: 1px solid #aaaaaa;
   border-radius: 3px;
   filter: grayscale(60%);
   transition: all 0.2s ease;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 
   &:hover {
     background-color: #FFFFFF;
@@ -41,13 +41,14 @@
 
   .info-latest {
     padding: 15px;
+    width: 190px;
 
     .case-info-latest {
       font-weight: 500;
+      margin-bottom: 5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 5px;
     }
 
     .url-info-latest {

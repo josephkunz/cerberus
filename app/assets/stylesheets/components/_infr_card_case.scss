@@ -5,7 +5,8 @@
 
   border: 1px solid #aaaaaa;
   box-sizing: border-box;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+  //box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin: 10px 10px;
   filter: grayscale(60%);
@@ -112,7 +113,7 @@
   padding-right: 0px;
 
   border-right: 1px solid #000000;
-  width: 120px;
+  width: 125px;
 
 }
 
@@ -131,7 +132,8 @@
 
   border: 2px dashed #aaaaaa;
   box-sizing: border-box;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.09);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+  //box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.09);
   border-radius: 3px;
   margin: 10px 6px;
   display: flex;

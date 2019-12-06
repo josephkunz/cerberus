@@ -47,9 +47,9 @@
                     </span>
                     <div class="case-title">
                         <% if flag === true %>
-                          <i class="fas fa-sync" style="color:mediumseagreen; font-size: 14px;"></i>
+                          <span><i class="fas fa-sync" style="color:mediumseagreen; font-size: 14px;"></i></span>
                         <% else %>
-                          <i class="far fa-stop-circle" style="color:red; font-size: 15px;"></i>
+                          <span><i class="far fa-stop-circle" style="color:red; font-size: 15px;"></i></span>
                         <% end %>
                     </div>
                   </div>
@@ -60,12 +60,12 @@
                 <!-- 2nd box in Case card: FIRSTNAME, LASTNAME, DATE -->
                 <div class="case-info-box third">
                   <div class="case-info-box-legend">
-                    <i class="fas fa-user"></i>
-                    <i class="fas fa-clock"></i>
+                    <span><i class="fas fa-user"></i></span>
+                    <span><i class="fas fa-clock"></i></span>
                   </div>
                   <div class="case-info-box-values">
-                    <%= " " + client.first_name %>&nbsp;<%=  " " + client.last_name %>
-                    <%=  " " + c.created_at.strftime("%d.%m.%Y") %>
+                    <span><%= client.first_name %>&nbsp;<%=  " " + client.last_name %></span>
+                    <span><%= c.created_at.strftime("%d.%m.%Y") %></span>
                   </div>
                 </div>
                 <!-- <div class="horizontal-line"></div> -->
@@ -74,12 +74,12 @@
                 <!-- 3rd box in Case card:  NUMBER OF INFRINGEMENTS & TOTAL SCREENSHOTS-->
                 <div class="case-info-box fourth">
                   <div class="case-info-box-legend">
-                    <i class="fas fa-file-alt"></i>
-                    <i class="fas fa-info-circle"></i>
+                    <span><i class="fas fa-file-alt"></i></span>
+                    <span><i class="fas fa-info-circle"></i></span>
                   </div>
                   <div class="case-info-box-values">
-                    <%=  " " + pluralize(infringement_count, 'Infringing Page') %>
-                    <%=  " " + pluralize(screenshot_count, 'Total Screenshot') %>
+                    <span><%=  pluralize(infringement_count, 'Infringing Page') %></span>
+                    <span><%=  pluralize(screenshot_count, 'Total Screenshot') %></span>
                   </div>
                 </div>
               </div>

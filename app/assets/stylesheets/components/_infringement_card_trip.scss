@@ -1,7 +1,8 @@
 .card-trip {
   overflow: hidden;
   background-color: #f5f4ff;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+  //box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
   width: 230px;
   height: 230px;
   margin-bottom: 20px;
@@ -133,7 +134,8 @@
 .card-trip-empty {
   overflow: hidden;
   background: white;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+  //box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   width: 230px;
   margin-bottom: 20px;
   margin-right: 20px;

@@ -27,7 +27,8 @@
   padding: 15px 30px;
   border-radius: 3px;
   font-size: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
 
   .statistics-details-cases {
       margin-top: 7px;
@@ -54,7 +55,7 @@
 }
 
 .latest-cases {
-  margin-top: 15px;
+  margin-top: 20px;
 
   a {
     &:hover {
@@ -63,7 +64,7 @@
   }
 
   .latest-title-cases {
-    margin-bottom: 7px;
+    margin-bottom: 10px;
   }
 }
 
@@ -103,6 +104,7 @@
   border-bottom-style: solid;
   border-bottom-width: 2px;
   filter: grayscale(50%);
+
   &:hover{
     background-color: #FFFFFF;
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.18);
@@ -125,20 +127,33 @@
 }
 
 .case-container-card {
-  background-color: white;
+  background-color: #fcfcff;
   //height: 90px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   //align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   border-style: solid;
   border-width: 1px;
   border-color: #CCC;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.12);
+  //box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.18);
+    opacity: 1.0;
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.18);
+  }
+
 }
 
 .case-top-card {
@@ -154,6 +169,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
+  opacity: 0.8;
 }
 
 
@@ -165,12 +181,26 @@
 }
 
 .case-info-box-legend {
-  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 10px;
+  //ine-height: 20px;
+}
+
+.case-info-box-values {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //line-height: 15px;
 }
 
 .first {
   //padding: 15px 20px;
+
   width: 40%;
+  display: flex;
+  justify-content: flex-start;
   // a {
   //   color: black;
 
@@ -194,7 +224,7 @@
   justify-content: flex-start;
   border-left: 1px solid black;
   padding-left: 25px;
-  width: 28%;
+  width: 30%;
 }
 
 .horizontal-line {
@@ -217,7 +247,6 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  margin-bottom: 5px;
 }
 
 #h5-style {
