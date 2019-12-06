@@ -34,24 +34,30 @@
 }
 
 .card-home {
-  width: 68%;
+  width: 82%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .card-text-home {
   h2 {
-    font-size: 34px;
+    font-size: 30px;
     letter-spacing: 0.05rem;
     font-weight: 600;
     margin-bottom: 30px;
   }
   p {
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.05rem;
     margin-bottom: 16px;
   }
+}
+.left {
+  margin-left: 7vw;
+}
+.right {
+  margin-right: 6vw;
 }
 
 
