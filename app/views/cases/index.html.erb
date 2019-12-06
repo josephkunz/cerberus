@@ -32,41 +32,57 @@
         <%= link_to case_path(c) do %>
           <div class="case-container-card">
                <!-- 1st box in Case card: NAME & CASENUMBER -->
-              <div class="case-info-box first">
-                <div>
-                  <h5 id="h5-style">
+              <div class="case-top-card">
+                <h5 id="h5-style">
 
-                    <%= c.name %>&nbsp;
-                  <% if flag === true %>
-                    <i class="fas fa-sync" style="color:mediumseagreen"></i>
-                  <% else %>
-                    <i class="far fa-stop-circle" style="color:red"></i>
-                  <% end %>
-                  </h5>
-                  <p>
-                    #<%= c.number %>
-                  </p>
+                        <%= c.name %>
+
+                </h5>
+              </div>
+              <div class="case-bottom-card">
+                <div class="case-info-box first">
+                  <div>
+                    <span>
+                      # <%= c.number %>
+                    </span>
+                    <div class="case-title">
+                        <% if flag === true %>
+                          <i class="fas fa-sync" style="color:mediumseagreen; font-size: 14px;"></i>
+                        <% else %>
+                          <i class="far fa-stop-circle" style="color:red; font-size: 15px;"></i>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="horizontal-line"></div> -->
+
+
+                <!-- 2nd box in Case card: FIRSTNAME, LASTNAME, DATE -->
+                <div class="case-info-box third">
+                  <div class="case-info-box-legend">
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="case-info-box-values">
+                    <%= " " + client.first_name %>&nbsp;<%=  " " + client.last_name %>
+                    <%=  " " + c.created_at.strftime("%d.%m.%Y") %>
+                  </div>
+                </div>
+                <!-- <div class="horizontal-line"></div> -->
+
+
+                <!-- 3rd box in Case card:  NUMBER OF INFRINGEMENTS & TOTAL SCREENSHOTS-->
+                <div class="case-info-box fourth">
+                  <div class="case-info-box-legend">
+                    <i class="fas fa-file-alt"></i>
+                    <i class="fas fa-info-circle"></i>
+                  </div>
+                  <div class="case-info-box-values">
+                    <%=  " " + pluralize(infringement_count, 'Infringing Page') %>
+                    <%=  " " + pluralize(screenshot_count, 'Total Screenshot') %>
+                  </div>
                 </div>
               </div>
-              <div class="horizontal-line"></div>
-
-
-              <!-- 2nd box in Case card: FIRSTNAME, LASTNAME, DATE -->
-              <div class="case-info-box third">
-                <i class="fas fa-user"></i>&nbsp;<%= " " + client.first_name %>&nbsp;<%=  " " + client.last_name %>
-                <br>
-                <i class="fas fa-clock"></i>&nbsp;<%=  " " + c.created_at.strftime("%d.%m.%Y") %>
-              </div>
-              <div class="horizontal-line"></div>
-
-
-              <!-- 3rd box in Case card:  NUMBER OF INFRINGEMENTS & TOTAL SCREENSHOTS-->
-              <div class="case-info-box fourth">
-                <i class="fas fa-file-alt"></i>&nbsp;<%=  " " + pluralize(infringement_count, 'Infringing Page') %>
-                <br>
-                <i class="fas fa-info-circle"></i>&nbsp;<%=  " " + pluralize(screenshot_count, 'Total Screenshot') %>
-              </div>
-
           </div>
         <% end %>
       </div>
