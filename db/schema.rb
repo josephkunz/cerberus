@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_134254) do
+ActiveRecord::Schema.define(version: 2019_12_10_212202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2019_11_28_134254) do
     t.string "zipcode"
     t.string "country"
     t.string "company"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "configs", force: :cascade do |t|
+    t.boolean "fullpage"
+    t.integer "thumbnail_width"
+    t.string "viewport"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
