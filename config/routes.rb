@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'pages#home'
   resources :cases, only: [ :index, :create, :show, :edit, :update, :destroy ] do

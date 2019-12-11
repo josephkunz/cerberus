@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :events, through: :infringements
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def is_admin?
+    return admin
+  end
+
 end
