@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Config.create(fullpage: true, thumbnail_width: 800, viewport: "1400x1400")
+Config.destroy_all
+Config.create(fullpage: true, screenshot_width: 800, window_width: 1280, window_height: 800, screenshot_quality: 90)

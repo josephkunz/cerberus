@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_212202) do
+ActiveRecord::Schema.define(version: 2019_12_27_144641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,12 @@ ActiveRecord::Schema.define(version: 2019_12_10_212202) do
 
   create_table "configs", force: :cascade do |t|
     t.boolean "fullpage"
-    t.integer "thumbnail_width"
-    t.string "viewport"
+    t.integer "screenshot_width"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "window_width"
+    t.integer "window_height"
+    t.integer "screenshot_quality"
   end
 
   create_table "events", force: :cascade do |t|
