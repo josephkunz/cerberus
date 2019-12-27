@@ -33,6 +33,9 @@ gem 'time_difference'
 # Admin console gem
 gem 'rails_admin'
 
+# Selenium webdriver (for headless Chrome)
+gem 'selenium-webdriver'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
