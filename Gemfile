@@ -18,7 +18,7 @@ gem 'webpacker'
 
 # Image processing gems (screenshot API and cloudinary uploader)
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'url2png'
 gem "mini_magick"
 
